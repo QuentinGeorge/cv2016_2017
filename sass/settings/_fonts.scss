@@ -1,0 +1,19 @@
+// Variables
+$segoeUIStack: "Segoe UI", Helvetica, Arial, sans-serif;
+
+// Segoe UI
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('#{ $fontPath }segoeui/segoeui.woff') format('woff'),
+         url('#{ $fontPath }segoeui/segoeui.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('#{ $fontPath }segoeui/segoeuibold.woff') format('woff'),
+         url('#{ $fontPath }segoeui/segoeuibold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

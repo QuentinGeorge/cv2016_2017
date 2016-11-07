@@ -1,14 +1,6 @@
-# CV_2016-2017
-Creation of cv for DW course
+# cv2016_2017
+My resume for DW course
 
-## Inspiration URL
-
-http://stackoverflow.com/users/5108418/tamas-hegedus
+## Inpired by
 
 https://github.com/QuentinGeorge
-
-https://developer.mozilla.org/en-US/docs/Web/CSS
-
-https://developers.google.com/web/
-
-https://www.google.com/chrome/browser/desktop/index.html
