@@ -1,18 +1,1 @@
-( function() {
-
-    let oButtonControlInfo = document.querySelector( ".control-info" ),
-        oListOthersInfo = document.querySelector( ".others-info" );
-
-    oButtonControlInfo.onclick = function() {
-        if ( oListOthersInfo.className.match( "(^|\\s)hide(\\s|$)" ) !== null ) {
-            oListOthersInfo.classList.add( "show" );
-            oListOthersInfo.classList.remove( "hide" );
-            oButtonControlInfo.value = "Hide more informations";
-        } else {
-            oListOthersInfo.classList.add( "hide" );
-            oListOthersInfo.classList.remove( "show" );
-            oButtonControlInfo.value = "Show more informations";
-        }
-    };
-
-} )();
+"use strict";!function(){var e=document.querySelector(".control-info"),o=document.querySelector(".others-info");e.onclick=function(){null!==o.className.match("(^|\\s)hide(\\s|$)")?(o.classList.add("show"),o.classList.remove("hide"),e.value="Hide more informations"):(o.classList.add("hide"),o.classList.remove("show"),e.value="Show more informations")}}();
