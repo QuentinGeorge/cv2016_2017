@@ -1,0 +1,51 @@
+// Styles base elements
+
+html {
+    font: normal 14px/1.5 $segoeUIStack;
+    color: $cLaborText;
+    background-color: $cMainBackground;
+}
+
+body {
+    line-height: inherit;
+}
+
+a {
+    color: $cLink;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input, button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+svg {
+    fill: currentColor;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}

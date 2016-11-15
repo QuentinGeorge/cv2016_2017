@@ -1,0 +1,26 @@
+// Structure elements
+
+.main-nav, footer {
+    width: $headerFooterSize;
+    margin: 0 auto;
+}
+
+.main-container {
+    width: $mainSize;
+    margin: 0 auto;
+    margin-top: 24px;
+}
+
+.intro {
+    float: left;
+    width: $introSize;
+    padding-right: $introLeftSpacingSize;
+}
+
+.main-container:after {
+    @include ClearFix;
+}
+
+.content-nav, .overview {
+    margin-left: $introSize + $introLeftSpacingSize;
+}
