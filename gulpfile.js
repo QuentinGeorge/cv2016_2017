@@ -24,15 +24,15 @@ gulp.task( "html", function() {
 gulp.task( "styles", function() {
     return gulp
         // Compile sass files into css directory
-        .src( "sass/**/*.scss" )
+        .src( "src/sass/**/*.scss" )
         .pipe( gSass() )
-        .pipe( gulp.dest( "css" ) )
+        .pipe( gulp.dest( "./css" ) )
         // Add prefix on styles and replace css file
         .pipe( gAutoPrefixer( "last 2 version" ) )
-        .pipe( gulp.dest( "css" ) )
+        .pipe( gulp.dest( "./css" ) )
         // Minify CSS and replace CSS file
         .pipe( gCleanCSS() )
-        .pipe( gulp.dest( "css" ) )
+        .pipe( gulp.dest( "./css" ) )
         // Update browser
         .pipe( browserSync.stream() );
 } );
@@ -51,10 +51,10 @@ gulp.task( "babel", function() {
         // Compile babel-js files into scripts directory
         .src( "src/**/*.js" )
         .pipe( gBabel() )
-        .pipe( gulp.dest( "scripts" ) )
+        .pipe( gulp.dest( "./scripts" ) )
         // Minify JS and replace JS file
         .pipe( gUglify() )
-        .pipe( gulp.dest( "scripts" ) )
+        .pipe( gulp.dest( "./scripts" ) )
         // Update browser
         .pipe( browserSync.stream() );
 } );
@@ -70,7 +70,7 @@ gulp.task( "browser-sync", function() {
 gulp.task( "watch", function() {
     // gulp.watch( "*.html" ).on( "change", browserSync.reload ); // other way to sync browser without stream
     gulp.watch( "src/**/*.html", [ "html" ] );
-    gulp.watch( "sass/**/*.scss", [ "styles" ] );
+    gulp.watch( "src/sass/**/*.scss", [ "styles" ] );
     gulp.watch( "src/**/*.js", [ "lint", "babel" ] );
 } );
 
