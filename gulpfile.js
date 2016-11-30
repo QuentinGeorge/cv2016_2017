@@ -2,6 +2,7 @@
 
 var gulp = require( "gulp" ),
     gHTMLMin = require( "gulp-htmlmin" ),
+    gImageMin = require( "gulp-imagemin" ),
     gSass = require( "gulp-sass" ),
     gAutoPrefixer = require( "gulp-autoprefixer" ),
     gCleanCSS = require( "gulp-clean-css" ),
@@ -20,7 +21,17 @@ gulp.task( "html", function() {
         .pipe( browserSync.stream() );
 } );
 
-// Compile sass files into css
+// Optimize images
+gulp.task( "img", function() {
+    return gulp
+        .src( "src/img/**/*" )
+        .pipe( gImageMin() )
+        .pipe( gulp.dest( "./assets/img" ) )
+        // Update browser
+        .pipe( browserSync.stream() );
+} );
+
+// Compile sass files to css
 gulp.task( "styles", function() {
     return gulp
         // Compile sass files into css directory
@@ -70,6 +81,7 @@ gulp.task( "browser-sync", function() {
 gulp.task( "watch", function() {
     // gulp.watch( "*.html" ).on( "change", browserSync.reload ); // other way to sync browser without stream
     gulp.watch( "src/**/*.html", [ "html" ] );
+    gulp.watch( "src/img/**/*", [ "img" ] );
     gulp.watch( "src/sass/**/*.scss", [ "styles" ] );
     gulp.watch( "src/**/*.js", [ "lint", "babel" ] );
 } );
@@ -77,6 +89,6 @@ gulp.task( "watch", function() {
 // Create command tasks
 gulp.task( "default", [ "build" ] );
 
-gulp.task( "build", [ "html", "styles", "lint", "babel" ] );
+gulp.task( "build", [ "html", "img", "styles", "lint", "babel" ] );
 
 gulp.task( "work", [ "build", "watch", "browser-sync" ] );
