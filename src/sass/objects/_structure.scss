@@ -9,16 +9,15 @@
     width: $mainSize;
     margin: 0 auto;
     margin-top: 24px;
+    &:after {
+        @include ClearFix;
+    }
 }
 
 .intro {
     float: left;
     width: $introSize;
     padding-right: $introLeftSpacingSize;
-}
-
-.main-container:after {
-    @include ClearFix;
 }
 
 .content-nav, .overview {

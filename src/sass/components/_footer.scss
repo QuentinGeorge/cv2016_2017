@@ -21,10 +21,9 @@ footer .home-logo {
     height: 24px;
     margin: 0 auto;
     color: $cFooterHomeLink;
-}
-
-footer .home-logo:hover {
-    color: $cFooterHomeLinkHover;
+    &:hover{
+        color: $cFooterHomeLinkHover;
+    }
 }
 
 footer a:last-child {
