@@ -1,94 +1,132 @@
+ /* Gulpfile.js
+ /
+ /  Last modification 09/12/2016
+*/
+
 "use strict";
 
+// Packages variables
 var gulp = require( "gulp" ),
     gHTMLMin = require( "gulp-htmlmin" ),
-    gImageMin = require( "gulp-imagemin" ),
+    gImageMin = require( "gulp-imagemin" ), // node_modules path directory is too long to be deleted on windows. Use java executable "PathTooLong.jar" to remove it ( use with caution ! ).
     gSass = require( "gulp-sass" ),
     gAutoPrefixer = require( "gulp-autoprefixer" ),
-    gCleanCSS = require( "gulp-clean-css" ),
     gESLint = require( "gulp-eslint" ),
     gBabel = require( "gulp-babel" ),
     gUglify = require( "gulp-uglify" ),
     browserSync = require( "browser-sync" ).create();
 
-// Minify HTML
+// Utilities variables
+var sSrc = "src/",
+    sDest = "build/",
+    oHTML = {
+        in: sSrc + "**/*.html",
+        watch: sSrc + "**/*.html",
+        out: sDest
+    },
+    oImg = {
+        in: sSrc + "img/**/*",
+        watch: sSrc + "img/**/*",
+        out: sDest + "img/"
+    },
+    oAssets = {
+        in: sSrc + "assets/**/*",
+        watch: sSrc + "assets/**/*",
+        out: sDest + "assets/"
+    },
+    oStyles = {
+        in: sSrc + "sass/**/*.scss",
+        watch: sSrc + "sass/**/*.scss",
+        out: sDest + "css/",
+        sassOpts: {
+            outputStyle: "compressed", // Minify
+            precision: 3,
+            errLogToConsole: true
+        },
+        autoPrefixOpts: "last 2 version"
+    },
+    oScripts = {
+        in: sSrc + "**/*.js",
+        watch: sSrc + "**/*.js",
+        out: sDest + "scripts/"
+    },
+    sProjectDirectory = "http://localhost/DW-Projects/cv2016_2017/" + sDest;
+
+// HTML tasks
 gulp.task( "html", function() {
     return gulp
-        .src( "src/**/*.html" )
+        // Minify HTML
+        .src( oHTML.in )
         .pipe( gHTMLMin( { collapseWhitespace: true } ) )
-        .pipe( gulp.dest( "." ) )
-        // Update browser
-        .pipe( browserSync.stream() );
+        .pipe( gulp.dest( oHTML.out ) );
 } );
 
-// Optimize images
+// Images tasks
 gulp.task( "img", function() {
     return gulp
-        .src( "src/img/**/*" )
+        // Optimize images
+        .src( oImg.in )
         .pipe( gImageMin() )
-        .pipe( gulp.dest( "./assets/img" ) )
-        // Update browser
-        .pipe( browserSync.stream() );
+        .pipe( gulp.dest( oImg.out ) );
 } );
 
-// Compile sass files to css
+// Assets tasks
+gulp.task( "assets", function() {
+    return gulp
+        // Copy assets files into destination directory
+        .src( oAssets.in )
+        .pipe( gulp.dest( oAssets.out ) );
+} );
+
+// Styles tasks
 gulp.task( "styles", function() {
     return gulp
-        // Compile sass files into css directory
-        .src( "src/sass/**/*.scss" )
-        .pipe( gSass() )
-        .pipe( gulp.dest( "./css" ) )
-        // Add prefix on styles and replace css file
-        .pipe( gAutoPrefixer( "last 2 version" ) )
-        .pipe( gulp.dest( "./css" ) )
-        // Minify CSS and replace CSS file
-        .pipe( gCleanCSS() )
-        .pipe( gulp.dest( "./css" ) )
-        // Update browser
-        .pipe( browserSync.stream() );
+        // Compile sass files
+        .src( oStyles.in )
+        .pipe( gSass( oStyles.sassOpts ) )
+        .pipe( gulp.dest( oStyles.out ) )
+        // Add css prefixes on styles
+        .pipe( gAutoPrefixer( oStyles.autoPrefixOpts ) )
+        .pipe( gulp.dest( oStyles.out ) );
 } );
 
 //  Check es-lint
 gulp.task( "lint", function() {
     return gulp
-        .src( "src/**/*.js" )
+        .src( oScripts.in )
         .pipe( gESLint() )
         .pipe( gESLint.format() );
 } );
 
-// Compile babel-js files into js
-gulp.task( "babel", function() {
+// Scripts tasks
+gulp.task( "scripts", function() {
     return gulp
-        // Compile babel-js files into scripts directory
-        .src( "src/**/*.js" )
+        // Compile es2015-js files
+        .src( oScripts.in )
         .pipe( gBabel() )
-        .pipe( gulp.dest( "./scripts" ) )
-        // Minify JS and replace JS file
+        .pipe( gulp.dest( oScripts.out ) )
+        // Minify & obfuscate JS
         .pipe( gUglify() )
-        .pipe( gulp.dest( "./scripts" ) )
-        // Update browser
-        .pipe( browserSync.stream() );
+        .pipe( gulp.dest( oScripts.out ) );
 } );
 
 // Browser-sync initialisation
 gulp.task( "browser-sync", function() {
     browserSync.init( {
-        proxy: "http://localhost/DW-Projects/cv2016_2017/"
+        proxy: sProjectDirectory
     } );
 } );
 
-// Watching files modifications
+// Watching files modifications & reload browser
 gulp.task( "watch", function() {
-    // gulp.watch( "*.html" ).on( "change", browserSync.reload ); // other way to sync browser without stream
-    gulp.watch( "src/**/*.html", [ "html" ] );
-    gulp.watch( "src/img/**/*", [ "img" ] );
-    gulp.watch( "src/sass/**/*.scss", [ "styles" ] );
-    gulp.watch( "src/**/*.js", [ "lint", "babel" ] );
+    gulp.watch( oHTML.watch, [ "html" ] ).on( "change", browserSync.reload );
+    gulp.watch( oImg.watch, [ "img" ] ).on( "change", browserSync.reload );
+    gulp.watch( oAssets.watch, [ "assets" ] ).on( "change", browserSync.reload );
+    gulp.watch( oStyles.watch, [ "styles" ] ).on( "change", browserSync.reload );
+    gulp.watch( oScripts.watch, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
 } );
 
-// Create command tasks
-gulp.task( "default", [ "build" ] );
+// Create command-line tasks
+gulp.task( "default", [ "html", "img", "assets", "styles", "lint", "scripts" ] );
 
-gulp.task( "build", [ "html", "img", "styles", "lint", "babel" ] );
-
-gulp.task( "work", [ "build", "watch", "browser-sync" ] );
+gulp.task( "work", [ "default", "watch", "browser-sync" ] );
