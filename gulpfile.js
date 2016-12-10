@@ -53,7 +53,12 @@ var sSrc = "src/",
     oScripts = {
         in: sSrc + "**/*.js",
         watch: sSrc + "**/*.js",
-        out: sDest + "scripts/"
+        out: sDest + "scripts/",
+        uglifyOpts: {
+            mangle: {
+                toplevel: true // Minify & obfuscate
+            }
+        }
     },
     oRename = {
         minOpts: {
@@ -105,7 +110,7 @@ gulp.task( "styles", function() {
         .pipe( gulp.dest( oStyles.out ) );
 } );
 
-//  Check es-lint
+// Check es-lint
 gulp.task( "lint", function() {
     return gulp
         .src( oScripts.in )
@@ -120,7 +125,7 @@ gulp.task( "scripts", function() {
         .src( oScripts.in )
         .pipe( gBabel() )
         // Minify & obfuscate JS
-        .pipe( gUglify() )
+        .pipe( gUglify( oScripts.uglifyOpts ) )
         // Add suffix .min before writting file
         .pipe( gRename( oRename.minOpts ) )
         .pipe( gulp.dest( oScripts.out ) );
