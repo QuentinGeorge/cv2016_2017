@@ -1,6 +1,6 @@
  /* Gulpfile.js
  /
- /  Last modification 09/12/2016
+ /  Last modification 10/12/2016
 */
 
 "use strict";
@@ -14,6 +14,7 @@ var gulp = require( "gulp" ),
     gESLint = require( "gulp-eslint" ),
     gBabel = require( "gulp-babel" ),
     gUglify = require( "gulp-uglify" ),
+    gRename = require( "gulp-rename" ),
     browserSync = require( "browser-sync" ).create();
 
 // Utilities variables
@@ -22,17 +23,20 @@ var sSrc = "src/",
     oHTML = {
         in: sSrc + "**/*.html",
         watch: sSrc + "**/*.html",
-        out: sDest
-    },
-    oImg = {
-        in: sSrc + "img/**/*",
-        watch: sSrc + "img/**/*",
-        out: sDest + "img/"
+        out: sDest,
+        minOpts: {
+            collapseWhitespace: true
+        }
     },
     oAssets = {
         in: sSrc + "assets/**/*",
         watch: sSrc + "assets/**/*",
         out: sDest + "assets/"
+    },
+    oImg = {
+        in: sSrc + "img_to_optim/**/*",
+        watch: sSrc + "img_to_optim/**/*",
+        out: sDest + "assets/img/"
     },
     oStyles = {
         in: sSrc + "sass/**/*.scss",
@@ -40,25 +44,43 @@ var sSrc = "src/",
         out: sDest + "css/",
         sassOpts: {
             outputStyle: "compressed", // Minify
-            precision: 3,
-            errLogToConsole: true
+            precision: 3
         },
-        autoPrefixOpts: "last 2 version"
+        autoPrefixOpts: {
+            browsers: [ "last 2 versions" ]
+        }
     },
     oScripts = {
         in: sSrc + "**/*.js",
         watch: sSrc + "**/*.js",
         out: sDest + "scripts/"
     },
-    sProjectDirectory = "http://localhost/DW-Projects/cv2016_2017/" + sDest;
+    oRename = {
+        minOpts: {
+            suffix: ".min"
+        }
+    },
+    oBrowserSync = {
+        initOpts: {
+            proxy: "http://localhost/DW-Projects/cv2016_2017/" + sDest
+        }
+    };
 
 // HTML tasks
 gulp.task( "html", function() {
     return gulp
         // Minify HTML
         .src( oHTML.in )
-        .pipe( gHTMLMin( { collapseWhitespace: true } ) )
+        .pipe( gHTMLMin( oHTML.minOpts ) )
         .pipe( gulp.dest( oHTML.out ) );
+} );
+
+// Assets tasks
+gulp.task( "assets", function() {
+    return gulp
+        // Copy assets files into destination directory
+        .src( oAssets.in )
+        .pipe( gulp.dest( oAssets.out ) );
 } );
 
 // Images tasks
@@ -70,23 +92,16 @@ gulp.task( "img", function() {
         .pipe( gulp.dest( oImg.out ) );
 } );
 
-// Assets tasks
-gulp.task( "assets", function() {
-    return gulp
-        // Copy assets files into destination directory
-        .src( oAssets.in )
-        .pipe( gulp.dest( oAssets.out ) );
-} );
-
 // Styles tasks
 gulp.task( "styles", function() {
     return gulp
-        // Compile sass files
+        // Compile sass files & minify
         .src( oStyles.in )
-        .pipe( gSass( oStyles.sassOpts ) )
-        .pipe( gulp.dest( oStyles.out ) )
-        // Add css prefixes on styles
+        .pipe( gSass( oStyles.sassOpts ).on( "error", gSass.logError ) )
+        // Add css prefixes
         .pipe( gAutoPrefixer( oStyles.autoPrefixOpts ) )
+        // Add suffix .min before writting file
+        .pipe( gRename( oRename.minOpts ) )
         .pipe( gulp.dest( oStyles.out ) );
 } );
 
@@ -104,17 +119,16 @@ gulp.task( "scripts", function() {
         // Compile es2015-js files
         .src( oScripts.in )
         .pipe( gBabel() )
-        .pipe( gulp.dest( oScripts.out ) )
         // Minify & obfuscate JS
         .pipe( gUglify() )
+        // Add suffix .min before writting file
+        .pipe( gRename( oRename.minOpts ) )
         .pipe( gulp.dest( oScripts.out ) );
 } );
 
 // Browser-sync initialisation
 gulp.task( "browser-sync", function() {
-    browserSync.init( {
-        proxy: sProjectDirectory
-    } );
+    browserSync.init( oBrowserSync.initOpts );
 } );
 
 // Watching files modifications & reload browser
@@ -127,6 +141,6 @@ gulp.task( "watch", function() {
 } );
 
 // Create command-line tasks
-gulp.task( "default", [ "html", "img", "assets", "styles", "lint", "scripts" ] );
+gulp.task( "default", [ "html", "assets", "img", "styles", "lint", "scripts" ] );
 
 gulp.task( "work", [ "default", "watch", "browser-sync" ] );
