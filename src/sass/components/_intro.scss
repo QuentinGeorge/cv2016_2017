@@ -1,6 +1,6 @@
 // Intro specific styles
 
-.intro li, .intro p, .intro strong, .intro b {
+.intro li, .intro header p, .intro strong, .intro b {
     display: block;
 }
 
@@ -38,12 +38,12 @@
     font-weight: 600;
     color: $cTitleText;
     background-color: $cDecorativeLines;
-    background-image: $gradHeaderButtonBackground;
-    border: 1px solid $cHeaderButtonBorder;
+    background-image: $gradIntroButtonBackground;
+    border: 1px solid $cIntroButtonBorder;
     border-radius: 3px;
     &:hover {
             background-color: $cHeaderSearchBorder;
-            background-image: $gradHeaderButtonHoverBackground;
+            background-image: $gradIntroButtonHoverBackground;
             border-color: $cFooterHomeLink;
     }
     &:focus {
@@ -54,9 +54,9 @@
             }
     }
     &:active {
-            background-color: $cHeaderButtonActiveBackground;
+            background-color: $cIntroButtonActiveBackground;
             background-image: none;
-            border-color: $cHeaderButtonActiveBorder;
+            border-color: $cIntroButtonActiveBorder;
             box-shadow: inset 0 2px 4px $cHeaderDropDownBorder;
     }
 }
@@ -74,4 +74,123 @@
 .others-info article h3 {
     font-size: 1.143rem;  // * 14 = 16px
     font-weight: 600;
+}
+
+.others-info li p {
+    display: inline-block;
+}
+
+.others-info article:first-child li {
+    padding-top: 5px;
+    padding-bottom: 2px;
+    line-height: 1.3;
+}
+
+.others-info svg {
+    width: 14px;
+    margin-right: 8px;
+    color: $cIntroIcons;
+    vertical-align: top;
+}
+
+.others-info .location svg {
+    margin-top: 1px;
+}
+
+.others-info .born svg {
+    margin-top: -1px;
+}
+
+.others-info .address svg {
+    margin-top: 2px;
+}
+
+.others-info .phone svg {
+    margin-top: 2px;
+}
+
+.others-info .mail svg {
+    margin-top: 2px;
+}
+
+.others-info h3 {
+    margin-bottom: 4px;
+}
+
+.skills li {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin: 2px 6px 2px 0;
+    text-indent: -5000px;
+    background: url( "#{ $imgPath }sprite.png" ) 0 0 no-repeat;
+}
+
+.skills .css3-icon {
+    background-position: -35px 0;
+}
+
+.skills .js-icon {
+    background-position: -70px 0;
+}
+
+.skills .php-icon {
+    background-position: -105px 0;
+}
+
+.skills .sass-icon {
+    background-position: -140px 0;
+}
+
+.skills .node-icon {
+    background-position: -175px 0;
+}
+
+.skills .gulp-icon {
+    background-position: 0 -35px;
+}
+
+.skills .grunt-icon {
+    background-position: -35px -35px;
+}
+
+.skills .ajax-icon {
+    background-position: -70px -35px;
+}
+
+.skills .vagrant-icon {
+    background-position: -105px -35px;
+}
+
+.skills .bootstrap-icon {
+    background-position: -140px -35px;
+}
+
+.intro {
+    position: relative;
+}
+
+.intro header {
+    position: relative;
+    z-index: 2;
+    background-color: $cMainBackground;
+}
+
+.others-info {
+    width: 230px;
+    z-index: 1;
+}
+
+.intro .hide {
+    position: absolute;
+    bottom: 0;
+    transition: all 1.5s ease-in-out;
+    transform: translateY( 0 );
+}
+
+.intro .show {
+    position: relative;
+    top: -354px;
+    transition: all 1.5s ease-in-out;
+    transform: translateY( 354px );
 }

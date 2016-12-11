@@ -1,8 +1,13 @@
-// Global color variables
+// Global colors variables
 
+// Backgrounds colors
 $cMainBackground: #FFFFFF;
 $cHeaderBackground: #F5F5F5;
+$gradIntroButtonBackground: linear-gradient( #FCFCFC, #EEE );
+$gradIntroButtonHoverBackground: linear-gradient( #EEE, #DDD );
+$cIntroButtonActiveBackground: #DCDCDC;
 
+// Texts colors
 $cTitleText: #333;
 $cSubTitleText: #666;
 $cLaborText: #767676;
@@ -10,19 +15,19 @@ $cLink: #4078C0;
 $cFooterHomeLink: #CCCCCC;
 $cFooterHomeLinkHover: #BBBBBB;
 
+// Borders colors
 $cHeaderBorder: #E5E5E5;
 $cHeaderSearchBorder: #DDD;
 $cHeaderSearchBorderFocus: #51A7E8;
 $cHeaderDropDownBorder: rgba( 0, 0, 0, 0.15 );
-$cHeaderButtonBorder: #D5D5D5;
-$gradHeaderButtonBackground: linear-gradient( #FCFCFC, #EEE );
-$gradHeaderButtonHoverBackground: linear-gradient( #EEE, #DDD );
-$cHeaderButtonActiveBackground: #DCDCDC;
-$cHeaderButtonActiveBorder: #B5B5B5;
+$cIntroButtonBorder: #D5D5D5;
+$cIntroButtonActiveBorder: #B5B5B5;
 
+// Shadows colors
 $cHeaderSearchShadow: rgba( 0, 0, 0, 0.075 );
 $cHeaderSearchShadowFocus: rgba( 81, 167, 232, 0.5 );
 
+// Others colors
 $cHeaderSearchPlaceHolder: #CBCBCB;
-
 $cDecorativeLines: #EEE;
+$cIntroIcons: #999;
