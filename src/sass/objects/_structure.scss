@@ -17,9 +17,9 @@
 .intro {
     float: left;
     width: $introSize;
-    padding-right: $introLeftSpacingSize;
+    margin-right: $introRightSpacingSize;
 }
 
-.content-nav, .overview {
-    margin-left: $introSize + $introLeftSpacingSize;
+.content-nav, .overview, .full-resume, .stars, .followers, .following {
+    margin-left: $introSize + $introRightSpacingSize;
 }
