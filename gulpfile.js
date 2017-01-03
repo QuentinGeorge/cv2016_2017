@@ -11,21 +11,35 @@ var gulp = require( "gulp" ),
     gImageMin = require( "gulp-imagemin" ), // node_modules path directory is too long to be deleted on windows. Use java executable "PathTooLong.jar" to remove it ( use with caution ! ).
     gSass = require( "gulp-sass" ),
     gAutoPrefixer = require( "gulp-autoprefixer" ),
+    gCSSComb = require( "gulp-csscomb" ),
+    gCleanCSS = require( "gulp-clean-css" ),
     gESLint = require( "gulp-eslint" ),
     gBabel = require( "gulp-babel" ),
     gUglify = require( "gulp-uglify" ),
     gRename = require( "gulp-rename" ),
+    gNotify = require( "gulp-notify" ),
+    gPlumber = require( "gulp-plumber" ),
     browserSync = require( "browser-sync" ).create();
 
 // Utilities variables
 var sSrc = "src/",
     sDest = "build/",
+    sTaskError = "",
+    fPlumberError = function( sTaskError ) {
+        return {
+            title: "An error occured on " + sTaskError,
+            message: "<%= error.message %>"
+        }
+    },
     oHTML = {
         in: sSrc + "**/*.html",
         watch: sSrc + "**/*.html",
         out: sDest,
         minOpts: {
             collapseWhitespace: true
+        },
+        plumberOpts: {
+            errorHandler: gNotify.onError( fPlumberError( sTaskError = "HTML" ) )
         }
     },
     oAssets = {
@@ -43,11 +57,15 @@ var sSrc = "src/",
         watch: sSrc + "sass/**/*.scss",
         out: sDest + "css/",
         sassOpts: {
-            outputStyle: "compressed", // Minify
+            // outputStyle: "compressed", // Minify but overwritted by using csscomb, use clean-css to minify after csscomb pipe
+            outputStyle: "expanded",
             precision: 3
         },
         autoPrefixOpts: {
             browsers: [ "last 2 versions" ]
+        },
+        plumberOpts: {
+            errorHandler: gNotify.onError( fPlumberError( sTaskError = "Styles" ) )
         }
     },
     oScripts = {
@@ -58,6 +76,9 @@ var sSrc = "src/",
             mangle: {
                 toplevel: true // Minify & obfuscate
             }
+        },
+        plumberOpts: {
+            errorHandler: gNotify.onError( fPlumberError( sTaskError = "Scripts" ) )
         }
     },
     oRename = {
@@ -74,8 +95,9 @@ var sSrc = "src/",
 // HTML tasks
 gulp.task( "html", function() {
     return gulp
-        // Minify HTML
         .src( oHTML.in )
+        .pipe( gPlumber( oHTML.plumberOpts ) ) // Don't stop watch task if an error occured
+        // Minify HTML
         .pipe( gHTMLMin( oHTML.minOpts ) )
         .pipe( gulp.dest( oHTML.out ) );
 } );
@@ -83,16 +105,16 @@ gulp.task( "html", function() {
 // Assets tasks
 gulp.task( "assets", function() {
     return gulp
-        // Copy assets files into destination directory
         .src( oAssets.in )
+        // Copy assets files into destination directory
         .pipe( gulp.dest( oAssets.out ) );
 } );
 
 // Images tasks
 gulp.task( "img", function() {
     return gulp
-        // Optimize images
         .src( oImg.in )
+        // Optimize images
         .pipe( gImageMin() )
         .pipe( gulp.dest( oImg.out ) );
 } );
@@ -100,11 +122,17 @@ gulp.task( "img", function() {
 // Styles tasks
 gulp.task( "styles", function() {
     return gulp
-        // Compile sass files & minify
         .src( oStyles.in )
-        .pipe( gSass( oStyles.sassOpts ).on( "error", gSass.logError ) )
+        .pipe( gPlumber( oStyles.plumberOpts ) ) // Don't stop watch task if an error occured
+        // Compile sass files
+        .pipe( gSass( oStyles.sassOpts ) )
+        // .pipe( gSass( oStyles.sassOpts ).on( "error", gSass.logError ) )
         // Add css prefixes
         .pipe( gAutoPrefixer( oStyles.autoPrefixOpts ) )
+        // Format CSS coding style
+        .pipe( gCSSComb() )
+        // Minify
+        .pipe( gCleanCSS() )
         // Add suffix .min before writting file
         .pipe( gRename( oRename.minOpts ) )
         .pipe( gulp.dest( oStyles.out ) );
@@ -121,8 +149,9 @@ gulp.task( "lint", function() {
 // Scripts tasks
 gulp.task( "scripts", function() {
     return gulp
-        // Compile es2015-js files
         .src( oScripts.in )
+        .pipe( gPlumber( oScripts.plumberOpts ) ) // Don't stop watch task if an error occured
+        // Compile es2015-js files
         .pipe( gBabel() )
         // Minify & obfuscate JS
         .pipe( gUglify( oScripts.uglifyOpts ) )

@@ -16,7 +16,6 @@ oButtonControlInfo.addEventListener( "click", () => {
 
 // Menu content nav selected
 
-
 // let oContentNavMenu = document.querySelector( ".content-nav" ).getElementsByTagName( "ul" ),
 //     oContentNavSelectedItem = oContentNavMenu[ 0 ].querySelector( ".selected" ),
 //     oContentSections = document.querySelector( ".main-container" ).getElementsByTagName( "section" ),
