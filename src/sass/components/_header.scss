@@ -6,22 +6,24 @@
     border-bottom: 1px solid $cHeaderBorder;
 }
 
-.main-nav li {
-    display: inline-block;
-}
-
-.main-nav > ul li:first-child {
-    vertical-align: bottom;
+.main-nav a {
+    color: $cTitleText;
+    &:hover {
+        color: $cLink;
+        text-decoration: none;
+    }
 }
 
 header .home-logo {
-    display: block;
+    display: inline-block;
     width: 28px;
     height: 28px;
     margin: 0 10px 0 -2px;
+    vertical-align: bottom;
 }
 
 .main-nav form {
+    display: inline-block;
     width: 360px;
     height: 28px;
     margin-right: 10px;
@@ -71,26 +73,19 @@ header .home-logo {
     display: none;
 }
 
-.text-link {
-    vertical-align: text-top;
-}
-
-.text-link a {
-    padding: 4px 8px;
-    font-size: 0.92857rem;
-    font-weight: 600;
-}
-
 .main-nav > ul {
     display: inline-block;
 }
 
+.main-nav > ul li {
+    display: inline-block;
+    vertical-align: text-top;
+}
+
 .main-nav > ul a {
-    color: $cTitleText;
-    &:hover {
-        color: $cLink;
-        text-decoration: none;
-    }
+    padding: 4px 8px;
+    font-size: 0.92857rem;
+    font-weight: 600;
 }
 
 .main-nav .dropdown {
