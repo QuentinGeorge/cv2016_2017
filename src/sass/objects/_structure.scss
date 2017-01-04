@@ -9,9 +9,7 @@
     width: $mainSize;
     margin: 0 auto;
     margin-top: 24px;
-    &:after {
-        @include ClearFix;
-    }
+    @include clearFix;
 }
 
 .intro {

@@ -92,15 +92,14 @@ header .home-logo {
     float: right;            /* Pas de clear fix sur le parent, doit rester hors du flux */
     margin-right: -8px;
     vertical-align: bottom;
-    &:after {
-        @include ClearFix;
-    }
+    @include clearFix;
 }
 
 .main-nav .dropdown > a {
     float: right;
     display: block;
     padding: 4px 8px;
+    @include clearFix;
     &:before {
         display: inline-block;
         width: 0;
@@ -111,9 +110,6 @@ header .home-logo {
         border-right-color: transparent;
         border-bottom-color: transparent;
         border-left-color: transparent;
-    }
-    &:after {
-        @include ClearFix;
     }
 }
 

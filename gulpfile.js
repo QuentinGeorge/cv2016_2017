@@ -1,6 +1,6 @@
  /* Gulpfile.js
  /
- /  Last modification 10/12/2016
+ /  Last modification 04/01/2017
 */
 
 "use strict";
