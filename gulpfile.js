@@ -33,7 +33,6 @@ var sSrc = "src/",
     },
     oHTML = {
         in: sSrc + "**/*.html",
-        watch: sSrc + "**/*.html",
         out: sDest,
         minOpts: {
             collapseWhitespace: true
@@ -44,17 +43,14 @@ var sSrc = "src/",
     },
     oAssets = {
         in: sSrc + "assets/**/*",
-        watch: sSrc + "assets/**/*",
         out: sDest + "assets/"
     },
     oImg = {
         in: sSrc + "img_to_optim/**/*",
-        watch: sSrc + "img_to_optim/**/*",
         out: sDest + "assets/img/"
     },
     oStyles = {
         in: sSrc + "sass/**/*.scss",
-        watch: sSrc + "sass/**/*.scss",
         out: sDest + "css/",
         sassOpts: {
             // outputStyle: "compressed", // Minify but overwritted by using csscomb, use clean-css to minify after csscomb pipe
@@ -70,7 +66,6 @@ var sSrc = "src/",
     },
     oScripts = {
         in: sSrc + "**/*.js",
-        watch: sSrc + "**/*.js",
         out: sDest + "scripts/",
         uglifyOpts: {
             mangle: {
@@ -167,11 +162,11 @@ gulp.task( "browser-sync", function() {
 
 // Watching files modifications & reload browser
 gulp.task( "watch", function() {
-    gulp.watch( oHTML.watch, [ "html" ] ).on( "change", browserSync.reload );
-    gulp.watch( oImg.watch, [ "img" ] ).on( "change", browserSync.reload );
-    gulp.watch( oAssets.watch, [ "assets" ] ).on( "change", browserSync.reload );
-    gulp.watch( oStyles.watch, [ "styles" ] ).on( "change", browserSync.reload );
-    gulp.watch( oScripts.watch, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
+    gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
+    gulp.watch( oImg.in, [ "img" ] ).on( "change", browserSync.reload );
+    gulp.watch( oAssets.in, [ "assets" ] ).on( "change", browserSync.reload );
+    gulp.watch( oStyles.in, [ "styles" ] ).on( "change", browserSync.reload );
+    gulp.watch( oScripts.in, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
 } );
 
 // Create command-line tasks
