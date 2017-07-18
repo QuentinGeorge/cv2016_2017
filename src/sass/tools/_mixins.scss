@@ -8,16 +8,16 @@
     }
 }
 
-@mixin setSpriteBase( $URL ) {
-    display: inline-block;
-    text-indent: -9999px;
-    overflow: hidden;
-    background: url( $URL ) 0 0 no-repeat;
-}
-
-@mixin setSprite( $singleImageWidth, $singleImageHeight, $line: 1, $colmn: 1 ) {
-    width: $singleImageWidth;
-    height: $singleImageHeight;
-    background-position-x: -( ( $colmn * $singleImageWidth ) - $singleImageWidth );
-    background-position-y: -( ( $line * $singleImageHeight ) - $singleImageHeight );
-}
+// @mixin setSpriteBase( $URL ) {
+//     display: inline-block;
+//     text-indent: -9999px;
+//     overflow: hidden;
+//     background: url( $URL ) 0 0 no-repeat;
+// }
+//
+// @mixin setSprite( $singleImageWidth, $singleImageHeight, $line: 1, $colmn: 1 ) {
+//     width: $singleImageWidth;
+//     height: $singleImageHeight;
+//     background-position-x: -( ( $colmn * $singleImageWidth ) - $singleImageWidth );
+//     background-position-y: -( ( $line * $singleImageHeight ) - $singleImageHeight );
+// }

@@ -66,104 +66,107 @@
     color: $cTitleText;
 }
 
-.others-info article:first-child {
-    border-top: 1px $cDecorativeLines solid;
-    border-bottom: 1px $cHeaderBorder solid;
-}
-
-.others-info article h3 {
+.others-info h3 {
     font-size: 1.143rem;  // * 14 = 16px
     font-weight: 600;
+    margin-bottom: 4px;
 }
 
 .others-info li p {
     display: inline-block;
 }
 
-.others-info article:first-child li {
+.personal-info {
+    border-top: 1px $cDecorativeLines solid;
+    border-bottom: 1px $cHeaderBorder solid;
+}
+
+.personal-info li {
     padding-top: 5px;
     padding-bottom: 2px;
     line-height: 1.3;
 }
 
-.others-info svg {
+.personal-info svg {
     width: 14px;
     margin-right: 8px;
     color: $cIntroIcons;
     vertical-align: top;
 }
 
-.others-info .location svg {
+.personal-info .location svg {
     margin-top: 1px;
 }
 
-.others-info .born svg {
+.personal-info .born svg {
     margin-top: -1px;
 }
 
-.others-info .address svg {
+.personal-info .address svg {
     margin-top: 2px;
 }
 
-.others-info .phone svg {
+.personal-info .phone svg {
     margin-top: 2px;
 }
 
-.others-info .mail svg {
+.personal-info .mail svg {
     margin-top: 2px;
 }
 
-.others-info h3 {
-    margin-bottom: 4px;
-}
+// .skills-info li {
+//     margin: 2px 6px 2px 0;
+//     @include setSpriteBase( "#{ $imgPath }sprite.png" );
+// }
+//
+// .skills-info .html5-icon {
+//     @include setSprite( 35px, 35px );
+// }
+//
+// .skills-info .css3-icon {
+//     @include setSprite( 35px, 35px, 1, 2 );
+// }
+//
+// .skills-info .js-icon {
+//     @include setSprite( 35px, 35px, 1, 3 );
+// }
+//
+// .skills-info .php-icon {
+//     @include setSprite( 35px, 35px, 1, 4 );
+// }
+//
+// .skills-info .sass-icon {
+//     @include setSprite( 35px, 35px, 1, 5 );
+// }
+//
+// .skills-info .node-icon {
+//     @include setSprite( 35px, 35px, 1, 6 );
+// }
+//
+// .skills-info .gulp-icon {
+//     @include setSprite( 35px, 35px, 2, 1 );
+// }
+//
+// .skills-info .grunt-icon {
+//     @include setSprite( 35px, 35px, 2, 2 );
+// }
+//
+// .skills-info .ajax-icon {
+//     @include setSprite( 35px, 35px, 2, 3 );
+// }
+//
+// .skills-info .vagrant-icon {
+//     @include setSprite( 35px, 35px, 2, 4 );
+// }
+//
+// .skills-info .bootstrap-icon {
+//     @include setSprite( 35px, 35px, 2, 5 );
+// }
 
-.skills li {
+.skills-info li {
+    display: inline-block;
     margin: 2px 6px 2px 0;
-    @include setSpriteBase( "#{ $imgPath }sprite.png" );
-}
-
-.skills .html5-icon {
-    @include setSprite( 35px, 35px );
-}
-
-.skills .css3-icon {
-    @include setSprite( 35px, 35px, 1, 2 );
-}
-
-.skills .js-icon {
-    @include setSprite( 35px, 35px, 1, 3 );
-}
-
-.skills .php-icon {
-    @include setSprite( 35px, 35px, 1, 4 );
-}
-
-.skills .sass-icon {
-    @include setSprite( 35px, 35px, 1, 5 );
-}
-
-.skills .node-icon {
-    @include setSprite( 35px, 35px, 1, 6 );
-}
-
-.skills .gulp-icon {
-    @include setSprite( 35px, 35px, 2, 1 );
-}
-
-.skills .grunt-icon {
-    @include setSprite( 35px, 35px, 2, 2 );
-}
-
-.skills .ajax-icon {
-    @include setSprite( 35px, 35px, 2, 3 );
-}
-
-.skills .vagrant-icon {
-    @include setSprite( 35px, 35px, 2, 4 );
-}
-
-.skills .bootstrap-icon {
-    @include setSprite( 35px, 35px, 2, 5 );
+    overflow: hidden;
 }
 
 .intro {
