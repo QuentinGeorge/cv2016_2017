@@ -30,13 +30,17 @@ svg {
 
 .dropdown {
     display: inline-block;
+    position: relative;
 }
 
 .dropdown-content {
-    display: none;
+    position: absolute;
+    top: -99999px;
     z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

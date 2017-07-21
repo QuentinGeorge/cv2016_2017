@@ -88,19 +88,20 @@ header .home-logo {
     font-weight: 600;
 }
 
-.main-nav .dropdown {
-    float: right;            /* Pas de clear fix sur le parent, doit rester hors du flux */
-    margin-right: -8px;
-    vertical-align: bottom;
+.main-nav {
     @include clearFix;
 }
 
-.main-nav .dropdown > a {
+.main-nav .dropdown {
     float: right;
+    margin-right: -8px;
+    vertical-align: bottom;
+}
+
+.main-nav .dropdown > a {
     display: block;
     padding: 4px 8px;
-    @include clearFix;
-    &:before {
+    &:after {
         display: inline-block;
         width: 0;
         height: 0;
@@ -114,22 +115,30 @@ header .home-logo {
 }
 
 .main-nav .dropdown > a img {
-    float: left;
     display: inline-block;
     border-radius: 3px;
     vertical-align: top;
 }
 
-.main-nav .dropdown:hover > a:before {
-    border-color: $cLink;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+.main-nav .dropdown:hover > a {
+    &:before {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        width: 150px;
+        height: 50px;
+        content: "";
+    }
+    &:after {
+        border-color: $cLink;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
 }
 
 .main-nav .dropdown-content {
     width: 178px;
-    position: relative;
     margin-top: 41px;
     padding: 5px 0;
     background-color: $cMainBackground;
