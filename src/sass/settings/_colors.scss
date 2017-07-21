@@ -2,13 +2,17 @@
 
 // Backgrounds colors
 $cMainBackground: #FFF;
-$cHeaderBackground: #F5F5F5;
+$cHeaderBackground: #24292E;
+$cHeaderSearchBackground: #3F4347;
+$cHeaderSearchBackgroundFocus: lighten( $cHeaderSearchBackground, 4% );
 $gradIntroButtonBackground: linear-gradient( #FCFCFC, #EEE );
 $gradIntroButtonHoverBackground: linear-gradient( #EEE, #DDD );
 $cIntroButtonActiveBackground: #DCDCDC;
 
 // Texts colors
-$cTitleText: #333;
+$cHeaderLink: rgba( 255,255,255,0.75 );
+$cTitleText: #24292E;
+$cHeaderDropDownHeader: lighten( $cTitleText, 20% );
 $cSubTitleText: #666;
 $cLaborText: #767676;
 $cLink: #4078C0;
@@ -29,6 +33,6 @@ $cHeaderSearchShadow: rgba( 0, 0, 0, 0.075 );
 $cHeaderSearchShadowFocus: rgba( 81, 167, 232, 0.5 );
 
 // Others colors
-$cHeaderSearchPlaceHolder: #CBCBCB;
+$cHeaderSearchPlaceHolder: #8B8E90;
 $cDecorativeLines: #EEE;
 $cIntroIcons: #999;

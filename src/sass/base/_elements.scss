@@ -36,11 +36,11 @@ svg {
 .dropdown-content {
     position: absolute;
     top: -99999px;
+    right: 0;
     z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
     position: absolute;
     top: 0;
-    right: 0;
 }
