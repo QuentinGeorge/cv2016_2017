@@ -12,19 +12,19 @@ $cIntroButtonActiveBackground: #DCDCDC;
 // Texts colors
 $cHeaderLink: rgba( 255,255,255,0.75 );
 $cTitleText: #24292E;
-$cHeaderDropDownHeader: lighten( $cTitleText, 20% );
+$cLaborText: #586069;
 $cSubTitleText: #666;
-$cLaborText: #767676;
-$cLink: #4078C0;
+$cLink: #0366D6;
 $cFooterHomeLink: #CCC;
 $cFooterHomeLinkHover: #BBB;
 
 // Borders colors
 $cHeaderBorder: #E5E5E5;
-$cHeaderSearchBorder: #DDD;
-$cHeaderSearchBorderFocus: #51A7E8;
+$cHeaderSearchBorder: #D1D5DA;
 $cHeaderDropDownBorder: rgba( 0, 0, 0, 0.15 );
 $cIntroButtonBorder: #D5D5D5;
+$cIntroButtonHoverBorder: #DDD;
+$cIntroButtonFocusBorder: #51A7E8;
 $cIntroButtonActiveBorder: #B5B5B5;
 $cContentNavSelectedBorder: #C9510C;
 
@@ -36,3 +36,8 @@ $cHeaderSearchShadowFocus: rgba( 81, 167, 232, 0.5 );
 $cHeaderSearchPlaceHolder: #8B8E90;
 $cDecorativeLines: #EEE;
 $cIntroIcons: #999;
+$cPinnedSkillsDecorationHTML: #E34C26;
+$cPinnedSkillsDecorationCSS: #563D7C;
+$cPinnedSkillsDecorationJS: #F1E05A;
+$cPinnedSkillsDecorationPHP: #4F5D95;
+$cPinnedSkillsDecorationSQL: #244776;

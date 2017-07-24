@@ -42,7 +42,7 @@
     border: 1px solid $cIntroButtonBorder;
     border-radius: 3px;
     &:hover {
-            background-color: $cHeaderSearchBorder;
+            background-color: $cIntroButtonHoverBorder;
             background-image: $gradIntroButtonHoverBackground;
             border-color: $cFooterHomeLink;
     }
@@ -50,7 +50,7 @@
             outline: none;
             box-shadow: 0 0 5px $cHeaderSearchShadowFocus;
             &:hover {
-                border-color: $cHeaderSearchBorderFocus;
+                border-color: $cIntroButtonFocusBorder;
             }
     }
     &:active {
