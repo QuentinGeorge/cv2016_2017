@@ -8,6 +8,7 @@ $cHeaderSearchBackgroundFocus: lighten( $cHeaderSearchBackground, 4% );
 $gradIntroButtonBackground: linear-gradient( #FCFCFC, #EEE );
 $gradIntroButtonHoverBackground: linear-gradient( #EEE, #DDD );
 $cIntroButtonActiveBackground: #DCDCDC;
+$cTimelineCatNavHover: #EAECEF;
 
 // Texts colors
 $cHeaderLink: rgba( 255,255,255,0.75 );
@@ -27,6 +28,7 @@ $cIntroButtonHoverBorder: #DDD;
 $cIntroButtonFocusBorder: #51A7E8;
 $cIntroButtonActiveBorder: #B5B5B5;
 $cContentNavSelectedBorder: #C9510C;
+$cTimelineTableBorder: #F6F8FA;
 
 // Shadows colors
 $cHeaderSearchShadow: rgba( 0, 0, 0, 0.075 );
@@ -41,3 +43,7 @@ $cPinnedSkillsDecorationCSS: #563D7C;
 $cPinnedSkillsDecorationJS: #F1E05A;
 $cPinnedSkillsDecorationPHP: #4F5D95;
 $cPinnedSkillsDecorationSQL: #244776;
+$cTimelineTableIconRow: #E6EBF1;
+$cTimelineLocationIcon: #28A745;
+$cTimelineDescriptionIcon: #6F42C1;
+$cTimelineStarIcon: $cPinnedSkillsDecorationJS;

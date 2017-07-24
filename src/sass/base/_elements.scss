@@ -37,10 +37,46 @@ svg {
     position: absolute;
     top: -99999px;
     right: 0;
+    padding: 5px 0;
+    background-color: $cMainBackground;
+    border: 1px solid $cHeaderDropDownBorder;
+    border-radius: 4px;
+    box-shadow: 0 3px 12px $cHeaderDropDownBorder;
     z-index: 1;
+    &:before {
+        width: 0;
+        height: 0;
+        content: "";
+        position: absolute;
+        top: -16px;
+        right: 9px;
+        border: 8px solid transparent;
+        border-bottom-color: $cHeaderDropDownBorder;
+    }
+    &:after {
+        width: 0;
+        height: 0;
+        content: "";
+        position: absolute;
+        top: -14px;
+        right: 10px;
+        border: 7px solid transparent;
+        border-bottom-color: $cMainBackground;
+    }
 }
 
 .dropdown:hover .dropdown-content {
     position: absolute;
     top: 0;
+}
+
+.dropdown .dropdown-content a {
+    display: block;
+    padding: 4px 10px 4px 15px;
+    color: $cTitleText;
+    text-decoration: none;
+    &:hover {
+        color: $cMainBackground;
+        background-color: $cLink;
+    }
 }
