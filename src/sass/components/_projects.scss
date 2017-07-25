@@ -1,5 +1,9 @@
 // Projects specific styles
 
+.projects h2 {
+    margin-bottom: -6px;
+}
+
 .projects form {
     padding: 16px 0;
     border-bottom: 1px solid $cHeaderSearchBorder;
@@ -45,11 +49,8 @@
 }
 
 .projects-main-list > li {
-    padding: 24px 190px 24px 0;
     position: relative;
-}
-
-.projects-main-list > li:not( :last-child ) {
+    padding: 24px 190px 24px 0;
     border-bottom: 1px solid $cHeaderSearchBorder;
 }
 

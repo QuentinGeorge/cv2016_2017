@@ -24,3 +24,5 @@ http://www.ice-dev.com/decoupe-html-css/sass-lecon-5-les-conditions-et-les-boucl
 - version avec js mettre une class hidden sur le titre h2 "timeline" et "projects" doit etre afficher si pas de js et cache si js
 
 - replier en js les elements du tableau au clique sur le th
+
+- que faire des liens du header (issues gist) ?
