@@ -1,0 +1,84 @@
+// Projects specific styles
+
+.projects form {
+    padding: 16px 0;
+    border-bottom: 1px solid $cHeaderSearchBorder;
+}
+
+.projects-search {
+    width: 480px;
+    height: 34px;
+    padding: 6px 8px;
+    color: $cTitleText;
+    background-color: $cMainBackground;
+    border: 1px solid $cHeaderSearchBorder;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px $cProjectsSearchShadow;
+    &:focus {
+        outline: none;
+        border-color: $cProjectsSearchFocusBorder;
+        box-shadow: inset 0 1px 2px $cProjectsSearchShadow,
+                    0 0 0 0.2em $cHeaderSearchShadowFocus;
+    }
+}
+
+.projects input::-webkit-input-placeholder {
+   color: $cProjectsSearchPlaceHolder;
+}
+
+.projects input:-moz-placeholder { /* Firefox 18- */
+   color: $cProjectsSearchPlaceHolder;
+}
+
+.projects input::-moz-placeholder {  /* Firefox 19+ */
+   color: $cProjectsSearchPlaceHolder;
+}
+
+.projects input:-ms-input-placeholder {
+   color: $cProjectsSearchPlaceHolder;
+}
+
+.projects .projects-submit {
+    margin-left: 24px;
+    padding: 6px 12px;
+    color: $cProjectsSearchButton;
+}
+
+.projects-main-list > li {
+    padding: 24px 190px 24px 0;
+    position: relative;
+}
+
+.projects-main-list > li:not( :last-child ) {
+    border-bottom: 1px solid $cHeaderSearchBorder;
+}
+
+.projects-main-list > li a {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-size: 1.42857em;
+    font-weight: 600;
+}
+
+.projects-main-list p {
+    margin-bottom: 16px;
+}
+
+.projects-main-list span {
+    position: absolute;
+    top: 3.3em;
+    right: 0;
+}
+
+.projects-main-list ol li {
+    display: inline-block;
+    font-size: .85714em;
+}
+
+.projects-main-list ol li:not( :last-child ) {
+    margin-right: 16px;
+}
+
+.projects-main-list ol li svg {
+    vertical-align: text-bottom;
+}

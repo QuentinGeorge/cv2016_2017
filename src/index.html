@@ -44,6 +44,32 @@
             <g id="table-star">
                 <path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"/>
         	</g>
+            <g>
+                <linearGradient id="graph-gradient" x1="0" x2="0" y1="1" y2="0">
+                    <stop offset="10%" stop-color="#c6e48b"></stop>
+                    <stop offset="33%" stop-color="#7bc96f"></stop>
+                    <stop offset="66%" stop-color="#239a3b"></stop>
+                    <stop offset="90%" stop-color="#196127"></stop>
+                </linearGradient>
+                <mask id="sparkline-19314608" x="0" y="0" width="155" height="28">
+                    <polyline transform="translate(0, 28) scale(1,-1)" points="0,1.6 3,7.55 6,2.79 9,2.79 12,2.79 15,3.38 18,2.19 21,2.79 24,2.19 27,5.17 30,2.79 33,4.57 36,1.6 39,3.98 42,29.0 45,10.53 48,5.77 51,2.19 54,2.19 57,8.74 60,1.0 63,1.6 66,1.0 69,1.0 72,1.0 75,1.0 78,1.0 81,2.19 84,1.6 87,1.0 90,1.0 93,1.6 96,4.57 99,3.98 102,3.38 105,2.19 108,2.79 111,1.6 114,1.6 117,1.0 120,1.0 123,1.0 126,1.0 129,2.19 132,1.0 135,1.0 138,1.0 141,1.0 144,1.0 147,1.0 150,2.19 153,1.6 " fill="transparent" stroke="#8cc665" stroke-width="2"></polyline>
+                </mask>
+                <mask id="sparkline-73646153" x="0" y="0" width="155" height="28">
+                    <polyline transform="translate(0, 28) scale(1,-1)" points="0,1.0 3,1.0 6,1.0 9,1.0 12,1.0 15,1.0 18,1.0 21,1.0 24,1.0 27,1.0 30,1.0 33,1.0 36,1.0 39,1.0 42,29.0 45,12.49 48,3.87 51,3.15 54,2.44 57,2.44 60,1.0 63,3.87 66,1.72 69,2.44 72,1.72 75,1.0 78,1.0 81,1.0 84,3.87 87,1.72 90,1.72 93,6.74 96,3.87 99,1.72 102,1.72 105,1.72 108,2.44 111,1.0 114,1.0 117,2.44 120,1.0 123,3.15 126,2.44 129,1.72 132,1.72 135,1.72 138,1.0 141,1.0 144,1.72 147,1.0 150,1.0 153,1.0 " fill="transparent" stroke="#8cc665" stroke-width="2"></polyline>
+                </mask>
+                <mask id="sparkline-19762977" x="0" y="0" width="155" height="28">
+                    <polyline transform="translate(0, 28) scale(1,-1)" points="0,1.0 3,1.0 6,1.0 9,1.0 12,1.0 15,3.0 18,1.0 21,1.0 24,1.0 27,1.0 30,2.0 33,1.0 36,1.0 39,1.0 42,1.0 45,1.0 48,1.0 51,1.0 54,1.0 57,1.0 60,1.0 63,15.0 66,1.0 69,1.0 72,1.0 75,1.0 78,1.0 81,2.0 84,1.0 87,1.0 90,1.0 93,1.0 96,1.0 99,2.0 102,1.0 105,1.0 108,1.0 111,1.0 114,1.0 117,1.0 120,3.0 123,1.0 126,1.0 129,1.0 132,1.0 135,1.0 138,1.0 141,1.0 144,1.0 147,1.0 150,1.0 153,1.0 " fill="transparent" stroke="#8cc665" stroke-width="2"></polyline>
+                </mask>
+            </g>
+            <g id="project-graph-1" transform="translate(0, 2.0)">
+                <rect x="0" y="-2" width="155" height="30" style="stroke: none; fill: url(#graph-gradient); mask: url(#sparkline-19314608)"></rect>
+            </g>
+            <g id="project-graph-2" transform="translate(0, 2.0)">
+                <rect x="0" y="-2" width="155" height="30" style="stroke: none; fill: url(#graph-gradient); mask: url(#sparkline-73646153)"></rect>
+            </g>
+            <g id="project-graph-3" transform="translate(0, -5.0)">
+                <rect x="0" y="-2" width="155" height="30" style="stroke: none; fill: url(#graph-gradient); mask: url(#sparkline-19762977)"></rect>
+            </g>
         </defs>
     </svg>
     <body>
@@ -62,7 +88,7 @@
               </a>
               <form action="#" method="post">
                   <input id="main-search" type="search" name="searchfield" autocomplete="off" placeholder="Search in resume" aria-label="Search in resume"><!--
-               --><input type="submit" name="send" value="Search" class="hidden">
+               --><input class="button hidden" type="submit" name="send" value="Search">
               </form>
               <ul>
                   <li>
@@ -118,7 +144,7 @@
                   <p>
                       Dev, travel, TV&nbsp;series and Japanese&nbsp;martial&nbsp;arts.
                   </p>
-                  <input class="control-info" type="button" name="info-button" value="Show more informations">
+                  <input class="control-info button" type="button" name="info-button" value="Show more informations">
               </header>
               <div class="others-info hide">
                   <article class="personal-info">
@@ -930,36 +956,69 @@
                   Projects
               </h2>
               <form action="#" method="post">
-                  <input id="project-search" type="search" name="searchprojects" autocomplete="off" placeholder="Search projects&hellip;" aria-label="Search projects"><!--
-               --><input type="submit" name="sendproject" value="Search Project" class="hidden">
+                  <input id="projects-search" class="projects-search" type="search" name="searchprojects" autocomplete="off" placeholder="Search projects&hellip;" aria-label="Search projects"><!--
+               --><input class="projects-submit button" type="submit" name="sendproject" value="Search">
               </form>
-              <ol>
+              <ol class="projects-main-list">
                   <li>
                       <a href="#" hreflang="en" title="Stay on Resume project">Resume</a>
                       <p>My resume adapted from GitHub web site for DW course.</p>
+                      <span title="Project activity">
+                          <svg aria-label="Project activity" width="155" height="30">
+                              <use xlink:href="#project-graph-1"></use>
+                          </svg>
+                      </span>
                       <ol>
                           <li class="pin-decoration html-deco">HTML</li>
                           <li class="pin-decoration css-deco">CSS</li>
                           <li class="pin-decoration js-deco">JavaScript</li>
+                          <li>
+                              <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
+                                  <use xlink:href="#table-star"></use>
+                              </svg>
+                              479
+                          </li>
                           <li>Updated 8 days ago</li>
                       </ol>
                   </li>
                   <li>
                       <a href="http://hepl01.cblue.be/~user27/dw/csszg/" hreflang="en" rel="external" title="Go to CSS ZenGarden project">CSS ZenGarden</a>
-                      <p>Style sheets for CSS Zen Garden.</p>
+                      <p>Style sheets for CSS ZenGarden.</p>
+                      <span title="Project activity">
+                          <svg aria-label="Project activity" width="155" height="30">
+                              <use xlink:href="#project-graph-2"></use>
+                          </svg>
+                      </span>
                       <ol>
                           <li class="pin-decoration css-deco">CSS</li>
-                          <li>Updated 12 days ago</li>
+                          <li>
+                              <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
+                                  <use xlink:href="#table-star"></use>
+                              </svg>
+                              154
+                          </li>
+                          <li>Updated 4 days ago</li>
                       </ol>
                   </li>
                   <li>
                       <a href="http://hepl01.cblue.be/~user27/game/" hreflang="en" rel="external" title="Go to CSS ZenGarden project">Game Design</a>
                       <p>Game creation with canvas.</p>
+                      <span title="Project activity">
+                          <svg aria-label="Project activity" width="155" height="30">
+                              <use xlink:href="#project-graph-3"></use>
+                          </svg>
+                      </span>
                       <ol>
                           <li class="pin-decoration html-deco">HTML</li>
                           <li class="pin-decoration css-deco">CSS</li>
                           <li class="pin-decoration js-deco">JavaScript</li>
-                          <li>Updated 4 days ago</li>
+                          <li>
+                              <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
+                                  <use xlink:href="#table-star"></use>
+                              </svg>
+                              987
+                          </li>
+                          <li>Updated 1 month ago</li>
                       </ol>
                   </li>
               </ol>

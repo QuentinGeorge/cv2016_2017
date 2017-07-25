@@ -41,7 +41,6 @@ header .home-logo {
     background-color: $cHeaderSearchBackground;
     border: 0;
     border-radius: 3px;
-    box-sizing: border-box;
     &:focus {
         outline: none;
         background-color: $cHeaderSearchBackgroundFocus;
@@ -62,16 +61,6 @@ header .home-logo {
 
 .main-nav input:-ms-input-placeholder {
    color: $cHeaderSearchPlaceHolder;
-}
-
-.main-nav input[type="search"]::-ms-clear {
-    display: none;
-    width : 0;
-    height: 0;
-}
-
-.main-nav input[type="search"]::-webkit-search-cancel-button {
-    display: none;
 }
 
 .main-nav > ul {

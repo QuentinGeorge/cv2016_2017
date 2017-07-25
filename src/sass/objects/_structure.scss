@@ -21,3 +21,7 @@
 .content-nav, .overview, .timeline, .projects, .followers, .following {
     margin-left: $introSize + $introRightSpacingSize;
 }
+
+.overview article, .timeline, .projects, .followers, .following {
+    margin-bottom: 24px;
+}

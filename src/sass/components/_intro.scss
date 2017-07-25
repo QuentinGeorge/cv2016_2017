@@ -36,29 +36,6 @@
     padding: 6px 12px;
     line-height: 1.43; // * 14( font-size ) = 20px
     font-weight: 600;
-    color: $cTitleText;
-    background-color: $cDecorativeLines;
-    background-image: $gradIntroButtonBackground;
-    border: 1px solid $cIntroButtonBorder;
-    border-radius: 3px;
-    &:hover {
-            background-color: $cIntroButtonHoverBorder;
-            background-image: $gradIntroButtonHoverBackground;
-            border-color: $cFooterHomeLink;
-    }
-    &:focus {
-            outline: none;
-            box-shadow: 0 0 5px $cHeaderSearchShadowFocus;
-            &:hover {
-                border-color: $cIntroButtonFocusBorder;
-            }
-    }
-    &:active {
-            background-color: $cIntroButtonActiveBackground;
-            background-image: none;
-            border-color: $cIntroButtonActiveBorder;
-            box-shadow: inset 0 2px 4px $cHeaderDropDownBorder;
-    }
 }
 
 .others-info article {
@@ -67,7 +44,6 @@
 }
 
 .others-info h3 {
-    font-size: 1.143rem;  // * 14 = 16px
     font-weight: 600;
     margin-bottom: 4px;
 }

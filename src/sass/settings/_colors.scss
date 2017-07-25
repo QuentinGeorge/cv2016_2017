@@ -7,36 +7,41 @@ $cHeaderSearchBackground: #3F4347;
 $cHeaderSearchBackgroundFocus: lighten( $cHeaderSearchBackground, 4% );
 $gradIntroButtonBackground: linear-gradient( #FCFCFC, #EEE );
 $gradIntroButtonHoverBackground: linear-gradient( #EEE, #DDD );
-$cIntroButtonActiveBackground: #DCDCDC;
-$cContentNavCountBackground: rgba(27,31,35,0.08);
+$cIntroButtonHoverBackground: #DDD;
+$cIntroButtonActiveBackground: #E9ECEF;
+$cContentNavCountBackground: rgba( 27, 31, 35, 0.08 );
 $cTimelineCatNavHover: #EAECEF;
 
 // Texts colors
-$cHeaderLink: rgba( 255,255,255,0.75 );
+$cHeaderLink: rgba( 255, 255, 255, 0.75 );
 $cTitleText: #24292E;
 $cLaborText: #586069;
 $cSubTitleText: #666;
 $cLink: #0366D6;
 $cFooterHomeLink: #CCC;
 $cFooterHomeLinkHover: #BBB;
+$cHeaderSearchPlaceHolder: #8B8E90;
+$cProjectsSearchPlaceHolder: #BCC0C5;
+$cProjectsSearchButton: #787C80;
 
 // Borders colors
 $cHeaderBorder: #E5E5E5;
 $cHeaderSearchBorder: #D1D5DA;
 $cHeaderDropDownBorder: rgba( 0, 0, 0, 0.15 );
 $cIntroButtonBorder: #D5D5D5;
-$cIntroButtonHoverBorder: #DDD;
+$cIntroButtonHoverBorder: rgba( 27, 31, 35, 0.35 );
 $cIntroButtonFocusBorder: #51A7E8;
-$cIntroButtonActiveBorder: #B5B5B5;
 $cContentNavSelectedBorder: #C9510C;
 $cTimelineTableBorder: #F6F8FA;
+$cProjectsSearchFocusBorder: #2188FF;
 
 // Shadows colors
 $cHeaderSearchShadow: rgba( 0, 0, 0, 0.075 );
-$cHeaderSearchShadowFocus: rgba( 81, 167, 232, 0.5 );
+$cHeaderSearchShadowFocus: rgba( 3, 102, 214, 0.3 );
+$cIntroButtonActiveShadow: rgba( 27, 31, 35, 0.15 );
+$cProjectsSearchShadow: rgba( 27, 31, 35, 0.075 );
 
 // Others colors
-$cHeaderSearchPlaceHolder: #8B8E90;
 $cDecorativeLines: #EEE;
 $cIntroIcons: #999;
 $cPinnedSkillsDecorationHTML: #E34C26;
