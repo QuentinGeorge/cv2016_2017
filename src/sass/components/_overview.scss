@@ -43,6 +43,10 @@
     display: inline;
 }
 
+.pinned-skill li svg {
+    vertical-align: text-bottom;
+}
+
 .pinned-skill ol li:not( :last-child ) {
     margin-right: 16px;
 }
@@ -76,4 +80,28 @@
 
 .sql-deco:before {
     background-color: $cPinnedSkillsDecorationSQL;
+}
+
+.adobe-deco:before {
+    background-color: $cPinnedSkillsDecorationAdobe;
+}
+
+.invision-deco:before {
+    background-color: $cPinnedSkillsDecorationInVision;
+}
+
+.wai-deco:before {
+    background-color: $cPinnedSkillsDecorationWAI;
+}
+
+.caniuse-deco:before {
+    background-color: $cPinnedSkillsDecorationCanIuse;
+}
+
+.autoprefix-deco:before {
+    background-color: $cPinnedSkillsDecorationAutoprefixer;
+}
+
+.node-deco:before {
+    background-color: $cPinnedSkillsDecorationNodeJS;
 }
