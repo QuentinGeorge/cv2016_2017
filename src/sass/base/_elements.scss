@@ -76,6 +76,16 @@ input[type="search"]::-webkit-search-cancel-button {
     position: relative;
 }
 
+.dropdown > a {
+    display: block;
+    &:after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        content: "";
+    }
+}
+
 .dropdown-content {
     position: absolute;
     top: -99999px;
@@ -108,8 +118,7 @@ input[type="search"]::-webkit-search-cancel-button {
     }
 }
 
-.dropdown:hover .dropdown-content {
-    position: absolute;
+.dropdown:hover .dropdown-content, .dropdown a:focus + .dropdown-content {
     top: 0;
 }
 

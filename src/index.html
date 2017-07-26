@@ -83,7 +83,7 @@
           <h1 role="heading" aria-level="1" class="hidden">
               Quentin George´s resume
           </h1>
-          <nav class="main-nav">
+          <nav class="main-nav" role="navigation">
               <h2 role="heading" aria-level="2" class="hidden">
                   Main navigation
               </h2>
@@ -111,7 +111,7 @@
                   <h3 role="heading" aria-level="3" class="hidden">
                       Dropdown navigation
                   </h3>
-                  <a href="#">
+                  <a class="dropdown-expand" aria-haspopup="true" aria-expanded="false" href="#">
                       <img src="./assets/img/quentin.jpg" alt="Quentin George photo" width="20px" height="20px"/>
                   </a>
                   <ul class="dropdown-content">
@@ -387,7 +387,7 @@
                   </article>
               </div>
           </section>
-          <nav class="content-nav">
+          <nav class="content-nav" role="navigation">
               <h2 role="heading" aria-level="2" class="hidden">
                   Content navigation
               </h2>
@@ -511,12 +511,12 @@
               <h2 role="heading" aria-level="2">
                   Timeline
               </h2>
-              <nav>
+              <nav role="navigation">
                   <h3 role="heading" aria-level="3" class="hidden">
                       Timeline navigation
                   </h3>
                   <div class="dropdown">
-                      <button class="jump-to" type="button" name="jump">Jump to</button>
+                      <a class="dropdown-expand" aria-haspopup="true" aria-expanded="false" href="#">Jump to</a>
                       <ul class="dropdown-content">
                           <li>
                               <a href="#last-web-exp">Last web experience</a>

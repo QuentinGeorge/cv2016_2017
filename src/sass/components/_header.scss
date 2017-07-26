@@ -87,18 +87,11 @@ header .home-logo {
 }
 
 .main-nav .dropdown > a {
-    display: block;
     padding: 4px 8px;
     &:after {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        content: "";
         margin: 1px 0 0 5px;
-        border: 4px solid $cHeaderLink;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
+        border: 4px solid transparent;
+        border-top-color: $cHeaderLink;
     }
 }
 
@@ -108,7 +101,7 @@ header .home-logo {
     vertical-align: top;
 }
 
-.main-nav .dropdown:hover > a {
+.main-nav .dropdown:hover > a, .main-nav .dropdown:focus > a {
     &:before {
         display: inline-block;
         position: absolute;
@@ -118,10 +111,7 @@ header .home-logo {
         content: "";
     }
     &:after {
-        border-color: $cMainBackground;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
+        border-top-color: $cMainBackground;
     }
 }
 
