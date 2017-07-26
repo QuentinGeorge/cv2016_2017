@@ -24,6 +24,14 @@ a {
     }
 }
 
+svg {
+    fill: currentColor;
+}
+
+abbr {
+    text-decoration: none;
+}
+
 input, button {
     font-family: inherit;
     font-size: inherit;
@@ -61,10 +69,6 @@ input[type="search"]::-webkit-search-cancel-button {
             border-color: $cIntroButtonHoverBorder;
             box-shadow: inset 0 .15em .3em $cIntroButtonActiveShadow;
     }
-}
-
-svg {
-    fill: currentColor;
 }
 
 .dropdown {

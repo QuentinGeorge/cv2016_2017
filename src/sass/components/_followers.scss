@@ -1,0 +1,77 @@
+// Followers specific styles
+
+.followers h2 {
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $cHeaderSearchBorder;
+}
+
+.avatar {
+    padding: 24px 0;
+    border-bottom: 1px solid $cHeaderSearchBorder;
+    font-size: .85714em;
+    @include clearFix;
+}
+
+ .avatar img {
+     float: left;
+     margin-right: 10px;
+     border-radius: 3px;
+     @include setSpriteBase( "#{ $imgPath }sprite-followers.png" );
+ }
+
+.avatar:nth-child(1) img {
+    @include setSprite( 50px, 50px );
+}
+
+.avatar:nth-child(2) img {
+    @include setSprite( 50px, 50px, 1, 2 );  // width, height, line, colmn
+}
+
+.avatar:nth-child(3) img {
+    @include setSprite( 50px, 50px, 1, 3 );
+}
+
+.avatar:nth-child(4) img {
+    @include setSprite( 50px, 50px, 1, 4 );
+}
+
+.avatar:nth-child(5) img {
+    @include setSprite( 50px, 50px, 1, 5 );
+}
+
+.avatar:nth-child(6) img {
+    @include setSprite( 50px, 50px, 1, 6 );
+}
+
+.avatar p, .avatar ol {
+    margin-left: 60px;
+}
+
+.avatar-name {
+    margin-bottom: 4px;
+    font-size: 1.33333em;
+    color: $cTitleText;
+}
+
+.avatar-name span {
+    padding-left: 4px;
+    font-size: .875em;
+    color: $cLaborText;
+}
+
+.avatar-description {
+    margin-bottom: 10px;
+}
+
+.avatar-info li {
+    display: inline-block;
+}
+
+.avatar-info li:not( :last-child ) {
+    margin-right: 16px;
+}
+
+.avatar-info li svg {
+    vertical-align: text-bottom;
+}

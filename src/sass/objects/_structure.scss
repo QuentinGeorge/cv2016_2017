@@ -18,10 +18,10 @@
     margin-right: $introRightSpacingSize;
 }
 
-.content-nav, .overview, .timeline, .projects, .followers, .following {
+.content-nav, .overview, .timeline, .projects, .followers {
     margin-left: $introSize + $introRightSpacingSize;
 }
 
-.overview article, .timeline, .projects, .followers, .following {
+.overview article, .timeline, .projects, .followers {
     margin-bottom: 24px;
 }
