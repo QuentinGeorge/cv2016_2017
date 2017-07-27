@@ -150,9 +150,14 @@
                   <p>
                       Dev, travel, TV&nbsp;series and Japanese&nbsp;martial&nbsp;arts.
                   </p>
-                  <input class="control-info button" type="button" name="info-button" value="Show more informations">
+                  <input class="control-info button" type="button" name="info-button" value="More informations">
               </header>
-              <div class="others-info hide">
+              <div class="others-info">
+                  <!-- Use inline script to hide this section on page loading if js is activated (we still can show the section by a click on the button) and avoid unexpected effects off showing hidding fast on loading (if those scripts lines are in the script file included in the end of the page). If js is not supported this section is showed. -->
+                  <script type="text/javascript">
+                      document.querySelector( ".others-info" ).classList.add( "hide" );
+                      document.querySelector( ".control-info" ).value = "Show more informations";
+                  </script>
                   <article class="personal-info">
                       <h3 role="heading" aria-level="3" class="hidden">
                           Personal informations
@@ -1161,7 +1166,7 @@
       </footer>
 
       <script src="./scripts/vendors/jquery-3.2.1.min.js"></script>
-      <script src="./scripts/script.min.js"></script>
+      <script src="./scripts/scripts.min.js"></script>
 
     </body>
 </html>
