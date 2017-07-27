@@ -36,7 +36,10 @@ var sSrc = "src/",
         in: sSrc + "**/*.html",
         out: sDest,
         minOpts: {
-            collapseWhitespace: true
+            collapseWhitespace: true,
+            removeComments: true,
+            minifyCSS: true,
+            minifyJS: true
         },
         plumberOpts: {
             errorHandler: gNotify.onError( fPlumberError( sTaskError = "HTML" ) )
