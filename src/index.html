@@ -396,20 +396,26 @@
               <h2 role="heading" aria-level="2" class="hidden">
                   Content navigation
               </h2>
-              <ul>
-                  <li class="selected">
-                      <a href="#overview">Overview</a>
-                  </li>
-                  <li>
-                      <a href="#timeline">Timeline</a>
-                  </li>
-                  <li>
-                      <a href="#projects">Projects<span class="count">3</span></a>
-                  </li>
-                  <li>
-                      <a href="#followers">Followers<span class="count">180</span></a>
-                  </li>
-              </ul>
+              <div class="content-nav-container">
+                  <ul>
+                      <li class="content-nav-header hidden" aria-hidden="true">
+                          <img src="./assets/img/quentin.jpg" alt="Quentin George photo" width="32px" height="32px"/>
+                          <p>Quentin</p>
+                      </li>
+                      <li class="selected">
+                          <a href="#overview">Overview</a>
+                      </li>
+                      <li>
+                          <a href="#timeline">Timeline</a>
+                      </li>
+                      <li>
+                          <a href="#projects">Projects<span class="count">3</span></a>
+                      </li>
+                      <li>
+                          <a href="#followers">Followers<span class="count">180</span></a>
+                      </li>
+                  </ul>
+              </div>
           </nav>
           <section id="overview" class="overview">
               <h2 role="heading" aria-level="2" class="hidden">
@@ -520,20 +526,6 @@
                   <h3 role="heading" aria-level="3" class="hidden">
                       Timeline navigation
                   </h3>
-                  <div class="dropdown">
-                      <a class="dropdown-expand" aria-haspopup="true" aria-expanded="false" href="#">Jump to</a>
-                      <ul class="dropdown-content">
-                          <li>
-                              <a href="#last-web-exp">Last web experience</a>
-                          </li>
-                          <li>
-                              <a href="#first-job-exp">First job experience</a>
-                          </li>
-                          <li>
-                              <a href="#last-job-exp">Last job experience</a>
-                          </li>
-                      </ul>
-                  </div>
                   <ul class="categories-nav">
                       <li class="selected">
                           <a href="#timeline">All</a>
@@ -554,6 +546,20 @@
                           <a href="#additional-informations">Additional informations</a>
                       </li>
                   </ul>
+                  <div class="dropdown">
+                      <a class="dropdown-expand" aria-haspopup="true" aria-expanded="false" href="#">Jump to</a>
+                      <ul class="dropdown-content">
+                          <li>
+                              <a href="#last-web-exp">Last web experience</a>
+                          </li>
+                          <li>
+                              <a href="#first-job-exp">First job experience</a>
+                          </li>
+                          <li>
+                              <a href="#last-job-exp">Last job experience</a>
+                          </li>
+                      </ul>
+                  </div>
               </nav>
               <section>
                   <h3 role="heading" aria-level="3" class="hidden">

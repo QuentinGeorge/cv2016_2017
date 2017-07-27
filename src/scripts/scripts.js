@@ -31,6 +31,38 @@ const fShowHideInfo = function() {
     }
 };
 
+const fStickyElts = function() {
+    let $iContNavTopPosition = $( ".content-nav" ).position().top,
+        $iCatNavTopPosition = $( ".timeline" ).position().top - $( ".content-nav" ).height() - 10; // -10px margin-top;
+
+    // content-nav bar
+    if ( $( window ).scrollTop() > $iContNavTopPosition ){
+        $( ".content-nav-container" ).addClass( "sticky" );
+    } else {
+        $( ".content-nav-container" ).removeClass( "sticky" );
+    }
+
+    // categories-nav bar
+    if ( $( window ).scrollTop() > $iCatNavTopPosition ){
+        $( ".categories-nav" ).addClass( "sticky" );
+    } else {
+        $( ".categories-nav" ).removeClass( "sticky" );
+    }
+
+    // content-nav-header
+    if ( $( window ).scrollTop() > $iContNavTopPosition + $( ".intro header img" ).height() ) {
+        $( ".content-nav-header" ).removeClass( "hidden" );
+        $( ".content-nav-container" ).css( "left", "0" );
+        $( ".content-nav-container" ).css( "box-shadow", "" );
+        $( ".content-nav-container ul" ).css( "margin", "0 auto" );
+    } else {
+        $( ".content-nav-header" ).addClass( "hidden" );
+        $( ".content-nav-container" ).css( "left", "auto" );
+        $( ".content-nav-container" ).css( "box-shadow", "none" );
+        $( ".content-nav-container ul" ).css( "margin", "0" );
+    }
+};
+
 $( function() {
 
     // Drop Down accessible by focus & aria-expanded attribute status
@@ -41,4 +73,8 @@ $( function() {
 
     // Show/Hide more informations
     $( ".control-info" ).on( "click", fShowHideInfo );
+
+    // Sticky elements
+    fStickyElts(); // For page reload when already scrolled
+    $( window ).scroll( fStickyElts );
 } );

@@ -168,3 +168,14 @@ table, tbody, tr, th, td {
     color: $cTimelineStarIcon;
     vertical-align: -2px;
 }
+
+// styles induce by .categories-nav.sticky
+.timeline .sticky {
+    margin-top: 10px;
+    margin-left: 86px;
+    top: 62.4px;  // height of .content-nav
+}
+
+.sticky + .dropdown {
+    margin-right: 118px; // width + margin of sticky el
+}
