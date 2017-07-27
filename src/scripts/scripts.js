@@ -21,16 +21,6 @@ const fDropDownUnexpand = function() {
     $oExpand.attr( "aria-expanded", "false" );
 };
 
-const fShowHideInfo = function() {
-    if ( $( ".others-info" ).is( ".hide" ) ) {
-        $( ".others-info" ).removeClass( "hide" ).addClass( "show" );
-        $( ".control-info" ).attr( "value", "Hide more informations" );
-    } else {
-        $( ".others-info" ).removeClass( "show" ).addClass( "hide" );
-        $( ".control-info" ).attr( "value", "Show more informations" );
-    }
-};
-
 const fStickyElts = function() {
     let $iContNavTopPosition = $( ".content-nav" ).position().top,
         $iCatNavTopPosition = $( ".timeline" ).position().top - $( ".content-nav" ).height() - 10; // -10px margin-top;
@@ -63,6 +53,28 @@ const fStickyElts = function() {
     }
 };
 
+const fShowHideInfo = function() {
+    if ( $( ".others-info" ).is( ".hide" ) ) {
+        $( ".others-info" ).removeClass( "hide" ).addClass( "show" );
+        $( ".control-info" ).attr( "value", "Hide more informations" );
+    } else {
+        $( ".others-info" ).removeClass( "show" ).addClass( "hide" );
+        $( ".control-info" ).attr( "value", "Show more informations" );
+    }
+};
+
+const fTableTdHide = function() {
+    let $oTableRowTh = $( this ).parent( "th" );
+
+    if ( $oTableRowTh.is( ".hideContent" ) ) {
+        $oTableRowTh.siblings().show();
+        $oTableRowTh.removeClass( "hideContent" );
+    } else {
+        $oTableRowTh.siblings().hide();
+        $oTableRowTh.addClass( "hideContent" );
+    }
+};
+
 $( function() {
 
     // Drop Down accessible by focus & aria-expanded attribute status
@@ -71,10 +83,13 @@ $( function() {
     $( ".dropdown" ).on( "mouseout", fDropDownUnexpand );
     $( ".dropdown" ).on( "focusout", fDropDownUnexpand );
 
-    // Show/Hide more informations
-    $( ".control-info" ).on( "click", fShowHideInfo );
-
     // Sticky elements
     fStickyElts(); // For page reload when already scrolled
     $( window ).scroll( fStickyElts );
+
+    // Show/Hide more informations
+    $( ".control-info" ).on( "click", fShowHideInfo );
+
+    // Show/Hide table elements
+    $( ".table-row" ).on( "click", fTableTdHide );
 } );
