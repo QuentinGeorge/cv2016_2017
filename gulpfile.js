@@ -8,7 +8,7 @@
 // Packages variables
 var gulp = require( "gulp" ),
     gHTMLMin = require( "gulp-htmlmin" ),
-    gImageMin = require( "gulp-imagemin" ), // node_modules path directory is too long to be deleted on windows. Use java executable "PathTooLong.jar" to remove it ( use with caution ! ).
+    gImageMin = require( "gulp-imagemin" ),
     gSass = require( "gulp-sass" ),
     gAutoPrefixer = require( "gulp-autoprefixer" ),
     gCSSComb = require( "gulp-csscomb" ),
@@ -24,6 +24,7 @@ var gulp = require( "gulp" ),
 // Utilities variables
 var sSrc = "src/",
     sDest = "build/",
+    sProjectFolder = "DW-Projects/cv2016_2017/",
     sTaskError = "",
     fPlumberError = function( sTaskError ) {
         return {
@@ -45,6 +46,12 @@ var sSrc = "src/",
         in: sSrc + "assets/**/*",
         out: sDest + "assets/"
     },
+    oVendors = {
+        scripts: {
+            in: sSrc + "vendors/scripts/**/*",
+            out: sDest + "scripts/vendors/"
+        }
+    },
     oImg = {
         in: sSrc + "img_to_optim/**/*",
         out: sDest + "assets/img/"
@@ -65,7 +72,7 @@ var sSrc = "src/",
         }
     },
     oScripts = {
-        in: sSrc + "**/*.js",
+        in: sSrc + "scripts/**/*.js",
         out: sDest + "scripts/",
         uglifyOpts: {
             mangle: {
@@ -83,7 +90,7 @@ var sSrc = "src/",
     },
     oBrowserSync = {
         initOpts: {
-            proxy: "http://localhost/DW-Projects/cv2016_2017/" + sDest
+            proxy: "http://localhost/" + sProjectFolder + sDest
         }
     };
 
@@ -103,6 +110,14 @@ gulp.task( "assets", function() {
         .src( oAssets.in )
         // Copy assets files into destination directory
         .pipe( gulp.dest( oAssets.out ) );
+} );
+
+// Vendors tasks
+gulp.task( "vendors", function() {
+    return gulp
+        .src( oVendors.scripts.in )
+        // Copy vendors scripts files into destination directory
+        .pipe( gulp.dest( oVendors.scripts.out ) );
 } );
 
 // Images tasks
@@ -163,13 +178,14 @@ gulp.task( "browser-sync", function() {
 // Watching files modifications & reload browser
 gulp.task( "watch", function() {
     gulp.watch( oHTML.in, [ "html" ] ).on( "change", browserSync.reload );
-    gulp.watch( oImg.in, [ "img" ] ).on( "change", browserSync.reload );
     gulp.watch( oAssets.in, [ "assets" ] ).on( "change", browserSync.reload );
+    gulp.watch( oVendors.scripts.in, [ "vendors" ] ).on( "change", browserSync.reload );
+    gulp.watch( oImg.in, [ "img" ] ).on( "change", browserSync.reload );
     gulp.watch( oStyles.in, [ "styles" ] ).on( "change", browserSync.reload );
     gulp.watch( oScripts.in, [ "lint", "scripts" ] ).on( "change", browserSync.reload );
 } );
 
 // Create command-line tasks
-gulp.task( "default", [ "html", "assets", "img", "styles", "lint", "scripts" ] );
+gulp.task( "default", [ "html", "assets", "vendors", "img", "styles", "lint", "scripts" ] );
 
 gulp.task( "work", [ "default", "watch", "browser-sync" ] );
