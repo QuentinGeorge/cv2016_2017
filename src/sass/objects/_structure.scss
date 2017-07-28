@@ -22,6 +22,10 @@
     margin-left: $introSize + $introRightSpacingSize;
 }
 
-.overview article, .timeline, .projects, .followers {
+.overview article, .followers {
     margin-bottom: 24px;
+}
+
+.timeline, .projects {
+    margin-bottom: 48px;
 }

@@ -10,9 +10,6 @@ http://www.ice-dev.com/decoupe-html-css/sass-lecon-5-les-conditions-et-les-boucl
 
 - flex
 
-- dans la navigation du resume, le menu de navigation class-nav n'affiche que la partie du tableau correspondante a la selection
-- dans la navigation du resume, la nav jump to n'affiche que l'element selectionner
-
-- version avec js mettre une class hidden sur le titre h2 "timeline" et "projects" et "followers" doit etre afficher si pas de js et cache si js
-
 - que faire des liens du header (issues gist) ?
+
+- main nav dropdown affiche directement timeline avec le contenu ciblé

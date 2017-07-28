@@ -96,10 +96,6 @@
     overflow: hidden;
 }
 
-.intro {
-    position: relative;
-}
-
 .intro header {
     position: relative;
     z-index: 2;
@@ -107,20 +103,21 @@
 }
 
 .others-info {
+    position: relative;
     width: 230px;
     z-index: 1;
 }
 
+.info-start {  // hide on the page loading if js supported
+    transform: translateY( -380px );
+}
+
 .intro .hide {
-    position: absolute;
-    bottom: 0;
     transition: all 1.5s ease-in-out;
-    transform: translateY( 0 );
+    transform: translateY( -380px );
 }
 
 .intro .show {
-    position: relative;
-    top: -354px;
     transition: all 1.5s ease-in-out;
-    transform: translateY( 354px );
+    transform: translateY( 0 );
 }

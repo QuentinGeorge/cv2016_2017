@@ -155,7 +155,7 @@
               <div class="others-info">
                   <!-- Use inline script to hide this section on page loading if js is activated (we still can show the section by a click on the button) and avoid unexpected effects off showing hidding fast on loading (if those scripts lines are in the script file included in the end of the page). If js is not supported this section is showed. -->
                   <script type="text/javascript">
-                      document.querySelector( ".others-info" ).classList.add( "hide" );
+                      document.querySelector( ".others-info" ).classList.add( "info-start" );
                       document.querySelector( ".control-info" ).value = "Show more informations";
                   </script>
                   <article class="personal-info">
@@ -397,27 +397,27 @@
                   Content navigation
               </h2>
               <div class="content-nav-container">
-                  <ul>
+                  <ul class="tabs-nav">
                       <li class="content-nav-header hidden" aria-hidden="true">
                           <img src="./assets/img/quentin.jpg" alt="Quentin George photo" width="32px" height="32px"/>
                           <p>Quentin</p>
                       </li>
-                      <li class="selected">
-                          <a href="#overview">Overview</a>
+                      <li class="active">
+                          <a class="content-nav-link tab-nav-link" href="#overview">Overview</a>
                       </li>
                       <li>
-                          <a href="#timeline">Timeline</a>
+                          <a class="content-nav-link tab-nav-link" href="#timeline">Timeline</a>
                       </li>
                       <li>
-                          <a href="#projects">Projects<span class="count">3</span></a>
+                          <a class="content-nav-link tab-nav-link" href="#projects">Projects<span class="count">3</span></a>
                       </li>
                       <li>
-                          <a href="#followers">Followers<span class="count">180</span></a>
+                          <a class="content-nav-link tab-nav-link" href="#followers">Followers<span class="count">180</span></a>
                       </li>
                   </ul>
               </div>
           </nav>
-          <section id="overview" class="overview">
+          <section id="overview" class="overview tab-pane active">
               <h2 role="heading" aria-level="2" class="hidden">
                   Overview
               </h2>
@@ -518,7 +518,7 @@
                   </ol>
               </article>
           </section>
-          <section id="timeline" class="timeline">
+          <section id="timeline" class="timeline tab-pane">
               <h2 role="heading" aria-level="2">
                   Timeline
               </h2>
@@ -526,37 +526,37 @@
                   <h3 role="heading" aria-level="3" class="hidden">
                       Timeline navigation
                   </h3>
-                  <ul class="categories-nav">
-                      <li class="selected">
-                          <a href="#timeline">All</a>
+                  <ul class="categories-nav tabs-nav">
+                      <li class="active">
+                          <a class="categories-nav-link tab-nav-link" href="#timeline-content">All</a>
                       </li>
                       <li>
-                          <a href="#education">Education</a>
+                          <a class="categories-nav-link tab-nav-link" href="#education">Education</a>
                       </li>
                       <li>
-                          <a href="#job-experience">Job experience</a>
+                          <a class="categories-nav-link tab-nav-link" href="#job-experience">Job experience</a>
                       </li>
                       <li>
-                          <a href="#student-jobs">Student jobs</a>
+                          <a class="categories-nav-link tab-nav-link" href="#student-jobs">Student jobs</a>
                       </li>
                       <li>
-                          <a href="#internships">Internships</a>
+                          <a class="categories-nav-link tab-nav-link" href="#internships">Internships</a>
                       </li>
                       <li>
-                          <a href="#additional-informations">Additional informations</a>
+                          <a class="categories-nav-link tab-nav-link" href="#additional-informations">Additional informations</a>
                       </li>
                   </ul>
                   <div class="dropdown">
                       <a class="dropdown-expand" aria-haspopup="true" aria-expanded="false" href="#">Jump to</a>
                       <ul class="dropdown-content">
                           <li>
-                              <a href="#last-web-exp">Last web experience</a>
+                              <a class="drop-tab-link" href="#last-web-exp">Last web experience</a>
                           </li>
                           <li>
-                              <a href="#first-job-exp">First job experience</a>
+                              <a class="drop-tab-link" href="#first-job-exp">First job experience</a>
                           </li>
                           <li>
-                              <a href="#last-job-exp">Last job experience</a>
+                              <a class="drop-tab-link" href="#last-job-exp">Last job experience</a>
                           </li>
                       </ul>
                   </div>
@@ -565,8 +565,8 @@
                   <h3 role="heading" aria-level="3" class="hidden">
                       Timeline content
                   </h3>
-                  <table id="timeline">
-                      <tbody id="education">
+                  <table id="timeline-content" class="tab-pane">
+                      <tbody id="education" class="tab-pane">
                           <tr class="table-section-header">
                               <th>Education</th>
                           </tr>
@@ -640,7 +640,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="job-experience">
+                      <tbody id="job-experience" class="tab-pane">
                           <tr class="table-section-header">
                               <th>Job experience</th>
                           </tr>
@@ -715,7 +715,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="student-jobs">
+                      <tbody id="student-jobs" class="tab-pane">
                           <tr class="table-section-header">
                               <th>Student jobs</th>
                           </tr>
@@ -790,7 +790,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="internships">
+                      <tbody id="internships" class="tab-pane">
                           <tr class="table-section-header">
                               <th>Internships</th>
                           </tr>
@@ -911,7 +911,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="additional-informations">
+                      <tbody id="additional-informations" class="tab-pane">
                           <tr class="table-section-header">
                               <th>Additional informations</th>
                           </tr>
@@ -965,7 +965,7 @@
                   </table>
               </section>
           </section>
-          <section id="projects" class="projects">
+          <section id="projects" class="projects tab-pane">
               <h2 role="heading" aria-level="2">
                   Projects
               </h2>
@@ -1037,7 +1037,7 @@
                   </li>
               </ol>
           </section>
-          <section id="followers" class="followers">
+          <section id="followers" class="followers tab-pane">
               <h2 role="heading" aria-level="2">
                   Followers
               </h2>

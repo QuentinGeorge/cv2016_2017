@@ -31,9 +31,9 @@
     color: $cLaborText;
 }
 
-.content-nav .selected a {
+.content-nav .active a {
     color: $cTitleText;
-    border-bottom: 2px solid $cContentNavSelectedBorder;
+    border-bottom: 2px solid $cContentNavActiveBorder;
 }
 
 // styles induce by .content-nav.sticky
@@ -66,12 +66,3 @@
     font-weight: 600;
     color: $cTitleText;
 }
-
-// .overview, .timeline, .projects, .followers {
-//     overflow: hidden;
-//     height: 0;
-// }
-//
-// .overview:target, .timeline:target, .projects:target, .followers:target {
-//     height: auto;
-// }

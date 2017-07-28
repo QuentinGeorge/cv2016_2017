@@ -30,7 +30,7 @@
     }
 }
 
-.categories-nav .selected a {
+.categories-nav .active a {
     color: $cMainBackground;
     background-color: $cLink;
 }
@@ -75,12 +75,17 @@ table, tbody, tr, th, td {
 }
 
 .timeline tbody:first-child {
-    border-top: 2px solid $cTimelineTableBorder;
+    border-top: 1px solid $cTimelineTableBorder;
+}
+
+.timeline tbody:last-child {
+    border-bottom: 1px solid $cTimelineTableBorder;
 }
 
 .timeline tr {
     padding: 24px 0 24px 24px;
-    border-bottom: 2px solid $cTimelineTableBorder;
+    border-top: 1px solid $cTimelineTableBorder;
+    border-bottom: 1px solid $cTimelineTableBorder;
 }
 
 .timeline .table-section-header {
@@ -108,6 +113,7 @@ table, tbody, tr, th, td {
     display: block;
     cursor: pointer;
     @include clearFix;
+    overflow: hidden;
     &:hover {
         color: $cLink;
     }
@@ -178,4 +184,10 @@ table, tbody, tr, th, td {
 
 .sticky + .dropdown {
     margin-right: 118px; // width + margin of sticky el
+}
+
+// Add some styles to the section when js supported only
+.timeline.js-supported {
+    margin-top: 24px;
+    padding-top: 24px;
 }
