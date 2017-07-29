@@ -68,60 +68,59 @@ const fTableTdHide = function() {
     }
 };
 
-const fMenuActiveHandler = function( oTarget ) {
-    oTarget.siblings( ".active" ).removeClass( "active" );
-    oTarget.addClass( "active" );
-};
-
-const fDropDownTabHandler = function( oEvent ) {
-    let $sLinkedID = $( this ).attr( "href" ),
-        $sTabID = $( `${ $sLinkedID }` ).parent().attr( "id" ),
-        $sCatNavMenuLiMatched;
-
-    oEvent.preventDefault();
-
-    // manage .active on categories nav menu
-    $( ".categories-nav .tab-nav-link" ).each( function() {
-        if ( $( this ).attr( "href" ) === `#${ $sTabID }` ) {
-            $sCatNavMenuLiMatched = $( this ).parent();
-        }
-    } );
-    fMenuActiveHandler( $sCatNavMenuLiMatched );
-
-    // manage content
-    $( "table tr" ).hide();
-    $( `${ $sLinkedID }` ).siblings( ".table-section-header" ).show();
-    $( `${ $sLinkedID }` ).show();
-
-    // restore tbody ( could be hidden by the categories nav menu )
-    $( "table tbody" ).show();
-};
-
 const fTabHandler = function( oEvent ) {
     let $sLinkedID = $( this ).attr( "href" ),
-        $iScrollPos = 0;
+        $sTabID = $( `${ $sLinkedID }` ).parent().attr( "id" ),
+        $sMenuItemActive = $( this ).parent(),
+        $aEltsToHide = [
+            $( `${ $sLinkedID }` ).siblings( ".tab-pane" )
+        ],
+        $aEltsToShow = [
+            $( `${ $sLinkedID }` ),
+            $( "table tr" )  // restore tr ( could be hidden by the dropdown menu )
+        ],
+        $iScrollPos;
 
     oEvent.preventDefault();
 
-    // manage .active on nav menu
-    fMenuActiveHandler( $( this ).parent() );
-
-    // manage content
-    if ( $sLinkedID === "#timeline-content" ) {
-        $( `${ $sLinkedID }` ).children( ".tab-pane" ).show();
-    } else {
-        $( `${ $sLinkedID }` ).siblings( ".tab-pane" ).hide();
-        $( `${ $sLinkedID }` ).show();
+    // prepare
+    if ( $( this ).hasClass( "content-nav-link" ) ) {
+        // modify original pattern variables for content-nav menu navigation
+        $iScrollPos = 0;
+    } else if ( $( this ).hasClass( "categories-nav-link" ) ) {
+        // modify original pattern variables for categories-nav menu navigation
+        if ( $sLinkedID === "#timeline-content" ) {
+            $aEltsToHide = [];
+            $aEltsToShow[ 0 ] = $( `${ $sLinkedID }` ).children( ".tab-pane" );
+        }
+        $iScrollPos = $( ".content-nav" ).position().top;
+    } else if ( $( this ).hasClass( "timeline-drop-link" ) ) {
+        // modify original pattern variables for categories-nav dropdown menu navigation
+        $( ".categories-nav-link" ).each( function() {
+            console.log($( this ).attr( "href" ));
+            if ( $( this ).attr( "href" ) === `#${ $sTabID }` ) {
+                $sMenuItemActive = $( this ).parent();  // $( this ) is the link browsed by the each loop instead of the clicked link
+            }
+        } );
+        $aEltsToHide[ 0 ] = $( "table tr" );
+        $aEltsToShow[ 1 ] = $( `${ $sLinkedID }` ).siblings( ".table-section-header" );
+        $aEltsToShow[ 2 ] = $( "table tbody" ); // restore tbody ( could be hidden by the categories nav menu )
     }
 
-    // restore tr ( could be hidden by the dropdown menu )
-    $( "table tr" ).show();
+    // manage .active on nav menu
+    $sMenuItemActive.siblings( ".active" ).removeClass( "active" );
+    $sMenuItemActive.addClass( "active" );
 
-    // scroll page to top of selected element
-    if ( $( this ).hasClass( "content-nav-link" ) ) {
-        window.scrollTo( 0, $iScrollPos );
-    } else if ( $( this ).hasClass( "categories-nav-link" ) ) {
-        $iScrollPos = $( ".content-nav" ).position().top;
+    // manage content
+    $aEltsToHide.forEach( function( elt ) {
+        elt.hide();
+    } );
+    $aEltsToShow.forEach( function( elt ) {
+        elt.show();
+    } );
+
+    // if necessary, scroll page to top of selected element
+    if ( typeof $iScrollPos !== "undefined" && $( window ).scrollTop() > $( ".content-nav" ).position().top + 5 ) {
         window.scrollTo( 0, $iScrollPos );
     }
 };
@@ -157,6 +156,5 @@ $( function() {
     $( "section.tab-pane" ).hide();
     $( ".overview" ).show();
     // On click
-    $( ".drop-tab-link" ).on( "click", fDropDownTabHandler );
     $( ".tab-nav-link" ).on( "click", fTabHandler );
 } );

@@ -17,3 +17,6 @@ http://www.ice-dev.com/decoupe-html-css/sass-lecon-5-les-conditions-et-les-boucl
 - main nav dropdown affiche directement timeline avec le contenu ciblé
 
 - animer svg au survol (agrandissement)
+
+
+- npm pour compiler jQuery ?
