@@ -108,16 +108,19 @@
     z-index: 1;
 }
 
-.info-start {  // hide on the page loading if js supported
+.others-info.js-supported {  // hide on the page loading if js supported
     transform: translateY( -380px );
+    margin-bottom: -380px;
 }
 
-.intro .hide {
+div.others-info.hide {
     transition: all 1.5s ease-in-out;
     transform: translateY( -380px );
+    margin-bottom: -380px;
 }
 
-.intro .show {
+div.others-info.show {
     transition: all 1.5s ease-in-out;
     transform: translateY( 0 );
+    margin-bottom: 0;
 }
