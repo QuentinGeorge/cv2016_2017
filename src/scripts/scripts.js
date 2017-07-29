@@ -68,10 +68,24 @@ const fTableTdHide = function() {
     }
 };
 
-const fTabHandler = function( oEvent ) {
+const fFindLinkByAttrHref = function( oLinks, sAttrHref ) {
+    let $oLink;
+
+    oLinks.each( function() {
+        if ( $( this ).attr( "href" ) === sAttrHref ) {
+            $oLink = $( this );
+        }
+    } );
+
+    return $oLink;
+};
+
+const fTabsHandler = function( oEvent ) {
     let $sLinkedID = $( this ).attr( "href" ),
         $sTabID = $( `${ $sLinkedID }` ).parent().attr( "id" ),
-        $sMenuItemActive = $( this ).parent(),
+        $aMenuLinkActive = [
+            $( this )
+        ],
         $aEltsToHide = [
             $( `${ $sLinkedID }` ).siblings( ".tab-pane" )
         ],
@@ -96,20 +110,26 @@ const fTabHandler = function( oEvent ) {
         $iScrollPos = $( ".content-nav" ).position().top;
     } else if ( $( this ).hasClass( "timeline-drop-link" ) ) {
         // modify original pattern variables for categories-nav dropdown menu navigation
-        $( ".categories-nav-link" ).each( function() {
-            console.log($( this ).attr( "href" ));
-            if ( $( this ).attr( "href" ) === `#${ $sTabID }` ) {
-                $sMenuItemActive = $( this ).parent();  // $( this ) is the link browsed by the each loop instead of the clicked link
-            }
-        } );
+        $aMenuLinkActive[ 0 ] = fFindLinkByAttrHref( $( ".categories-nav-link" ), `#${ $sTabID }` );
         $aEltsToHide[ 0 ] = $( "table tr" );
         $aEltsToShow[ 1 ] = $( `${ $sLinkedID }` ).siblings( ".table-section-header" );
         $aEltsToShow[ 2 ] = $( "table tbody" ); // restore tbody ( could be hidden by the categories nav menu )
+    } else if ( $( this ).hasClass( "header-drop-link" ) ) {
+        // modify original pattern variables for header dropdown menu navigation
+        $aMenuLinkActive[ 0 ] = fFindLinkByAttrHref( $( ".categories-nav-link" ), `${ $sLinkedID }` );
+        // do only if we are not already in timeline section
+        if ( $( ".content-nav .active a" ).attr( "href" ) !== "#timeline" ) {
+            $( "section.tab-pane" ).hide();
+            $( ".timeline" ).show();
+            $aMenuLinkActive[ 1 ] = fFindLinkByAttrHref( $( ".content-nav-link" ), "#timeline" );
+        }
     }
 
     // manage .active on nav menu
-    $sMenuItemActive.siblings( ".active" ).removeClass( "active" );
-    $sMenuItemActive.addClass( "active" );
+    $aMenuLinkActive.forEach( function( elt ) {
+        elt.parent().siblings( ".active" ).removeClass( "active" );
+        elt.parent().addClass( "active" );
+    } );
 
     // manage content
     $aEltsToHide.forEach( function( elt ) {
@@ -156,5 +176,5 @@ $( function() {
     $( "section.tab-pane" ).hide();
     $( ".overview" ).show();
     // On click
-    $( ".tab-nav-link" ).on( "click", fTabHandler );
+    $( ".tab-nav-link" ).on( "click", fTabsHandler );
 } );
