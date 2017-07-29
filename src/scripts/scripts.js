@@ -1,45 +1,38 @@
 // Main Scripts
 
 
-const fDropDownExpand = function() {
-    let $oContent = $( this ).children( ".dropdown-content" ),
-        $oExpand = $( this ).children( ".dropdown-expand" );
+const fDropDownContentHandler = function( $this, bShow = false ) {
+    let $oContent = $this.children( ".dropdown-content" ),
+        $oExpand = $this.children( ".dropdown-expand" );
 
-    if ( $oContent.css( "top" ) !== 0 ) {
+    if ( bShow === true ) {
         $oContent.css( "top", "0" );
-    }
-    if ( $oExpand.attr( "aria-expanded" ) !== true ) {
         $oExpand.attr( "aria-expanded", "true" );
+    } else {
+        $oContent.css( "top", "" );
+        $oExpand.attr( "aria-expanded", "false" );
     }
 };
 
-const fDropDownUnexpand = function() {
-    let $oContent = $( this ).children( ".dropdown-content" ),
-        $oExpand = $( this ).children( ".dropdown-expand" );
-
-    $oContent.css( "top", "" );
-    $oExpand.attr( "aria-expanded", "false" );
+const fAddStickyElts = function( iTopPos, oStickyElt ) {
+    if ( $( window ).scrollTop() > iTopPos ){
+        oStickyElt.addClass( "sticky" );
+    } else {
+        oStickyElt.removeClass( "sticky" );
+    }
 };
 
-const fStickyElts = function() {
+const fScrollEvents = function() {
     let $iContNavTopPosition = $( ".content-nav" ).position().top,
-        $iCatNavTopPosition = $iContNavTopPosition + 24 - 10; // 24px margin-top .timeline -10px margin top .sticky ul;
+        $iCatNavTopPosition = $iContNavTopPosition + 24 - 10; // 24px margin-top .timeline -10px margin-top .sticky ul;
 
     // content-nav bar
-    if ( $( window ).scrollTop() > $iContNavTopPosition ){
-        $( ".content-nav-container" ).addClass( "sticky" );
-    } else {
-        $( ".content-nav-container" ).removeClass( "sticky" );
-    }
+    fAddStickyElts( $iContNavTopPosition, $( ".content-nav-container" ) );
 
     // categories-nav bar
-    if ( $( window ).scrollTop() > $iCatNavTopPosition ){
-        $( ".categories-nav" ).addClass( "sticky" );
-    } else {
-        $( ".categories-nav" ).removeClass( "sticky" );
-    }
+    fAddStickyElts( $iCatNavTopPosition, $( ".categories-nav" ) );
 
-    // content-nav-header
+    // content-nav bar header
     if ( $( window ).scrollTop() > $iContNavTopPosition + $( ".intro header img" ).height() ) {
         $( ".content-nav-header" ).removeClass( "hidden" );
         $( ".content-nav-container" ).css( "left", "0" );
@@ -75,6 +68,11 @@ const fTableTdHide = function() {
     }
 };
 
+const fMenuActiveHandler = function( oTarget ) {
+    oTarget.siblings( ".active" ).removeClass( "active" );
+    oTarget.addClass( "active" );
+};
+
 const fDropDownTabHandler = function( oEvent ) {
     let $sLinkedID = $( this ).attr( "href" ),
         $sTabID = $( `${ $sLinkedID }` ).parent().attr( "id" ),
@@ -88,8 +86,7 @@ const fDropDownTabHandler = function( oEvent ) {
             $sCatNavMenuLiMatched = $( this ).parent();
         }
     } );
-    $sCatNavMenuLiMatched.siblings( ".active" ).removeClass( "active" );
-    $sCatNavMenuLiMatched.addClass( "active" );
+    fMenuActiveHandler( $sCatNavMenuLiMatched );
 
     // manage content
     $( "table tr" ).hide();
@@ -107,8 +104,7 @@ const fTabHandler = function( oEvent ) {
     oEvent.preventDefault();
 
     // manage .active on nav menu
-    $( this ).parent().siblings( ".active" ).removeClass( "active" );
-    $( this ).parent().addClass( "active" );
+    fMenuActiveHandler( $( this ).parent() );
 
     // manage content
     if ( $sLinkedID === "#timeline-content" ) {
@@ -131,32 +127,36 @@ const fTabHandler = function( oEvent ) {
 };
 
 $( function() {
-
-    // Hide titles when js supported because the title is already showed by the nav bar
+    /* Styles adjustments when js is supported */
+    $( ".timeline" ).addClass( "js-supported" );
+    // Hide titles when js is supported because the title is already showed by the nav bar
     $( ".timeline h2" ).addClass( "hidden" );
     $( ".projects h2" ).addClass( "hidden" );
     $( ".followers h2" ).addClass( "hidden" );
 
-    // Drop Down accessible by focus & aria-expanded attribute status
-    $( ".dropdown" ).on( "mouseover", fDropDownExpand );
-    $( ".dropdown" ).on( "focusin", fDropDownExpand );
-    $( ".dropdown" ).on( "mouseout", fDropDownUnexpand );
-    $( ".dropdown" ).on( "focusout", fDropDownUnexpand );
+    /* Drop Down accessible by focus & aria-expanded attribute status */
+    $( ".dropdown" ).on( "mouseenter focusin", function() {
+        fDropDownContentHandler( $( this ), true );
+    } );
+    $( ".dropdown" ).on( "mouseleave focusout", function() {
+        fDropDownContentHandler( $( this ) );
+    } );
 
-    // Sticky elements
-    fStickyElts(); // For page reload when already scrolled
-    $( window ).scroll( fStickyElts );
+    /* Sticky elements */
+    fScrollEvents(); // For page reload when already scrolled
+    $( window ).scroll( fScrollEvents );
 
-    // Show/Hide more informations
+    /* Show/Hide more informations */
     $( ".control-info" ).on( "click", fShowHideInfo );
 
-    // Show/Hide table elements
+    /* Show/Hide table elements */
     $( ".table-row" ).on( "click", fTableTdHide );
 
-    // Display the active tab only
-    $( ".timeline" ).addClass( "js-supported" );
+    /* Display the active tab only */
+    // On page load
     $( "section.tab-pane" ).hide();
     $( ".overview" ).show();
+    // On click
     $( ".drop-tab-link" ).on( "click", fDropDownTabHandler );
     $( ".tab-nav-link" ).on( "click", fTabHandler );
 } );
