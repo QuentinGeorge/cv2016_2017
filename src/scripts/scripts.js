@@ -1,5 +1,61 @@
 // Main Scripts
 
+const START_LAYOUT = "tabsNav";
+
+const fSetLayoutBases = function( sLayoutType ) {
+    if ( sLayoutType === "onePage" ) {
+        // Remove styles adjustments
+        $( ".timeline" ).removeClass( "tabs-nav-layout-activated" );
+        // Display section h2
+        $( ".timeline h2" ).removeClass( "hidden" );
+        $( ".projects h2" ).removeClass( "hidden" );
+        $( ".followers h2" ).removeClass( "hidden" );
+        // Display all tabs
+        $( ".tab-pane" ).show();
+        // Hide categories-nav "All" link
+        $( ".categories-nav li:nth-child( 1 )" ).hide();
+        $( ".categories-nav li:nth-child( 2 )" ).addClass( "active" );
+    } else {
+        // Styles adjustments
+        $( ".timeline" ).addClass( "tabs-nav-layout-activated" );
+        // Hide titles because the title is already showed by the nav bar
+        $( ".timeline h2" ).addClass( "hidden" );
+        $( ".projects h2" ).addClass( "hidden" );
+        $( ".followers h2" ).addClass( "hidden" );
+        // Display the active tab only
+        $( "section.tab-pane" ).hide();
+        $( ".overview" ).show();
+        // Show categories-nav "All" link
+        $( ".categories-nav li:nth-child( 1 )" ).show();
+        $( ".categories-nav li:nth-child( 2 )" ).removeClass( "active" );
+    }
+};
+
+const fLayoutsHandler = function( $this, sLayout ) {
+    let $sLayoutType = sLayout;
+
+    // manage .active
+    $( ".layout-nav a" ).removeClass( "active" );
+    $this.addClass( "active" );
+    // Reset sticky elt
+    $( ".sticky" ).removeClass( "sticky" );
+    // Reset nav menu .active
+    $( ".content-nav .active" ).removeClass( "active" );
+    $( ".categories-nav .active" ).removeClass( "active" );
+    $( ".content-nav li:nth-child( 2 )" ).addClass( "active" );
+    $( ".categories-nav li:nth-child( 1 )" ).addClass( "active" );
+    // Reset table tr hideContent
+    $( "table .hideContent" ).siblings().show();
+    $( "table .hideContent" ).removeClass( "hideContent" );
+    // change layout
+    if ( $this.hasClass( "one-page-lay" ) ) {
+        $sLayoutType = "onePage";
+    } else {
+        $sLayoutType = "tabsNav";
+    }
+    fSetLayoutBases( $sLayoutType );
+    return $sLayoutType;
+};
 
 const fDropDownContentHandler = function( $this, bShow = false ) {
     let $oContent = $this.children( ".dropdown-content" ),
@@ -14,23 +70,35 @@ const fDropDownContentHandler = function( $this, bShow = false ) {
     }
 };
 
-const fAddStickyElts = function( iTopPos, oStickyElt ) {
-    if ( $( window ).scrollTop() > iTopPos ){
+const fHandleStickyEltByTopPos = function( iTopPos, oStickyElt ) {
+    if ( $( window ).scrollTop() > iTopPos ) {
         oStickyElt.addClass( "sticky" );
     } else {
         oStickyElt.removeClass( "sticky" );
     }
 };
 
-const fScrollEvents = function() {
+const fStickyEltsHandler = function() {
     let $iContNavTopPosition = $( ".content-nav" ).position().top,
-        $iCatNavTopPosition = $iContNavTopPosition + 24 - 10; // 24px margin-top .timeline -10px margin-top .sticky ul;
+        $iCatNavTopPosition = $( ".timeline" ).position().top - $( ".content-nav" ).height() - 10,  // -10px margin-top .sticky ul
+        $iTimelineSectionBottom = $( ".timeline" ).position().top + $( ".timeline" ).height(),
+        $iCatNavBottomLimit = $( window ).scrollTop() + $( ".content-nav" ).height() + $( ".categories-nav" ).height(),
+        $iCatNavTopLimit = $( ".timeline" ).height() - $( ".categories-nav" ).height();
 
     // content-nav bar
-    fAddStickyElts( $iContNavTopPosition, $( ".content-nav-container" ) );
+    fHandleStickyEltByTopPos( $iContNavTopPosition, $( ".content-nav-container" ) );
 
     // categories-nav bar
-    fAddStickyElts( $iCatNavTopPosition, $( ".categories-nav" ) );
+    // Don't stick further than timeline section bottom
+    if ( $iCatNavBottomLimit >= $iTimelineSectionBottom ) {
+        $( ".timeline .sticky" ).addClass( "sticky-bottom-section" );
+        $( ".timeline .sticky" ).css( "top", `${ $iCatNavTopLimit }px` );
+        $( ".timeline .sticky" ).removeClass( "sticky" );
+    } else {
+        fHandleStickyEltByTopPos( $iCatNavTopPosition, $( ".categories-nav" ) );
+        $( ".timeline .sticky" ).css( "top", "" );
+        $( ".timeline .sticky" ).removeClass( "sticky-bottom-section" );
+    }
 
     // content-nav bar header
     if ( $( window ).scrollTop() > $iContNavTopPosition + $( ".intro header img" ).height() ) {
@@ -74,17 +142,24 @@ const fFindLinkByAttrHref = function( oLinks, sAttrHref ) {
     oLinks.each( function() {
         if ( $( this ).attr( "href" ) === sAttrHref ) {
             $oLink = $( this );
+
+            return;
         }
     } );
 
     return $oLink;
 };
 
-const fTabsHandler = function( oEvent ) {
-    let $sLinkedID = $( this ).attr( "href" ),
+const fMenuActiveLinkHandler = function( oLinkActive ) {
+    oLinkActive.parent().siblings( ".active" ).removeClass( "active" );
+    oLinkActive.parent().addClass( "active" );
+};
+
+const fTabsHandler = function( oEvent, $this ) {
+    let $sLinkedID = $this.attr( "href" ),
         $sTabID = $( `${ $sLinkedID }` ).parent().attr( "id" ),
-        $aMenuLinkActive = [
-            $( this )
+        $aMenuLinksActive = [
+            $this
         ],
         $aEltsToHide = [
             $( `${ $sLinkedID }` ).siblings( ".tab-pane" )
@@ -98,37 +173,43 @@ const fTabsHandler = function( oEvent ) {
     oEvent.preventDefault();
 
     // prepare
-    if ( $( this ).hasClass( "content-nav-link" ) ) {
+    if ( $this.hasClass( "content-nav-link" ) ) {
         // modify original pattern variables for content-nav menu navigation
+        $aMenuLinksActive[ 1 ] = $( ".categories-nav li:nth-child( 1 ) a" );
+        $aEltsToShow[ 2 ] = $( "table tbody" );
         $iScrollPos = 0;
-    } else if ( $( this ).hasClass( "categories-nav-link" ) ) {
+        // reset table tr hideContent
+        $( "table .hideContent" ).siblings().show();
+        $( "table .hideContent" ).removeClass( "hideContent" );
+        // avoid bug with cat nav sticky
+        $( ".categories-nav" ).removeClass( "sticky" );
+    } else if ( $this.hasClass( "categories-nav-link" ) ) {
         // modify original pattern variables for categories-nav menu navigation
         if ( $sLinkedID === "#timeline-content" ) {
             $aEltsToHide = [];
             $aEltsToShow[ 0 ] = $( `${ $sLinkedID }` ).children( ".tab-pane" );
         }
         $iScrollPos = $( ".content-nav" ).position().top;
-    } else if ( $( this ).hasClass( "timeline-drop-link" ) ) {
+    } else if ( $this.hasClass( "timeline-drop-link" ) ) {
         // modify original pattern variables for categories-nav dropdown menu navigation
-        $aMenuLinkActive[ 0 ] = fFindLinkByAttrHref( $( ".categories-nav-link" ), `#${ $sTabID }` );
+        $aMenuLinksActive[ 0 ] = fFindLinkByAttrHref( $( ".categories-nav-link" ), `#${ $sTabID }` );
         $aEltsToHide[ 0 ] = $( "table tr" );
         $aEltsToShow[ 1 ] = $( `${ $sLinkedID }` ).siblings( ".table-section-header" );
         $aEltsToShow[ 2 ] = $( "table tbody" ); // restore tbody ( could be hidden by the categories nav menu )
-    } else if ( $( this ).hasClass( "header-drop-link" ) ) {
+    } else if ( $this.hasClass( "header-drop-link" ) ) {
         // modify original pattern variables for header dropdown menu navigation
-        $aMenuLinkActive[ 0 ] = fFindLinkByAttrHref( $( ".categories-nav-link" ), `${ $sLinkedID }` );
+        $aMenuLinksActive[ 0 ] = fFindLinkByAttrHref( $( ".categories-nav-link" ), `${ $sLinkedID }` );
         // do only if we are not already in timeline section
         if ( $( ".content-nav .active a" ).attr( "href" ) !== "#timeline" ) {
             $( "section.tab-pane" ).hide();
             $( ".timeline" ).show();
-            $aMenuLinkActive[ 1 ] = fFindLinkByAttrHref( $( ".content-nav-link" ), "#timeline" );
+            $aMenuLinksActive[ 1 ] = fFindLinkByAttrHref( $( ".content-nav-link" ), "#timeline" );
         }
     }
 
     // manage .active on nav menu
-    $aMenuLinkActive.forEach( function( elt ) {
-        elt.parent().siblings( ".active" ).removeClass( "active" );
-        elt.parent().addClass( "active" );
+    $aMenuLinksActive.forEach( function( elt ) {
+        fMenuActiveLinkHandler( elt );
     } );
 
     // manage content
@@ -145,13 +226,66 @@ const fTabsHandler = function( oEvent ) {
     }
 };
 
+const fAnchorScrollHandler = function( oEvent, $this ) {
+    let $iScrollPos = $( `${ $this.attr( "href" ) }` ).offset().top - $( ".content-nav" ).height() - 24;
+
+    oEvent.preventDefault();
+
+    window.scrollTo( 0, $iScrollPos );
+};
+
+const fGetScrolledEltID = function( oElts, iTopSpacing = 0 ) {
+    let $iWindowTop = $( window ).scrollTop() + $( ".content-nav" ).height(),
+        $sID;
+
+    oElts.each( function() {
+        if ( $iWindowTop > $( this ).offset().top - iTopSpacing )  {
+            $sID = $( this ).attr( "id" );
+
+            return;
+        }
+    } );
+
+    return $sID;
+};
+
+const fNavMenuActiveEltHandlerOnScroll = function() {
+    let $sSectionScrolledID,
+        $sTbodyScrolledID;
+
+    $sSectionScrolledID = fGetScrolledEltID( $( "section.tab-pane" ), 48 );
+    // fGetScrolledEltID(); Don't find a result for all scroll events. We have to check if we have a result befor sending him to the others fct
+    if ( $sSectionScrolledID !== undefined ) {
+        fMenuActiveLinkHandler( fFindLinkByAttrHref( $( ".content-nav-link" ), `#${ $sSectionScrolledID }` ) );
+    }
+    if ( $sSectionScrolledID === "timeline" ) {
+        $sTbodyScrolledID = fGetScrolledEltID( $( "tbody.tab-pane" ), 48 );
+        if ( $sTbodyScrolledID !== undefined ) {
+            fMenuActiveLinkHandler( fFindLinkByAttrHref( $( ".categories-nav-link" ), `#${ $sTbodyScrolledID }` ) );
+        }
+    }
+};
+
 $( function() {
-    /* Styles adjustments when js is supported */
-    $( ".timeline" ).addClass( "js-supported" );
-    // Hide titles when js is supported because the title is already showed by the nav bar
-    $( ".timeline h2" ).addClass( "hidden" );
-    $( ".projects h2" ).addClass( "hidden" );
-    $( ".followers h2" ).addClass( "hidden" );
+    let $sLayoutType = START_LAYOUT;
+
+    /* Set layout bases on page load */
+    fSetLayoutBases( $sLayoutType );
+
+    /* Prevent page reloading on dropdown expander click */
+    $( ".dropdown-expand" ).on( "click", function( oEvent ) {
+        oEvent.preventDefault();
+    } );
+
+    /* Page layout selection */
+    $( ".layout-nav a" ).on( "click", function( oEvent ) {
+        oEvent.preventDefault();
+        // If already active don't do anything
+        if ( $( this ).hasClass( "active" ) ) {
+            return;
+        }
+        $sLayoutType = fLayoutsHandler( $( this ), $sLayoutType );
+    } );
 
     /* Drop Down accessible by focus & aria-expanded attribute status */
     $( ".dropdown" ).on( "mouseenter focusin", function() {
@@ -162,8 +296,14 @@ $( function() {
     } );
 
     /* Sticky elements */
-    fScrollEvents(); // For page reload when already scrolled
-    $( window ).scroll( fScrollEvents );
+    fStickyEltsHandler(); // For page reload when already scrolled
+    // $( window ).scroll( fStickyEltsHandler );
+    $( window ).scroll( function() {
+        fStickyEltsHandler();
+        if ( $sLayoutType === "onePage" ) {
+            fNavMenuActiveEltHandlerOnScroll();
+        }
+    } );
 
     /* Show/Hide more informations */
     $( ".control-info" ).on( "click", fShowHideInfo );
@@ -172,9 +312,12 @@ $( function() {
     $( ".table-row" ).on( "click", fTableTdHide );
 
     /* Display the active tab only */
-    // On page load
-    $( "section.tab-pane" ).hide();
-    $( ".overview" ).show();
-    // On click
-    $( ".tab-nav-link" ).on( "click", fTabsHandler );
+    $( ".tab-nav-link" ).on( "click", function( oEvent ) {
+        if ( $sLayoutType === "tabsNav" ) {
+            fTabsHandler( oEvent, $( this ) );
+        } else if ( $sLayoutType === "onePage" ) {
+            fAnchorScrollHandler( oEvent, $( this ) );
+        }
+        fStickyEltsHandler();  // Reset sticky elts
+    } );
 } );

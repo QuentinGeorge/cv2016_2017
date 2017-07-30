@@ -76,6 +76,18 @@ header .home-logo {
     font-weight: 600;
 }
 
+.main-nav a.active {
+    color: $cMainBackground;
+    &:before {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        content: "";
+        border: 5px solid transparent;
+        border-left-color: $cMainBackground;
+    }
+}
+
 .main-nav {
     @include clearFix;
 }

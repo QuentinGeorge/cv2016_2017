@@ -186,8 +186,14 @@ table, tbody, tr, th, td {
     margin-right: 118px; // width + margin of sticky el
 }
 
+.sticky-bottom-section {
+    position: absolute;
+    margin-top: 8px;
+    margin-left: -32px;
+}
+
 // Add some styles to the section when js supported only
-.timeline.js-supported {
-    margin-top: 24px;
+.timeline.tabs-nav-layout-activated {
+    top: 24px;
     padding-top: 24px;
 }
