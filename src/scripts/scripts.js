@@ -12,6 +12,8 @@ const fSetLayoutBases = function( sLayoutType ) {
         $( ".followers h2" ).removeClass( "hidden" );
         // Display all tabs
         $( ".tab-pane" ).show();
+        // Display all tr
+        $( "table tr" ).show();
         // Hide categories-nav "All" link
         $( ".categories-nav li:nth-child( 1 )" ).hide();
         $( ".categories-nav li:nth-child( 2 )" ).addClass( "active" );
@@ -91,13 +93,13 @@ const fStickyEltsHandler = function() {
     // categories-nav bar
     // Don't stick further than timeline section bottom
     if ( $iCatNavBottomLimit >= $iTimelineSectionBottom ) {
-        $( ".timeline .sticky" ).addClass( "sticky-bottom-section" );
-        $( ".timeline .sticky" ).css( "top", `${ $iCatNavTopLimit }px` );
-        $( ".timeline .sticky" ).removeClass( "sticky" );
+        $( ".categories-nav" ).addClass( "sticky-bottom-section" );
+        $( ".categories-nav" ).css( "top", `${ $iCatNavTopLimit }px` );
+        $( ".categories-nav" ).removeClass( "sticky" );
     } else {
         fHandleStickyEltByTopPos( $iCatNavTopPosition, $( ".categories-nav" ) );
-        $( ".timeline .sticky" ).css( "top", "" );
-        $( ".timeline .sticky" ).removeClass( "sticky-bottom-section" );
+        $( ".categories-nav" ).css( "top", "" );
+        $( ".categories-nav" ).removeClass( "sticky-bottom-section" );
     }
 
     // content-nav bar header
@@ -172,6 +174,9 @@ const fTabsHandler = function( oEvent, $this ) {
 
     oEvent.preventDefault();
 
+    // avoid bug with cat nav sticky
+    $( ".categories-nav" ).removeClass( "sticky" );
+
     // prepare
     if ( $this.hasClass( "content-nav-link" ) ) {
         // modify original pattern variables for content-nav menu navigation
@@ -181,8 +186,6 @@ const fTabsHandler = function( oEvent, $this ) {
         // reset table tr hideContent
         $( "table .hideContent" ).siblings().show();
         $( "table .hideContent" ).removeClass( "hideContent" );
-        // avoid bug with cat nav sticky
-        $( ".categories-nav" ).removeClass( "sticky" );
     } else if ( $this.hasClass( "categories-nav-link" ) ) {
         // modify original pattern variables for categories-nav menu navigation
         if ( $sLinkedID === "#timeline-content" ) {
@@ -230,6 +233,12 @@ const fAnchorScrollHandler = function( oEvent, $this ) {
     let $iScrollPos = $( `${ $this.attr( "href" ) }` ).offset().top - $( ".content-nav" ).height() - 24;
 
     oEvent.preventDefault();
+
+    // reset cat nav .active if navigate by link higher than .timeline.top()
+    if ( $iScrollPos < $( ".timeline" ).offset().top ) {
+        $( ".categories-nav .active" ).removeClass( "active" );
+        $( ".categories-nav li:nth-child( 2 )" ).addClass( "active" );
+    }
 
     window.scrollTo( 0, $iScrollPos );
 };
@@ -297,7 +306,6 @@ $( function() {
 
     /* Sticky elements */
     fStickyEltsHandler(); // For page reload when already scrolled
-    // $( window ).scroll( fStickyEltsHandler );
     $( window ).scroll( function() {
         fStickyEltsHandler();
         if ( $sLayoutType === "onePage" ) {
@@ -318,6 +326,5 @@ $( function() {
         } else if ( $sLayoutType === "onePage" ) {
             fAnchorScrollHandler( oEvent, $( this ) );
         }
-        fStickyEltsHandler();  // Reset sticky elts
     } );
 } );
