@@ -98,12 +98,16 @@
               </form>
               <ul>
                   <li class="layout-nav">
-                      <a class="tabs-nav-lay active" href="#">Tabs navigation layout</a>
+                      <a class="tabs-nav-lay" href="#">Tabs navigation layout</a>
                   </li><!--
                --><li class="layout-nav">
-                      <a class="one-page-lay" href="#">One page layout</a>
+                      <a class="one-page-lay active" href="#">One page layout</a>
                   </li>
               </ul>
+              <script type="text/javascript">
+                  document.querySelector( ".one-page-lay" ).classList.remove( "active" );
+                  document.querySelector( ".tabs-nav-lay" ).classList.add( "active" );
+              </script>
               <aside class="dropdown">
                   <h3 role="heading" aria-level="3" class="hidden">
                       Dropdown navigation
