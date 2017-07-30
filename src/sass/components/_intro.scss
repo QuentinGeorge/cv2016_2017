@@ -92,8 +92,20 @@
 
 .skills-info li {
     display: inline-block;
+    width: 35px;
+    height: 35px;
     margin: 2px 6px 2px 0;
-    overflow: hidden;
+}
+
+.skills-info svg {
+    display: block;
+    transition: transform 1s ease-out;
+}
+
+.skills-info li:hover svg {
+    position: absolute;
+    transform: scale( 4 );
+    z-index: 2;
 }
 
 .intro header {
