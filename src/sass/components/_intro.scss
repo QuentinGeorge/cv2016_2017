@@ -99,12 +99,12 @@
 
 .skills-info svg {
     display: block;
-    transition: transform 1s ease-out;
+    transition: transform .5s ease-out;
 }
 
 .skills-info li:hover svg {
     position: absolute;
-    transform: scale( 4 );
+    transform: scale( 2.5 );
     z-index: 2;
 }
 
