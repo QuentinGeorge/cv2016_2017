@@ -172,23 +172,24 @@
                                   Born on <time datetime="1990-07-26" itemprop="birthDate">July 26, 1990</time>
                               </p>
                           </li>
-                          <li class="address" itemprop="contactPoints">
+                          <li class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                               <svg aria-label="house" role="img" version="1.1" viewBox="0 0 14 12" width="14" height="12">
                                   <path d="M13.7 6.8L7 0 4.4 2.6V.4H2.6v4L.3 6.8C0 7.1 0 7.7.3 8c.3.3.9.3 1.2 0v4h11V8c.2.2.4.3.6.3.2 0 .4-.1.6-.3.4-.3.4-.9 0-1.2zm-2.3 4.1H7.1V7.4H4.4v3.5H2.6v-4L7 2.5l4.4 4.4v4z"/>
                               </svg>
-                              <p lang="fr" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" itemref="location">
+                              <p lang="fr">
                                   <span itemprop="streetAddress">Rue des Sorbiers,&nbsp;6</span></br>
                                   <span itemprop="postalCode">4140</span>
                                   <span itemprop="addressLocality">Sprimont</span>
+                                  <span itemprop="addressCountry">Belgique</span>
                               </p>
                           </li>
-                          <li id="location" class="location">
+                          <li class="location">
                               <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                   <use xlink:href="#location"></use>
                               </svg>
                               <p>
                                   <span lang="fr">Liège</span>,
-                                  <span itemprop="addressCountry">Belgium</span>
+                                  <span>Belgium</span>
                               </p>
                           </li>
                           <li class="phone">
@@ -664,8 +665,8 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate">2011</span> -
-                                      <span itemprop="endDate">2013</span>&nbsp;:
+                                      <time datetime="2011" itemprop="startDate">2011</time> -
+                                      <time datetime="2013" itemprop="endDate">2013</time>&nbsp;:
                                       <span itemprop="name">Printing Worker</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
@@ -705,8 +706,8 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate">Jan 2011</span> -
-                                      <span itemprop="endDate">Oct 2011</span>&nbsp;:
+                                      <time datetime="2011-01" itemprop="startDate">Jan 2011</time> -
+                                      <time datetime="2011-10" itemprop="endDate">Oct 2011</time>&nbsp;:
                                       <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
@@ -751,7 +752,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate endDate">Jul 2008</span>&nbsp;:
+                                      <time datetime="2008-07" itemprop="startDate endDate">Jul 2008</time>&nbsp;:
                                       <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
@@ -791,7 +792,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate endDate">Aug 2006</span>&nbsp;:
+                                      <time datetime="2006-08" itemprop="startDate endDate">Aug 2006</time>&nbsp;:
                                       <span itemprop="name">Construction worker</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
@@ -836,7 +837,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate endDate">Apr 2008</span>
+                                      <time datetime="2008-04" itemprop="startDate endDate">Apr 2008</time>
                                       (<span itemprop="duration">2 weeks</span>)&nbsp;:
                                       <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
@@ -871,7 +872,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate endDate">Nov 2007</span>
+                                      <time datetime="2007-11" itemprop="startDate endDate">Nov 2007</time>
                                       (<span itemprop="duration">2 weeks</span>)&nbsp;:
                                       <span itemprop="name">Turner and milling machine operator</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
@@ -906,7 +907,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate endDate">Apr 2007</span>
+                                      <time datetime="2007-04" itemprop="startDate endDate">Apr 2007</time>
                                       (<span itemprop="duration">2 weeks</span>)&nbsp;:
                                       <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
@@ -941,7 +942,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      <span itemprop="startDate endDate">Nov 2006</span>
+                                      <time datetime="2006-11" itemprop="startDate endDate">Nov 2006</time>
                                       (<span itemprop="duration">2 weeks</span>)&nbsp;:
                                       <span itemprop="name">Household appliances reparator</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
@@ -1032,7 +1033,7 @@
                --><input class="projects-submit button" type="submit" name="sendproject" value="Search">
               </form>
               <ol class="projects-main-list">
-                  <li itemprop="publisher" itemscope itemtype="http://schema.org/CreativeWork">
+                  <li itemscope itemtype="http://schema.org/CreativeWork">
                       <a href="#" hreflang="en" title="Stay on Resume project" itemprop="name">Resume</a>
                       <p itemprop="about">My resume adapted from GitHub web site for DW course.</p>
                       <span class="project-activity" title="Project activity">
@@ -1053,7 +1054,7 @@
                           <li>Updated 8 days ago</li>
                       </ol>
                   </li>
-                  <li itemprop="publisher" itemscope itemtype="http://schema.org/CreativeWork">
+                  <li itemscope itemtype="http://schema.org/CreativeWork">
                       <a href="http://hepl01.cblue.be/~user27/dw/csszg/" hreflang="en" rel="external" title="Go to CSS ZenGarden project" itemprop="name">CSS ZenGarden</a>
                       <p itemprop="about">Style sheets for CSS ZenGarden.</p>
                       <span class="project-activity" title="Project activity">
@@ -1072,7 +1073,7 @@
                           <li>Updated 4 days ago</li>
                       </ol>
                   </li>
-                  <li itemprop="publisher" itemscope itemtype="http://schema.org/CreativeWork">
+                  <li itemscope itemtype="http://schema.org/CreativeWork">
                       <a href="http://hepl01.cblue.be/~user27/game/" hreflang="fr" rel="external" title="Go to Game Design project" itemprop="name">Game Design</a>
                       <p itemprop="about">Game creation with canvas.</p>
                       <span class="project-activity" title="Project activity">
