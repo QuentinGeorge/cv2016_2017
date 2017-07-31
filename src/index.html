@@ -138,17 +138,17 @@
               </aside>
           </nav>
       </header>
-      <div class="main-container">
+      <div class="main-container" itemscope itemtype="http://schema.org/Person">
           <section class="intro">
               <h2 role="heading" aria-level="2" class="hidden">
                   Self introduction
               </h2>
               <header>
-                  <img src="./assets/img/quentin.jpg" alt="Quentin George photo" width="230px" height="230px"/>
+                  <img src="./assets/img/quentin.jpg" alt="Quentin George photo" width="230px" height="230px" itemprop="image"/>
                   <p>
-                      <strong class="name">Quentin George</strong><b class="alias">Riders07</b>
+                      <strong class="name" itemprop="name">Quentin George</strong><b class="alias" itemprop="alternateName">Riders07</b>
                   </p>
-                  <p>
+                  <p itemprop="description">
                       Dev, travel, TV&nbsp;series and Japanese&nbsp;martial&nbsp;arts.
                   </p>
                   <input class="control-info button" type="button" name="info-button" value="More informations">
@@ -164,36 +164,38 @@
                           Personal informations
                       </h3>
                       <ul>
-                          <li class="location">
-                              <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
-                                  <use xlink:href="#location"></use>
-                              </svg>
-                              <p>
-                                  <span lang="fr">Liège</span>, Belgium
-                              </p>
-                          </li>
                           <li class="born">
                               <svg aria-label="birthday cake" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                   <path d="M11.9 8H7.6V6.5h.3c1-.3 1.7-1.3 1.7-2.3 0-.5-.2-1-.5-1.5L7 0 5 2.7c-.3.4-.4.9-.4 1.4 0 1.1.7 2 1.7 2.3h.3V8H2.1c-1 0-1.8.8-1.8 1.8V16h13.5V9.8c0-1-.9-1.8-1.9-1.8zM5.5 4.1c0-.3.1-.6.3-.9L7 1.6l1.2 1.6c.2.3.3.6.3.9 0 .9-.6 1.6-1.5 1.6S5.5 5 5.5 4.1zM12.8 15H1.2v-3.5c.1 0 .1.1.2.2.3.2.7.6 1.4.6s1.1-.3 1.4-.6c.2-.2.4-.3.7-.3.3 0 .5.1.7.3.3.2.7.6 1.4.6s1.1-.3 1.4-.6c.2-.2.4-.3.7-.3.3 0 .5.1.7.3.3.2.7.6 1.4.6s1.1-.3 1.4-.6l.2-.2V15zm0-4.6c-.4.1-.7.3-.9.5-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.3-.2-.7-.6-1.4-.6s-1.1.3-1.4.6c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.3-.2-.7-.6-1.4-.6s-1.1.3-1.4.6c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.2-.2-.5-.4-.9-.5v-.6c0-.5.4-.8.9-.8h9.8c.5 0 .8.4.8.8v.6z"/>
                               </svg>
                               <p>
-                                  Born on <time datetime="1990-07-26">July 26, 1990</time>
+                                  Born on <time datetime="1990-07-26" itemprop="birthDate">July 26, 1990</time>
                               </p>
                           </li>
-                          <li class="address">
+                          <li class="address" itemprop="contactPoints">
                               <svg aria-label="house" role="img" version="1.1" viewBox="0 0 14 12" width="14" height="12">
                                   <path d="M13.7 6.8L7 0 4.4 2.6V.4H2.6v4L.3 6.8C0 7.1 0 7.7.3 8c.3.3.9.3 1.2 0v4h11V8c.2.2.4.3.6.3.2 0 .4-.1.6-.3.4-.3.4-.9 0-1.2zm-2.3 4.1H7.1V7.4H4.4v3.5H2.6v-4L7 2.5l4.4 4.4v4z"/>
                               </svg>
-                              <p lang="fr">
-                                  Rue des Sorbiers,&nbsp;6</br>
-                                  4140 Sprimont
+                              <p lang="fr" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" itemref="location">
+                                  <span itemprop="streetAddress">Rue des Sorbiers,&nbsp;6</span></br>
+                                  <span itemprop="postalCode">4140</span>
+                                  <span itemprop="addressLocality">Sprimont</span>
+                              </p>
+                          </li>
+                          <li id="location" class="location">
+                              <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
+                                  <use xlink:href="#location"></use>
+                              </svg>
+                              <p>
+                                  <span lang="fr">Liège</span>,
+                                  <span itemprop="addressCountry">Belgium</span>
                               </p>
                           </li>
                           <li class="phone">
                               <svg aria-label="phone" role="img" version="1.1" viewBox="0 0 14 14" width="14" height="14">
                                   <path d="M13.4 9.9l-1.7-1.7c-.7-.7-1.7-.7-2.3 0l-.8.8c-.2 0-.4-.1-.4-.2-.9-.5-1.7-1.3-2.5-2.2-.3-.5-.6-.8-.7-1.2l.9-.9c.4-.4.5-.8.5-1.2 0-.4-.2-.8-.5-1.2L4.2.4c-.7-.7-1.6-.7-2.3 0l-1 1C.3 2 .1 2.5 0 3.1c0 .7.1 1.4.4 2.3.5 1.4 1.3 2.6 2.4 4 1.3 1.6 3 2.9 4.8 3.8.7.3 1.7.7 2.8.8h.2c.8 0 1.4-.3 1.9-.8 0 0 .8-.8.9-1 .8-.7.8-1.6 0-2.3zM3.9 4.8c-.4.3-.2.7-.2.8.2.5.5 1.1 1 1.7.9 1.1 1.8 1.9 2.8 2.5.1 0 .7.4.7.4.3.2.7.1 1-.2l1-1c.1-.1.2-.2.3-.2.1 0 .2.1.3.2l1.7 1.7c.2.2.2.4 0 .7l-1 1c-.3.3-.6.4-1.1.4-.9-.1-1.7-.4-2.3-.7-1.7-.8-3.2-2-4.4-3.5C2.7 7.4 2 6.3 1.6 5c-.3-.7-.4-1.3-.4-1.8 0-.3.1-.6.4-.8l1-1c.2-.1.3-.2.4-.2.1 0 .2.1.3.2C3.5 1.5 5 3 5 3c.1.1.2.2.2.3 0 .1-.2.4-.2.4-.7.7-1 .9-1.1 1.1z"/>
                               </svg>
-                              <p>
+                              <p itemprop="telephone">
                                   +32&nbsp;(0)&nbsp;474&nbsp;41&nbsp;16&nbsp;54
                               </p>
                           </li>
@@ -201,7 +203,7 @@
                               <svg aria-label="envelope" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                   <path d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/>
                               </svg><!--
-                       --><a href="mailto:quentingeorge7@gmail.com" title="Open mail box">quentingeorge7@gmail.com</a>
+                       --><a href="mailto:quentingeorge7@gmail.com" title="Open mail box" itemprop="email">quentingeorge7@gmail.com</a>
                           </li>
                       </ul>
                   </article>
@@ -554,10 +556,10 @@
                               <a class="timeline-drop-link tab-nav-link" href="#last-web-exp">Last web experience</a>
                           </li>
                           <li>
-                              <a class="timeline-drop-link tab-nav-link" href="#first-job-exp">First job experience</a>
+                              <a class="timeline-drop-link tab-nav-link" href="#last-job-exp">Last job experience</a>
                           </li>
                           <li>
-                              <a class="timeline-drop-link tab-nav-link" href="#last-job-exp">Last job experience</a>
+                              <a class="timeline-drop-link tab-nav-link" href="#first-job-exp">First job experience</a>
                           </li>
                       </ul>
                   </div>
@@ -571,7 +573,7 @@
                           <tr class="table-section-header">
                               <th>Education</th>
                           </tr>
-                          <tr id="last-web-exp">
+                          <tr id="last-web-exp" itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -579,7 +581,9 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      2014 - 2017&nbsp;: Bachelor Degree in Computer Graphics Design
+                                      <span>2014</span> -
+                                      <span>2017</span>&nbsp;:
+                                      <span itemprop="description">Bachelor Degree in Computer Graphics Design</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
@@ -590,19 +594,22 @@
                                       <svg aria-label="school hat" role="img" version="1.1" viewBox="0 0 399 399" width="16" height="16">
                                           <use xlink:href="#table-school"></use>
                                       </svg>
-                                      <abbr lang="fr" title="Haute École de la Province de Liège">HEPL</abbr>, Higher Education Institution
+                                      <abbr lang="fr" title="Haute École de la Province de Liège" itemprop="name">HEPL</abbr>,
+                                      <span>Higher Education Institution</span>
                                   </p>
                               </td>
                           </tr>
-                          <tr>
+                          <tr itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
-                                          <use xlink:href="#table-unpinned-skill"></use>
+                                          <use xlink:href="#table-pinned-skill"></use>
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      2008 - 2010&nbsp;: Bachelor Degree in Electricity-Automation
+                                      <span>2008</span> -
+                                      <span>2010</span>&nbsp;:
+                                      <span itemprop="description">Bachelor Degree in Electricity-Automation</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
@@ -613,19 +620,22 @@
                                       <svg aria-label="school hat" role="img" version="1.1" viewBox="0 0 399 399" width="16" height="16">
                                           <use xlink:href="#table-school"></use>
                                       </svg>
-                                      <abbr lang="fr" title="Haute École Libre Mosane">HELMO</abbr>, Higher Education Institution
+                                      <abbr lang="fr" title="Haute École Libre Mosane" itemprop="name">HELMO</abbr>,
+                                      <span>Higher Education Institution</span>
                                   </p>
                               </td>
                           </tr>
-                          <tr>
+                          <tr itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
-                                          <use xlink:href="#table-unpinned-skill"></use>
+                                          <use xlink:href="#table-pinned-skill"></use>
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      2002 - 2008&nbsp;: Certificate of Secondary Education in Electricity-Automation
+                                      <span>2002</span> -
+                                      <span>2008</span>&nbsp;:
+                                      <span itemprop="description">Certificate of Secondary Education in Electricity-Automation</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
@@ -636,7 +646,8 @@
                                       <svg aria-label="school hat" role="img" version="1.1" viewBox="0 0 399 399" width="16" height="16">
                                           <use xlink:href="#table-school"></use>
                                       </svg>
-                                      <span lang="fr">Athénée Royal d’Aywaille</span>, Secondary School
+                                      <span lang="fr" itemprop="name">Athénée Royal d’Aywaille</span>,
+                                      <span>Secondary School</span>
                                   </p>
                               </td>
                           </tr>
@@ -645,7 +656,7 @@
                           <tr class="table-section-header">
                               <th>Job experience</th>
                           </tr>
-                          <tr id="last-job-exp">
+                          <tr id="last-job-exp" itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -653,34 +664,40 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      2011 - 2013&nbsp;: Printing Worker
+                                      <span itemprop="startDate">2011</span> -
+                                      <span itemprop="endDate">2013</span>&nbsp;:
+                                      <span itemprop="name">Printing Worker</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">Concept-Façonnage, Liège</span> Belgium
+                                      <span lang="fr" itemprop="name">Concept-Façonnage</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Liège</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Machine operator, troubleshooting and forklift truck operator. Work alone or in team of two.
+                                      <span itemprop="description">Machine operator, troubleshooting and forklift truck operator. Work alone or in team of two.</span>
                                   </p>
                                   <p class="table-star">
                                       <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-star"></use>
                                       </svg>
-                                      Work with deadlines.
+                                      <span>Work with deadlines.</span>
                                   </p>
                               </td>
                           </tr>
-                          <tr>
+                          <tr itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -688,30 +705,36 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Jan 2011 - Oct 2011&nbsp;: Electrician
+                                      <span itemprop="startDate">Jan 2011</span> -
+                                      <span itemprop="endDate">Oct 2011</span>&nbsp;:
+                                      <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">D-Fi, Sprimont</span> Belgium
+                                      <span lang="fr" itemprop="name">D-Fi</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Sprimont</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Installation of Electrical cabinets, cable trays, temperature sensors for air conditioning systems.
+                                      <span itemprop="description">Installation of Electrical cabinets, cable trays, temperature sensors for air conditioning systems.</span>
                                   </p>
                                   <p class="table-star">
                                       <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-star"></use>
                                       </svg>
-                                      Teamworking.
+                                      <span>Teamwork.</span>
                                   </p>
                               </td>
                           </tr>
@@ -720,7 +743,7 @@
                           <tr class="table-section-header">
                               <th>Student jobs</th>
                           </tr>
-                          <tr>
+                          <tr itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -728,65 +751,75 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Jul 2008&nbsp;: Electrician
+                                      <span itemprop="startDate endDate">Jul 2008</span>&nbsp;:
+                                      <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">Armoires &amp; Automation, Liège</span> Belgium
+                                      <span lang="fr" itemprop="name">Armoires &amp; Automation</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Liège</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Modernization of a plastic film assembly line.
+                                      <span itemprop="description">Modernization of a plastic film assembly line.</span>
                                   </p>
                                   <p class="table-star">
                                       <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-star"></use>
                                       </svg>
-                                      Responsible.
+                                      <span>Responsible.</span>
                                   </p>
                               </td>
                           </tr>
-                          <tr id="first-job-exp">
+                          <tr  id="first-job-exp" itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
-                                          <use xlink:href="#table-pinned-skill"></use>
+                                          <use xlink:href="#table-unpinned-skill"></use>
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Aug 2006&nbsp;: Construction worker
+                                      <span itemprop="startDate endDate">Aug 2006</span>&nbsp;:
+                                      <span itemprop="name">Construction worker</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">S.A. Legros, Anthisne</span> Belgium
+                                      <span lang="fr" itemprop="name">S.A. Legros</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Anthisne</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Road construction and civil engineering.
+                                      <span itemprop="description">Road construction and civil engineering.</span>
                                   </p>
                                   <p class="table-star">
                                       <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-star"></use>
                                       </svg>
-                                      Hard work.
+                                      <span>Hard work.</span>
                                   </p>
                               </td>
                           </tr>
@@ -795,7 +828,7 @@
                           <tr class="table-section-header">
                               <th>Internships</th>
                           </tr>
-                          <tr>
+                          <tr itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -803,28 +836,34 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Apr 2008 (2 weeks)&nbsp;: Electrician
+                                      <span itemprop="startDate endDate">Apr 2008</span>
+                                      (<span itemprop="duration">2 weeks</span>)&nbsp;:
+                                      <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">Armoires &amp; Automation, Liège</span> Belgium
+                                      <span lang="fr" itemprop="name">Armoires &amp; Automation</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Liège</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Installation of Electrical cabinets and automation.
+                                      <span itemprop="description">Installation of Electrical cabinets and automation.</span>
                                   </p>
                               </td>
                           </tr>
-                          <tr>
+                          <tr itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -832,28 +871,34 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Nov 2007 (2 weeks)&nbsp;: Turner and milling machine operator
+                                      <span itemprop="startDate endDate">Nov 2007</span>
+                                      (<span itemprop="duration">2 weeks</span>)&nbsp;:
+                                      <span itemprop="name">Turner and milling machine operator</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">Atelier Marc Pirlot, Comblain-La-Tour</span> Belgium
+                                      <span lang="fr" itemprop="name">Atelier Marc Pirlot</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Comblain-La-Tour</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Making metal pieces for industry.
+                                      <span itemprop="description">Making metal pieces for industry.</span>
                                   </p>
                               </td>
                           </tr>
-                          <tr>
+                          <tr itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -861,28 +906,34 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Apr 2007 (2 weeks)&nbsp;: Electrician
+                                      <span itemprop="startDate endDate">Apr 2007</span>
+                                      (<span itemprop="duration">2 weeks</span>)&nbsp;:
+                                      <span itemprop="name">Electrician</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">Electro Scion, Sprimont</span> Belgium
+                                      <span lang="fr" itemprop="name">Électro Scion</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Sprimont</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Electrical installation for individuals.
+                                      <span itemprop="description">Electrical installation for individuals.</span>
                                   </p>
                               </td>
                           </tr>
-                          <tr>
+                          <tr itemscope itemtype="http://schema.org/Event/Job">
                               <th class="table-skill-header" scope="row">
                                   <span class="table-icon-row">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
@@ -890,24 +941,30 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Nov 2006 (2 weeks)&nbsp;: Household appliances reparator
+                                      <span itemprop="startDate endDate">Nov 2006</span>
+                                      (<span itemprop="duration">2 weeks</span>)&nbsp;:
+                                      <span itemprop="name">Household appliances reparator</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
                                   </span>
                               </th>
-                              <td>
+                              <td itemprop="location" itemscope itemtype="http://schema.org/Place">
                                   <p class="table-location">
                                       <svg aria-label="factory" role="img" version="1.1" viewBox="0 0 512 512" width="16" height="16">
                                           <use xlink:href="#table-work"></use>
                                       </svg>
-                                      <span lang="fr">Robert Philippe, Comblain-Au-Pont</span> Belgium
+                                      <span lang="fr" itemprop="name">Robert Philippe</span>,
+                                      <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                          <span lang="fr" itemprop="addressLocality">Comblain-Au-Pont</span>
+                                          <span itemprop="addressCountry">Belgium</span>
+                                      </span>
                                   </p>
                                   <p class="table-description">
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Fix washing machines, dishwashers and other household appliances.
+                                      <span itemprop="description">Fix washing machines, dishwashers and other household appliances.</span>
                                   </p>
                               </td>
                           </tr>
@@ -924,7 +981,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      English level&nbsp;: B1
+                                      <span>English level&nbsp;: B1</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
@@ -935,7 +992,7 @@
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Can understand the main points of clear standard input on familiar matters. Can deal with most situations likely to arise whilst travelling. Can produce simple connected text on familiar topics. Can give reasons and explanations for opinions and plans.
+                                      <span>Can understand the main points of clear standard input on familiar matters. Can deal with most situations likely to arise whilst travelling. Can produce simple connected text on familiar topics. Can give reasons and explanations for opinions and plans.</span>
                                   </p>
                               </td>
                           </tr>
@@ -947,7 +1004,7 @@
                                       </svg>
                                   </span>
                                   <span class="table-row">
-                                      Driving licence&nbsp;: Class B
+                                      <span>Driving licence&nbsp;: Class B</span>
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                           <use xlink:href="#table-fold"></use>
                                       </svg>
@@ -958,7 +1015,7 @@
                                       <svg aria-hidden="true" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                           <use xlink:href="#table-description"></use>
                                       </svg>
-                                      Can drive vehicles wich not exceed 3500 kilograms and 8 passengers. Can pull a trailer of maximum 750 kilograms.
+                                      <span>Can drive vehicles wich not exceed 3500 kilograms and 8 passengers. Can pull a trailer of maximum 750 kilograms.</span>
                                   </p>
                               </td>
                           </tr>
@@ -975,10 +1032,10 @@
                --><input class="projects-submit button" type="submit" name="sendproject" value="Search">
               </form>
               <ol class="projects-main-list">
-                  <li>
-                      <a href="#" hreflang="en" title="Stay on Resume project">Resume</a>
-                      <p>My resume adapted from GitHub web site for DW course.</p>
-                      <span title="Project activity">
+                  <li itemprop="publisher" itemscope itemtype="http://schema.org/CreativeWork">
+                      <a href="#" hreflang="en" title="Stay on Resume project" itemprop="name">Resume</a>
+                      <p itemprop="about">My resume adapted from GitHub web site for DW course.</p>
+                      <span class="project-activity" title="Project activity">
                           <svg aria-label="Project activity" width="155" height="30">
                               <use xlink:href="#project-graph-1"></use>
                           </svg>
@@ -991,15 +1048,15 @@
                               <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                   <use xlink:href="#table-star"></use>
                               </svg>
-                              479
+                              <span>479</span>
                           </li>
                           <li>Updated 8 days ago</li>
                       </ol>
                   </li>
-                  <li>
-                      <a href="http://hepl01.cblue.be/~user27/dw/csszg/" hreflang="en" rel="external" title="Go to CSS ZenGarden project">CSS ZenGarden</a>
-                      <p>Style sheets for CSS ZenGarden.</p>
-                      <span title="Project activity">
+                  <li itemprop="publisher" itemscope itemtype="http://schema.org/CreativeWork">
+                      <a href="http://hepl01.cblue.be/~user27/dw/csszg/" hreflang="en" rel="external" title="Go to CSS ZenGarden project" itemprop="name">CSS ZenGarden</a>
+                      <p itemprop="about">Style sheets for CSS ZenGarden.</p>
+                      <span class="project-activity" title="Project activity">
                           <svg aria-label="Project activity" width="155" height="30">
                               <use xlink:href="#project-graph-2"></use>
                           </svg>
@@ -1010,15 +1067,15 @@
                               <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                   <use xlink:href="#table-star"></use>
                               </svg>
-                              154
+                              <span>154</span>
                           </li>
                           <li>Updated 4 days ago</li>
                       </ol>
                   </li>
-                  <li>
-                      <a href="http://hepl01.cblue.be/~user27/game/" hreflang="en" rel="external" title="Go to CSS ZenGarden project">Game Design</a>
-                      <p>Game creation with canvas.</p>
-                      <span title="Project activity">
+                  <li itemprop="publisher" itemscope itemtype="http://schema.org/CreativeWork">
+                      <a href="http://hepl01.cblue.be/~user27/game/" hreflang="fr" rel="external" title="Go to Game Design project" itemprop="name">Game Design</a>
+                      <p itemprop="about">Game creation with canvas.</p>
+                      <span class="project-activity" title="Project activity">
                           <svg aria-label="Project activity" width="155" height="30">
                               <use xlink:href="#project-graph-3"></use>
                           </svg>
@@ -1031,7 +1088,7 @@
                               <svg aria-label="stars" role="img" version="1.1" viewBox="0 0 14 16" width="14" height="16">
                                   <use xlink:href="#table-star"></use>
                               </svg>
-                              987
+                              <span>987</span>
                           </li>
                           <li>Updated 1 month ago</li>
                       </ol>
@@ -1043,117 +1100,117 @@
                   Followers
               </h2>
               <ol>
-                  <li class="avatar">
-                      <img src="#" alt="Han Solo avatar" width="50px" height="50px">
-                      <p class="avatar-name">Han Solo <span>Han</span></p>
-                      <p class="avatar-description">Smuggler and captain of the Millennium Falcon, he become one of the great leaders of the Rebel Alliance.</p>
+                  <li class="avatar" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                      <img src="#" alt="Han Solo avatar" width="50px" height="50px" itemprop="image">
+                      <p class="avatar-name" itemprop="name">Han Solo</p>
+                      <p class="avatar-description" itemprop="description">Smuggler and captain of the Millennium Falcon, he become one of the great leaders of the Rebel Alliance.</p>
                       <ol class="avatar-info">
                           <li>
                               <svg aria-label="people" role="img" version="1.1" viewBox="0 0 16 16" width="16" height="16">
                                   <use xlink:href="#organization"></use>
                               </svg>
-                              Rebel Alliance
+                              <span itemprop="memberOf">Rebel Alliance</span>
                           </li>
                           <li>
                               <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                   <use xlink:href="#location"></use>
                               </svg>
-                              A galaxy far far away
+                              <span itemprop="address">A galaxy far far away</span>
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar">
-                      <img src="#" alt="Darth Vader avatar" width="50px" height="50px">
-                      <p class="avatar-name">Darth Vader <span>Lord Vader</span></p>
-                      <p class="avatar-description">Once a heroic Jedi Knight, Darth Vader was seduced by the dark side of the Force, became a Sith Lord, and led the Empire’s eradication of the Jedi Order.</p>
+                  <li class="avatar" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                      <img src="#" alt="Darth Vader avatar" width="50px" height="50px" itemprop="image">
+                      <p class="avatar-name"><span itemprop="honorificPrefix">Lord</span> <span itemprop="name">Vader</span> <span class="avatar-alternate-name" itemprop="alternateName">Darth Vader</span></p>
+                      <p class="avatar-description" itemprop="description">Once a heroic Jedi Knight, Darth Vader was seduced by the dark side of the Force, became a Sith Lord, and led the Empire’s eradication of the Jedi Order.</p>
                       <ol class="avatar-info">
                           <li>
                               <svg aria-label="people" role="img" version="1.1" viewBox="0 0 16 16" width="16" height="16">
                                   <use xlink:href="#organization"></use>
                               </svg>
-                              Galactic Empire
+                              <span itemprop="memberOf">Galactic Empire</span>
                           </li>
                           <li>
                               <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                   <use xlink:href="#location"></use>
                               </svg>
-                              Death Star
+                              <span itemprop="address">Death Star</span>
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar">
-                      <img src="#" alt="Yoda avatar" width="50px" height="50px">
-                      <p class="avatar-name">Master Yoda <span>Yoda</span></p>
-                      <p class="avatar-description">Yoda was a legendary Jedi Master and stronger than most in his connection with the Force. Small in size but wise and powerful, he trained Jedi for over 800 years.</p>
+                  <li class="avatar" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                      <img src="#" alt="Yoda avatar" width="50px" height="50px" itemprop="image">
+                      <p class="avatar-name"><span itemprop="honorificPrefix">Master</span> <span itemprop="name">Yoda</span></p>
+                      <p class="avatar-description" itemprop="description">Yoda was a legendary Jedi Master and stronger than most in his connection with the Force. Small in size but wise and powerful, he trained Jedi for over 800 years.</p>
                       <ol class="avatar-info">
                           <li>
                               <svg aria-label="people" role="img" version="1.1" viewBox="0 0 16 16" width="16" height="16">
                                   <use xlink:href="#organization"></use>
                               </svg>
-                              Jedi Order
+                              <span itemprop="memberOf">Jedi Order</span>
                           </li>
                           <li>
                               <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                   <use xlink:href="#location"></use>
                               </svg>
-                              Yoda's Hut
+                              <span itemprop="address">Yoda's Hut</span>
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar">
-                      <img src="#" alt="Bob avatar" width="50px" height="50px">
-                      <p class="avatar-name">Bob <span>King Bob</span></p>
-                      <p class="avatar-description">He wields Arthur Pendragon's sword in the stone, Queen Elizabeth gets abdicated and Bob is crowned as the new King of England.</p>
+                  <li class="avatar" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                      <img src="#" alt="Bob avatar" width="50px" height="50px" itemprop="image">
+                      <p class="avatar-name"><span itemprop="name">Bob</span> <span class="avatar-alternate-name" itemprop="alternateName">King Bob</span></p>
+                      <p class="avatar-description" itemprop="description">He wields Arthur Pendragon's sword in the stone, Queen Elizabeth gets abdicated and Bob is crowned as the new King of England.</p>
                       <ol class="avatar-info">
                           <li>
                               <svg aria-label="people" role="img" version="1.1" viewBox="0 0 16 16" width="16" height="16">
                                   <use xlink:href="#organization"></use>
                               </svg>
-                              Minions
+                              <span itemprop="memberOf">Minions</span>
                           </li>
                           <li>
                               <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                   <use xlink:href="#location"></use>
                               </svg>
-                              Gru's lair
+                              <span itemprop="address">Gru's lair</span>
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar">
-                      <img src="#" alt="Kevin avatar" width="50px" height="50px">
-                      <p class="avatar-name">Kevin <span>Kevin</span></p>
-                      <p class="avatar-description">Kevin steps up for the entire Minion tribe for the search of a new master, after the tribe is in peril, he recuits Stuart and Bob for this mission.</p>
+                  <li class="avatar" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                      <img src="#" alt="Kevin avatar" width="50px" height="50px" itemprop="image">
+                      <p class="avatar-name" itemprop="name">Kevin</p>
+                      <p class="avatar-description" itemprop="description">Kevin steps up for the entire Minion tribe for the search of a new master, after the tribe is in peril, he recuits Stuart and Bob for this mission.</p>
                       <ol class="avatar-info">
                           <li>
                               <svg aria-label="people" role="img" version="1.1" viewBox="0 0 16 16" width="16" height="16">
                                   <use xlink:href="#organization"></use>
                               </svg>
-                              Minions
+                              <span itemprop="memberOf">Minions</span>
                           </li>
                           <li>
                               <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                   <use xlink:href="#location"></use>
                               </svg>
-                              Gru's lair
+                              <span itemprop="address">Gru's lair</span>
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar">
-                      <img src="#" alt="Stuart avatar" width="50px" height="50px">
-                      <p class="avatar-name">Stuart <span>Stuart</span></p>
-                      <p class="avatar-description">Stuart envision himself as a rockstar.</p>
+                  <li class="avatar" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                      <img src="#" alt="Stuart avatar" width="50px" height="50px" itemprop="image">
+                      <p class="avatar-name" itemprop="name">Stuart</p>
+                      <p class="avatar-description" itemprop="description">Stuart envision himself as a rockstar.</p>
                       <ol class="avatar-info">
                           <li>
                               <svg aria-label="people" role="img" version="1.1" viewBox="0 0 16 16" width="16" height="16">
                                   <use xlink:href="#organization"></use>
                               </svg>
-                              Minions
+                              <span itemprop="memberOf">Minions</span>
                           </li>
                           <li>
                               <svg aria-label="location pin" role="img" version="1.1" viewBox="0 0 12 16" width="12" height="16">
                                   <use xlink:href="#location"></use>
                               </svg>
-                              Gru's lair
+                              <span itemprop="address">Gru's lair</span>
                           </li>
                       </ol>
                   </li>
