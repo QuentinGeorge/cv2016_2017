@@ -16,8 +16,10 @@
 }
 
 @mixin setSprite( $singleImageWidth, $singleImageHeight, $line: 1, $colmn: 1 ) {
+    $positionX: -( ( $colmn * $singleImageWidth ) - $singleImageWidth );
+    $positionY: -( ( $line * $singleImageHeight ) - $singleImageHeight );
+
     width: $singleImageWidth;
     height: $singleImageHeight;
-    background-position-x: -( ( $colmn * $singleImageWidth ) - $singleImageWidth );
-    background-position-y: -( ( $line * $singleImageHeight ) - $singleImageHeight );
+    background-position: $positionX $positionY;
 }
