@@ -99,3 +99,11 @@
 .node-deco:before {
     background-color: $cPinnedSkillsDecorationNodeJS;
 }
+
+.wp-deco:before {
+    display: none;
+}
+
+.wp-deco svg {
+    margin-bottom: 1px;
+}
