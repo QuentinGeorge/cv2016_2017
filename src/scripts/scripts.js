@@ -17,6 +17,9 @@ const fSetLayoutBases = function( sLayoutType ) {
         // Hide categories-nav "All" link
         $( ".categories-nav li:nth-child( 1 )" ).hide();
         $( ".categories-nav li:nth-child( 2 )" ).addClass( "active" );
+        // manage class on main container to have differents styles on content
+        $( ".main-container" ).removeClass( "tabs-layout" );
+        $( ".main-container" ).addClass( "one-page-layout" );
     } else {
         // Styles adjustments
         $( ".timeline" ).addClass( "tabs-nav-layout-activated" );
@@ -30,6 +33,9 @@ const fSetLayoutBases = function( sLayoutType ) {
         // Show categories-nav "All" link
         $( ".categories-nav li:nth-child( 1 )" ).show();
         $( ".categories-nav li:nth-child( 2 )" ).removeClass( "active" );
+        // manage class on main container to have differents styles on content
+        $( ".main-container" ).removeClass( "one-page-layout" );
+        $( ".main-container" ).addClass( "tabs-layout" );
     }
 };
 
@@ -92,11 +98,15 @@ const fHandleStickyEltByTopPos = function( iTopPos, oStickyElt ) {
 };
 
 const fStickyEltsHandler = function() {
-    let $iContNavTopPosition = $( ".content-nav" ).position().top,
-        $iCatNavTopPosition = $( ".timeline" ).position().top - $( ".content-nav" ).height() - 10,  // -10px margin-top .sticky ul
-        $iTimelineSectionBottom = $( ".timeline" ).position().top + $( ".timeline" ).height(),
+    let $iContNavTopPosition = $( ".content-nav" ).offset().top,
+        $iCatNavTopPosition = $( ".timeline" ).offset().top - $( ".content-nav ul" ).height() - 10,  // -10px margin-top .sticky ul
+        $iTimelineSectionBottom = $( ".timeline" ).offset().top + $( ".timeline" ).height(),
         $iCatNavBottomLimit = $( window ).scrollTop() + $( ".content-nav" ).height() + $( ".categories-nav" ).height(),
         $iCatNavTopLimit = $( ".timeline" ).height() - $( ".categories-nav" ).height();
+
+
+    // Be sure that .content-nav has always the same width than his content wich is sticky
+    $( ".content-nav" ).css( "min-height", $( ".content-nav ul" ).height() );
 
     // content-nav bar
     fHandleStickyEltByTopPos( $iContNavTopPosition, $( ".content-nav-container" ) );
@@ -112,9 +122,14 @@ const fStickyEltsHandler = function() {
         $( ".categories-nav" ).css( "top", "" );
         $( ".categories-nav" ).removeClass( "sticky-bottom-section" );
     }
+    // Set categories nav top position. But not for small screen because it's no longer sticky. Media query is 611px but here it work at 593
+    if ( $( ".categories-nav" ).hasClass( "sticky" ) && $( window ).width() > 593 ) {
+        $( ".timeline .sticky" ).css( "top", $( ".content-nav ul" ).height() );
+    }
 
     // content-nav bar header
-    if ( $( window ).scrollTop() > $iContNavTopPosition + $( ".intro header img" ).height() ) {
+    if ( $( window ).scrollTop() > $iContNavTopPosition + $( ".intro header img" ).height() && $( window ).width() > 1075 ) {
+        // media query is at 1092px but $( window ).width() work at 1075
         $( ".content-nav-header" ).removeClass( "hidden" );
         $( ".content-nav-container" ).css( "left", "0" );
         $( ".content-nav-container" ).css( "box-shadow", "" );
@@ -181,7 +196,7 @@ const fTabsHandler = function( oEvent, $this ) {
             $( `${ $sLinkedID }` ),
             $( "table tr" )  // restore tr ( could be hidden by the dropdown menu )
         ],
-        $iScrollPos;
+        $iScrollPos = $( ".content-nav" ).position().top;
 
     oEvent.preventDefault();
 
@@ -193,7 +208,6 @@ const fTabsHandler = function( oEvent, $this ) {
         // modify original pattern variables for content-nav menu navigation
         $aMenuLinksActive[ 1 ] = $( ".categories-nav li:nth-child( 1 ) a" );
         $aEltsToShow[ 2 ] = $( "table tbody" );
-        $iScrollPos = 0;
         // reset table tr hideContent
         $( "table .hideContent" ).siblings().show();
         $( "table .hideContent" ).removeClass( "hideContent" );
@@ -203,7 +217,6 @@ const fTabsHandler = function( oEvent, $this ) {
             $aEltsToHide = [];
             $aEltsToShow[ 0 ] = $( `${ $sLinkedID }` ).children( ".tab-pane" );
         }
-        $iScrollPos = $( ".content-nav" ).position().top;
     } else if ( $this.hasClass( "timeline-drop-link" ) ) {
         // modify original pattern variables for categories-nav dropdown menu navigation
         $aMenuLinksActive[ 0 ] = fFindLinkByAttrHref( $( ".categories-nav-link" ), `#${ $sTabID }` );
@@ -235,7 +248,7 @@ const fTabsHandler = function( oEvent, $this ) {
     } );
 
     // if necessary, scroll page to top of selected element
-    if ( typeof $iScrollPos !== "undefined" && $( window ).scrollTop() > $( ".content-nav" ).position().top + 5 ) {
+    if ( $( window ).scrollTop() > $( ".content-nav" ).position().top + 5 ) {
         window.scrollTo( 0, $iScrollPos );
     }
 };
@@ -310,6 +323,15 @@ const fSearchFieldsHandler = function( oForm ) {
     oForm.children( "input[type=search]" ).blur();
 }
 
+const fResetShowHideTransitions = function() {
+    // If resize window, all transitions are forced to none
+    $( ".others-info" ).css( "transition", "none" );
+    // After 100ms the elements are in position so autorise transitions again
+    setTimeout( function() {
+        $( ".others-info" ).css( "transition", "" );
+    }, 100 );
+}
+
 $( function() {
     let $sLayoutType = START_LAYOUT;
 
@@ -374,5 +396,12 @@ $( function() {
 
         // work ony if the element that we are looking for is displayed
         fSearchFieldsHandler( $( this ) );
+    } );
+
+    // reset show/hide transitions on resize to avoid bug with content hidding slowly
+    $( window ).resize( function() {
+        fResetShowHideTransitions();
+        // reset sticky elts
+        fStickyEltsHandler();
     } );
 } );

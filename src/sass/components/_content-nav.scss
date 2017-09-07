@@ -38,12 +38,12 @@
 
 // styles induce by .content-nav.sticky
 .content-nav {
-    height: 4.4rem;  // keep his height when ul.sticky
+    min-height: 4.4rem;  // keep his height when ul.sticky
 }
 
 .content-nav .sticky {
     box-shadow: 0 1px 2px $cHeaderSearchShadow;
-    z-index: 2;
+    z-index: 5;
 }
 
 .content-nav .sticky ul {
@@ -66,4 +66,54 @@
     display: inline;
     font-weight: 600;
     color: $cTitleText;
+}
+
+@media screen and (max-width: $sFirstReduce) and (min-width: $sIntroSecondReduce) {
+    .content-nav {
+        position: relative;
+        top: -13.05714rem;
+    }
+}
+
+@media screen and (max-width: $sIntroSecondReduce) {
+    .content-nav {
+        position: relative;
+        top: 2rem;
+    }
+}
+
+@media screen and (max-width: $sFirstReduce) {
+    .content-nav .sticky {
+        left: 0;
+        right: 0;
+    }
+
+    .content-nav .sticky ul {
+        width: auto;
+        padding: 0 $pagePadding;
+    }
+}
+
+@media screen and (max-width: $sLastReduce) {
+    .content-nav .sticky ul {
+        padding: 0 $pagePaddingSmallSize;
+    }
+}
+
+@media screen and (max-width: $sContentNavFirstReduce) {
+    .content-nav ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .content-nav ul li {
+        flex: 1 1 0;
+        text-align: center;
+    }
+
+    .content-nav .sticky ul {
+        display: flex;
+    }
 }

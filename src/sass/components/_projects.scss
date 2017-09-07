@@ -83,3 +83,37 @@
 .projects-main-list ol li svg {
     vertical-align: text-bottom;
 }
+
+@media screen and (max-width: $sFirstReduce) and (min-width: $sIntroSecondReduce) {
+    // .tabs-layout is only on main container if we are in tabs nav layout, in one page layout the margin top is only required on first section (overview)
+    .tabs-layout .projects {
+        margin-top: (1.71429rem - 13.05714rem);
+    }
+}
+
+@media screen and (max-width: $sIntroSecondReduce) {
+    .tabs-layout .projects {
+        margin-top: 3.71429rem;
+    }
+}
+
+@media screen and (max-width: $sFirstReduce) {
+    .projects-search {
+        max-width: 34.28571rem;
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: $sProjectsFirstReduce) {
+    .project-activity {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        margin: 1rem 0;
+    }
+
+    .projects-main-list>li {
+        padding: 1.71429rem 0;
+    }
+}

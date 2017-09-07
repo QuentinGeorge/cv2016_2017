@@ -179,7 +179,6 @@ table, tbody, tr, th, td {
 .timeline .sticky {
     margin-top: .71429rem;
     margin-left: 6.14286rem;
-    top: 4.45714rem;  // height of .content-nav
 }
 
 .sticky + .dropdown {
@@ -196,4 +195,53 @@ table, tbody, tr, th, td {
 .timeline.tabs-nav-layout-activated {
     top: 1.71429rem;
     padding-top: 1.71429rem;
+}
+
+@media screen and (max-width: $sFirstReduce) and (min-width: $sIntroSecondReduce) {
+    // .tabs-layout is only on main container if we are in tabs nav layout, in one page layout the margin top is only required on first section (overview)
+    .tabs-layout .timeline {
+        margin-top: (1.71429rem - 13.05714rem);
+    }
+}
+
+@media screen and (max-width: $sIntroSecondReduce) {
+    .tabs-layout .timeline {
+        margin-top: 3.71429rem;
+    }
+}
+
+@media screen and (max-width: $sTimelineFirstReduce) {
+    .tabs-layout .timeline {
+        margin-top: 0;
+    }
+
+    .timeline nav {
+        position: relative;
+
+    }
+
+    .timeline .categories-nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        float: none;
+        padding-left: 0;
+    }
+
+    .timeline .categories-nav li {
+        margin: .3rem;
+    }
+
+    .timeline .categories-nav.sticky {
+        position: relative;
+        width: auto;
+        left: 0;
+        right: 0;
+        margin: 0;
+    }
+
+    .timeline .dropdown {
+        float: right;
+    }
 }

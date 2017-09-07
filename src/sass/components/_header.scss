@@ -1,8 +1,9 @@
 // Header specific styles
 
 .main-header {
-    padding: .85714rem 0 .57143rem;
+    padding: .85714rem 4rem .57143rem 4rem;
     background-color: $cHeaderBackground;
+    z-index: 4;
 }
 
 .main-nav a {
@@ -89,11 +90,12 @@ header .home-logo {
 }
 
 .main-nav {
-    @include clearFix;
+    position: relative;
 }
 
 .main-nav .dropdown {
-    float: right;
+    position: absolute;
+    right: 0;
     margin: .07143rem -.57143rem 0 0;
     color: $cTitleText;
 }
@@ -148,4 +150,39 @@ header .home-logo {
 .main-nav .dropdown-content b {
     display: block;
     font-weight: 600;
+}
+
+@media screen and (max-width: $sHeaderFirstReduce) {
+    .main-header {
+        height: auto;
+        padding: .85714rem $pagePaddingSmallSize .57143rem;
+        text-align: center;
+    }
+
+    .main-nav form {
+        margin-right: 0;
+    }
+
+    .main-nav .dropdown {
+        position: relative;
+    }
+
+    .main-nav ul {
+        display: block;
+        margin: .75rem 0;
+    }
+
+    .main-nav .dropdown-expand {
+        display: block;
+        margin-bottom: .4rem;
+    }
+
+    .main-nav .dropdown-content {
+        right: -4.35715rem;
+        text-align: left;
+    }
+
+    .main-nav .dropdown-content:after {
+        right: 6rem;
+    }
 }

@@ -67,6 +67,7 @@
 
 .avatar-info li {
     display: inline-block;
+    margin: .2rem 0;
 }
 
 .avatar-info li:not( :last-child ) {
@@ -75,4 +76,17 @@
 
 .avatar-info li svg {
     vertical-align: text-bottom;
+}
+
+@media screen and (max-width: $sFirstReduce) and (min-width: $sIntroSecondReduce) {
+    // .tabs-layout is only on main container if we are in tabs nav layout, in one page layout the margin top is only required on first section (overview)
+    .tabs-layout .followers {
+        margin-top: (1.71429rem - 13.05714rem);
+    }
+}
+
+@media screen and (max-width: $sIntroSecondReduce) {
+    .tabs-layout .followers {
+        margin-top: 3.71429rem;
+    }
 }

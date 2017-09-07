@@ -107,3 +107,33 @@
 .wp-deco svg {
     margin-bottom: .07143rem;
 }
+
+@media screen and (max-width: $sFirstReduce) and (min-width: $sIntroSecondReduce) {
+    .overview {
+        margin-top: (1.71429rem - 13.05714rem);
+    }
+}
+
+@media screen and (max-width: $sIntroSecondReduce) {
+    .overview {
+        margin-top: 3.71429rem;
+    }
+}
+
+@media screen and (max-width: $sFirstReduce) {
+    .overview .pinned-skills {
+        justify-content: center;
+    }
+
+    .overview .pinned-skill {
+        margin-left: .3rem;
+        margin-right: .3rem;
+    }
+}
+
+@media screen and (max-width: $sOverviewFirstReduce) {
+    .overview .pinned-skill {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

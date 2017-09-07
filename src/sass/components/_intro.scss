@@ -117,7 +117,7 @@
 .others-info {
     position: relative;
     width: $introSize;
-    z-index: 1;
+    z-index: -1;
 }
 
 .others-info.js-supported {  // hide on the page loading if js supported
@@ -135,4 +135,93 @@ div.others-info.show {
     transition: all 1.5s ease-in-out;
     transform: translateY( 0 );
     margin-bottom: 0;
+}
+
+@media screen and (max-width: $sFirstReduce) and (min-width: $sIntroSecondReduce) {
+    .intro {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .intro header {
+        width: ($introSize * 2) + 1.714rem;
+        margin: 0 auto;
+        @include clearFix;
+    }
+
+    .intro header img {
+        float: left;
+        margin-right: 1.714rem;
+    }
+
+    .intro header p, .intro header input {
+        display: inline-block;
+        width: $introSize;
+    }
+
+    .intro header input {
+        margin: 0;
+    }
+
+    .others-info {
+        display: inline-block;
+        width: 100%;
+        margin-top: 1.14286rem;
+        padding: 1.14286rem 0;
+        border-top: 1px $cDecorativeLines solid;
+        border-bottom: 1px $cHeaderBorder solid;
+        text-align: center;
+    }
+
+    .others-info article {
+        display: inline-block;
+        width: 16.429rem;
+        padding: 0;
+        text-align: left;
+    }
+
+    .others-info .personal-info {
+        position: relative;
+        top: -1.35rem;
+        margin-right: 1.714rem;
+        border: 0;
+    }
+
+    .intro-container {
+        position: relative;
+    }
+
+    .intro-container:after {
+        display: block;
+        content: "";
+        position: absolute;
+        top: -2.3rem;
+        left: 0;
+        width: 100%;
+        height: $introSize + 3rem;
+        background-color: $cMainBackground;
+    }
+
+    .others-info.js-supported {  // hide on the page loading if js supported
+        transform: translateY( -15.05714rem );
+        margin-bottom: 0;
+    }
+
+    div.others-info.hide {
+        transform: translateY( -15.05714rem );
+        margin-bottom: 0;
+    }
+
+    div.others-info.show {
+        transform: translateY( 0 );
+        margin-bottom: 15.05714rem;
+    }
+}
+
+@media screen and (max-width: $sIntroSecondReduce) {
+    .intro {
+        float: none;
+        margin: 0 auto;
+    }
 }

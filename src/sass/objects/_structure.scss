@@ -1,5 +1,23 @@
 // Structure elements
 
+body {
+    min-width: $minContentSize;
+    padding: 0 $pagePadding;
+}
+
+.main-header {
+    min-width: $minContentSize;
+    height: 2.4586rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+footer {
+    min-width: $minContentSize;
+}
+
 .main-nav, footer {
     width: $headerFooterSize;
     margin: 0 auto;
@@ -7,8 +25,7 @@
 
 .main-container {
     width: $mainSize;
-    margin: 0 auto;
-    margin-top: 1.71429rem;
+    margin: 5.6rem auto 0;
     @include clearFix;
 }
 
@@ -28,4 +45,38 @@
 
 .timeline, .projects {
     margin-bottom: 3.42857rem;
+}
+
+@media screen and (max-width: $sFirstReduce) {
+    .main-nav, footer {
+        max-width: $headerFooterSize;
+        width: 100%;
+    }
+
+    .main-container {
+        max-width: $mainSize;
+        width: 100%;
+    }
+
+    .content-nav, .overview, .timeline, .projects, .followers {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: $sHeaderFirstReduce) {
+    .main-container {
+        margin-top: 11.744rem;
+    }
+}
+
+@media screen and (max-width: $sLastReduce) {
+    body, .main-header, footer {
+        padding: 0 $pagePaddingSmallSize;
+    }
+}
+
+@media screen and (max-width: $sHeaderLastReduce) {
+    .main-container {
+        margin-top: 13.942rem;
+    }
 }

@@ -1,6 +1,23 @@
 // Global sizes variables
 
+$minWindowSize: 320px;
+$pagePadding: 56px;
+$pagePaddingSmallSize: 16px;
+$minContentSize: $minWindowSize - ($pagePaddingSmallSize * 2);
 $mainSize: 980px;
 $headerFooterSize: $mainSize;
 $introSize: 16.42857rem;  // 230px
 $introRightSpacingSize: 1.71428rem; // 24px
+
+// Media queries
+$sFirstReduce: $mainSize + ($pagePadding * 2);
+$sLastReduce: $minWindowSize + ($pagePadding * 2);
+
+$sHeaderFirstReduce: 895px;
+$sHeaderLastReduce: 338px;
+$sFooterFirstReduce: 700px;
+$sIntroSecondReduce: (230px * 2) + ($pagePadding * 2) + 24px + 15px; // 24px margin right, 15px for safety
+$sContentNavFirstReduce: 560px;
+$sOverviewFirstReduce: $sContentNavFirstReduce;
+$sTimelineFirstReduce: $sIntroSecondReduce;
+$sProjectsFirstReduce: $sHeaderFirstReduce;
