@@ -59,6 +59,17 @@ const fLayoutsHandler = function( $this, sLayout ) {
     return $sLayoutType;
 };
 
+const fContentMenuItemCountHandler = function() {
+    let $sIDSectionTarget = "",
+        $iItemCount = 0;
+
+    $( ".content-nav .count" ).each( function() {
+        $sIDSectionTarget = $( this ).parent().attr( "href" );
+        $iItemCount = $( $sIDSectionTarget ).children( "ol" ).children( "li" ).length;
+        $( this ).html( $iItemCount );
+    } );
+}
+
 const fDropDownContentHandler = function( $this, bShow = false ) {
     let $oContent = $this.children( ".dropdown-content" ),
         $oExpand = $this.children( ".dropdown-expand" );
@@ -280,6 +291,11 @@ $( function() {
 
     /* Set layout bases on page load */
     fSetLayoutBases( $sLayoutType );
+
+    /* Set content menu bar item count when elements are created on page loading */
+    $( ".content-nav-container .content-nav-link" ).ready( function() {
+        fContentMenuItemCountHandler();
+    } );
 
     /* Prevent page reloading on dropdown expander click */
     $( ".dropdown-expand" ).on( "click", function( oEvent ) {
