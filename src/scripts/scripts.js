@@ -286,6 +286,30 @@ const fNavMenuActiveEltHandlerOnScroll = function() {
     }
 };
 
+const fSearchFieldsHandler = function( oForm ) {
+    let $sFormValue = oForm.children( "input[type=search]" ).val(),
+        $sSearchClassPrefix = "",
+        $sSearchedItem,
+        $iSearchedItemTop = 0;
+
+    // handle wich item types that the fields can search
+    if ( oForm.hasClass( "main-search" ) ) {
+        $sSearchClassPrefix = "search-term_";
+    } else if ( oForm.hasClass( "project-search" ) ) {
+        $sSearchClassPrefix = "search-proj_";
+    }
+    $sSearchedItem = "." + $sSearchClassPrefix + $sFormValue.toLowerCase().replace( / /g, "-" );
+    // if the form is sending something & the searched string match an item
+    if ( $sFormValue !== "" && $( $sSearchedItem ).length !== 0 ) {
+        $iSearchedItemTop = $( $sSearchedItem ).offset().top - $( ".content-nav" ).height() - 24
+        window.scrollTo( 0, $iSearchedItemTop );
+    }
+    // clear the field
+    oForm.children( "input[type=search]" ).val( "" );
+    // unfocus the field
+    oForm.children( "input[type=search]" ).blur();
+}
+
 $( function() {
     let $sLayoutType = START_LAYOUT;
 
@@ -342,5 +366,13 @@ $( function() {
         } else if ( $sLayoutType === "onePage" ) {
             fAnchorScrollHandler( oEvent, $( this ) );
         }
+    } );
+
+    /* Manage searchfields */
+    $( "form" ).on( "submit", function( oEvent ) {
+        oEvent.preventDefault();
+
+        // work ony if the element that we are looking for is displayed
+        fSearchFieldsHandler( $( this ) );
     } );
 } );

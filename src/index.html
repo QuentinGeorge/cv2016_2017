@@ -95,7 +95,7 @@
                       <use xlink:href="#logo"></use>
                   </svg>
               </a>
-              <form action="#" method="post">
+              <form class="main-search" action="#" method="post">
                   <input id="main-search" type="search" name="searchfield" autocomplete="off" placeholder="Search in resume" aria-label="Search in resume"><!--
                --><input class="button hidden" type="submit" name="send" value="Search">
               </form>
@@ -431,17 +431,17 @@
                   </ul>
               </div>
           </nav>
-          <section id="overview" class="overview tab-pane">
+          <section id="overview" class="overview tab-pane search-term_overview">
               <h2 role="heading" aria-level="2" class="hidden">
                   Overview
               </h2>
-              <article>
+              <article class="search-term_profile">
                   <h3 role="heading" aria-level="3">
                       Profile
                   </h3>
                   <p class="p-summary" >Adaptable, versatile and easy going candidate would want to join the ranks of an energetic team. Self-motivated and always enthused by learning new skills. Self-reliant and flexible, able to work independently or as part of a team.</p>
               </article>
-              <article>
+              <article class="search-term_skills">
                   <h3 role="heading" aria-level="3">
                       Pinned skills
                   </h3>
@@ -532,7 +532,7 @@
                   </ol>
               </article>
           </section>
-          <section id="timeline" class="timeline tab-pane">
+          <section id="timeline" class="timeline tab-pane search-term_timeline">
               <h2 role="heading" aria-level="2">
                   Timeline
               </h2>
@@ -580,7 +580,7 @@
                       Timeline content
                   </h3>
                   <table id="timeline-content" class="tab-pane">
-                      <tbody id="education" class="tab-pane">
+                      <tbody id="education" class="tab-pane search-term_education">
                           <tr class="table-section-header">
                               <th>Education</th>
                           </tr>
@@ -663,7 +663,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="job-experience" class="tab-pane">
+                      <tbody id="job-experience" class="tab-pane search-term_job-experience">
                           <tr class="table-section-header">
                               <th>Job experience</th>
                           </tr>
@@ -750,7 +750,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="student-jobs" class="tab-pane">
+                      <tbody id="student-jobs" class="tab-pane search-term_student-jobs">
                           <tr class="table-section-header">
                               <th>Student jobs</th>
                           </tr>
@@ -835,7 +835,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="internships" class="tab-pane">
+                      <tbody id="internships" class="tab-pane search-term_internships">
                           <tr class="table-section-header">
                               <th>Internships</th>
                           </tr>
@@ -980,7 +980,7 @@
                               </td>
                           </tr>
                       </tbody>
-                      <tbody id="additional-informations" class="tab-pane">
+                      <tbody id="additional-informations" class="tab-pane search-term_additional-informations">
                           <tr class="table-section-header">
                               <th>Additional informations</th>
                           </tr>
@@ -1034,16 +1034,16 @@
                   </table>
               </section>
           </section>
-          <section id="projects" class="projects tab-pane">
+          <section id="projects" class="projects tab-pane search-term_projects">
               <h2 role="heading" aria-level="2">
                   Projects
               </h2>
-              <form action="#" method="post">
+              <form class="project-search" action="#" method="post">
                   <input id="projects-search" class="projects-search" type="search" name="searchprojects" autocomplete="off" placeholder="Search projects&hellip;" aria-label="Search projects"><!--
                --><input class="projects-submit button" type="submit" name="sendproject" value="Search">
               </form>
               <ol class="projects-main-list">
-                  <li class="h-product" itemscope itemtype="http://schema.org/CreativeWork">
+                  <li class="h-product search-term_portfolio search-proj_portfolio" itemscope itemtype="http://schema.org/CreativeWork">
                       <a class="p-name u-url" href="http://www.quentin-george.com/" hreflang="en" title="Stay on Resume project" itemprop="name">Portfolio</a>
                       <p class="e-description" itemprop="about">My portfolio.</p>
                       <span class="project-activity" title="Project activity">
@@ -1071,7 +1071,7 @@
                           <li>Updated 1 day ago</li>
                       </ol>
                   </li>
-                  <li class="h-product" itemscope itemtype="http://schema.org/CreativeWork">
+                  <li class="h-product search-term_resume search-proj_resume" itemscope itemtype="http://schema.org/CreativeWork">
                       <a class="p-name u-url" href="http://www.quentin-george.com/cv/" hreflang="en" title="Stay on Resume project" itemprop="name">Resume</a>
                       <p class="e-description" itemprop="about">My resume adapted from GitHub web site for DW course.</p>
                       <span class="project-activity" title="Project activity">
@@ -1092,7 +1092,7 @@
                           <li>Updated 8 days ago</li>
                       </ol>
                   </li>
-                  <li class="h-product" itemscope itemtype="http://schema.org/CreativeWork">
+                  <li class="h-product search-term_css-zen-garden search-proj_css-zen-garden" itemscope itemtype="http://schema.org/CreativeWork">
                       <a class="p-name u-url" href="http://www.quentin-george.com/csszg/" hreflang="en" rel="external" title="Go to CSS ZenGarden project" itemprop="name">CSS ZenGarden</a>
                       <p class="e-description" itemprop="about">Style sheets for CSS ZenGarden.</p>
                       <span class="project-activity" title="Project activity">
@@ -1111,7 +1111,7 @@
                           <li>Updated 4 days ago</li>
                       </ol>
                   </li>
-                  <li class="h-product" itemscope itemtype="http://schema.org/CreativeWork">
+                  <li class="h-product search-term_game-design search-proj_game-design" itemscope itemtype="http://schema.org/CreativeWork">
                       <a class="p-name u-url" href="http://www.quentin-george.com/shinobi/" hreflang="fr" rel="external" title="Go to Game Design project" itemprop="name">Game Design</a>
                       <p class="e-description" itemprop="about">Game creation with canvas.</p>
                       <span class="project-activity" title="Project activity">
@@ -1134,12 +1134,12 @@
                   </li>
               </ol>
           </section>
-          <section id="followers" class="followers tab-pane">
+          <section id="followers" class="followers tab-pane search-term_followers">
               <h2 role="heading" aria-level="2">
                   Followers
               </h2>
               <ol>
-                  <li class="avatar h-card" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                  <li class="avatar h-card search-term_han-solo" itemprop="knows" itemscope itemtype="http://schema.org/Person">
                       <img class="u-photo" src="#" alt="Han Solo avatar" width="50" height="50" itemprop="image">
                       <p class="avatar-name p-name" itemprop="name">Han Solo</p>
                       <p class="avatar-description p-role" itemprop="description">Smuggler and captain of the Millennium Falcon, he become one of the great leaders of the Rebel Alliance.</p>
@@ -1158,7 +1158,7 @@
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar h-card" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                  <li class="avatar h-card search-term_vader" itemprop="knows" itemscope itemtype="http://schema.org/Person">
                       <img class="u-photo" src="#" alt="Darth Vader avatar" width="50" height="50" itemprop="image">
                       <p class="avatar-name"><span class="p-honorific-prefix" itemprop="honorificPrefix">Lord</span> <span class="p-name" itemprop="name">Vader</span> <span class="avatar-alternate-name p-nickname" itemprop="alternateName">Darth Vader</span></p>
                       <p class="avatar-description p-role" itemprop="description">Once a heroic Jedi Knight, Darth Vader was seduced by the dark side of the Force, became a Sith Lord, and led the Empire’s eradication of the Jedi Order.</p>
@@ -1177,7 +1177,7 @@
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar h-card" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                  <li class="avatar h-card search-term_yoda" itemprop="knows" itemscope itemtype="http://schema.org/Person">
                       <img class="u-photo" src="#" alt="Yoda avatar" width="50" height="50" itemprop="image">
                       <p class="avatar-name"><span class="p-honorific-prefix" itemprop="honorificPrefix">Master</span> <span class="p-name" itemprop="name">Yoda</span></p>
                       <p class="avatar-description p-role" itemprop="description">Yoda was a legendary Jedi Master and stronger than most in his connection with the Force. Small in size but wise and powerful, he trained Jedi for over 800 years.</p>
@@ -1196,7 +1196,7 @@
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar h-card" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                  <li class="avatar h-card search-term_bob" itemprop="knows" itemscope itemtype="http://schema.org/Person">
                       <img class="u-photo" src="#" alt="Bob avatar" width="50" height="50" itemprop="image">
                       <p class="avatar-name"><span class="p-name" itemprop="name">Bob</span> <span class="avatar-alternate-name p-nickname" itemprop="alternateName">King Bob</span></p>
                       <p class="avatar-description p-role" itemprop="description">He wields Arthur Pendragon's sword in the stone, Queen Elizabeth gets abdicated and Bob is crowned as the new King of England.</p>
@@ -1215,7 +1215,7 @@
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar h-card" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                  <li class="avatar h-card search-term_kevin" itemprop="knows" itemscope itemtype="http://schema.org/Person">
                       <img class="u-photo" src="#" alt="Kevin avatar" width="50" height="50" itemprop="image">
                       <p class="avatar-name p-name" itemprop="name">Kevin</p>
                       <p class="avatar-description p-role" itemprop="description">Kevin steps up for the entire Minion tribe for the search of a new master, after the tribe is in peril, he recuits Stuart and Bob for this mission.</p>
@@ -1234,7 +1234,7 @@
                           </li>
                       </ol>
                   </li>
-                  <li class="avatar h-card" itemprop="knows" itemscope itemtype="http://schema.org/Person">
+                  <li class="avatar h-card search-term_stuart" itemprop="knows" itemscope itemtype="http://schema.org/Person">
                       <img class="u-photo" src="#" alt="Stuart avatar" width="50" height="50" itemprop="image">
                       <p class="avatar-name p-name" itemprop="name">Stuart</p>
                       <p class="avatar-description p-role" itemprop="description">Stuart envision himself as a rockstar.</p>
