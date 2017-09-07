@@ -10,7 +10,7 @@
 
 .content-nav a {
     display: block;
-    padding: 19px 20px 20px 20px;
+    padding: 1.35714rem 1.42857rem 1.42857rem 1.42857rem;
     color: $cLaborText;
     &:hover {
         text-decoration: none;
@@ -20,11 +20,11 @@
 
 .content-nav a span {
     margin-left: .3em;
-    padding: 0 5px;
+    padding: 0 .35714rem;
     font-size: .85714em;
     font-weight: 600;
     background-color: $cContentNavCountBackground;
-    border-radius: 20px;
+    border-radius: 1.42857rem;
 }
 
 .content-nav a:hover span {
@@ -38,7 +38,7 @@
 
 // styles induce by .content-nav.sticky
 .content-nav {
-    height: 61.6px;  // keep his height when ul.sticky
+    height: 4.4rem;  // keep his height when ul.sticky
 }
 
 .content-nav .sticky {
@@ -51,14 +51,14 @@
 }
 
 .content-nav-header {
-    width: 230px;
-    margin-right: 24px;
+    width: $introSize;
+    margin-right: 1.71429rem;
 }
 
 .content-nav-header img {
-    margin-right: 8px;
-    margin-bottom: 1px;
-    border-radius: 3px;
+    margin-right: .57143rem;
+    margin-bottom: .07143rem;
+    border-radius: .21429rem;
     vertical-align: middle;
 }
 

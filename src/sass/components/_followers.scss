@@ -2,12 +2,12 @@
 
 .followers h2 {
     margin: 0;
-    padding-bottom: 8px;
+    padding-bottom: .57143rem;
     border-bottom: 1px solid $cHeaderSearchBorder;
 }
 
 .avatar {
-    padding: 24px 0;
+    padding: 1.71429rem 0;
     border-bottom: 1px solid $cHeaderSearchBorder;
     font-size: .85714em;
     @include clearFix;
@@ -16,7 +16,7 @@
 
  .avatar img {
      float: left;
-     margin-right: 10px;
+     margin-right: .71429rem;
      border-radius: 3px;
      @include setSpriteBase( "#{ $imgPath }sprite-followers.png" );
  }
@@ -46,23 +46,23 @@
 }
 
 .avatar p, .avatar ol {
-    margin-left: 60px;
+    margin-left: 4.28571rem;
 }
 
 .avatar-name {
-    margin-bottom: 4px;
+    margin-bottom: .28571rem;
     font-size: 1.33333em;
     color: $cTitleText;
 }
 
 .avatar-alternate-name {
-    padding-left: 4px;
+    padding-left: .28571rem;
     font-size: .875em;
     color: $cLaborText;
 }
 
 .avatar-description {
-    margin-bottom: 10px;
+    margin-bottom: .71429rem;
 }
 
 .avatar-info li {
@@ -70,7 +70,7 @@
 }
 
 .avatar-info li:not( :last-child ) {
-    margin-right: 16px;
+    margin-right: 1.14286rem;
 }
 
 .avatar-info li svg {

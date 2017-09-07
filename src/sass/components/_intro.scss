@@ -10,7 +10,7 @@
 }
 
 .intro header img + p {
-    padding: 16px 0;
+    padding: 1.14286rem 0;
 }
 
 .intro header strong {
@@ -27,25 +27,25 @@
 }
 
 .intro header p + p {
-    margin-bottom: 12px;
+    margin-bottom: .85714rem;
 }
 
 .intro header input {
     width: 100%;
-    margin-bottom: 16px;
-    padding: 6px 12px;
+    margin-bottom: 1.14286rem;
+    padding: .42857rem .85714rem;
     line-height: 1.43; // * 14( font-size ) = 20px
     font-weight: 600;
 }
 
 .others-info article {
-    padding: 16px 0;
+    padding: 1.14286rem 0;
     color: $cTitleText;
 }
 
 .others-info h3 {
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: .28571rem;
 }
 
 .others-info li p {
@@ -58,43 +58,43 @@
 }
 
 .personal-info li {
-    padding-top: 5px;
-    padding-bottom: 2px;
+    padding-top: .35714rem;
+    padding-bottom: .14286rem;
     line-height: 1.3;
 }
 
 .personal-info svg {
-    width: 14px;
-    margin-right: 8px;
+    width: 1rem;
+    margin-right: .57143rem;
     color: $cIntroIcons;
     vertical-align: top;
 }
 
 .personal-info .location svg {
-    margin-top: 1px;
+    margin-top: .07143rem;
 }
 
 .personal-info .born svg {
-    margin-top: -1px;
+    margin-top: -.07143rem;
 }
 
 .personal-info .address svg {
-    margin-top: 2px;
+    margin-top: .14286rem;
 }
 
 .personal-info .phone svg {
-    margin-top: 2px;
+    margin-top: .14286rem;
 }
 
 .personal-info .mail svg {
-    margin-top: 2px;
+    margin-top: .14286rem;
 }
 
 .skills-info li {
     display: inline-block;
-    width: 35px;
-    height: 35px;
-    margin: 2px 6px 2px 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: .14286rem .42857rem .14286rem 0;
 }
 
 .skills-info svg {
@@ -116,19 +116,19 @@
 
 .others-info {
     position: relative;
-    width: 230px;
+    width: $introSize;
     z-index: 1;
 }
 
 .others-info.js-supported {  // hide on the page loading if js supported
-    transform: translateY( -380px );
-    margin-bottom: -380px;
+    transform: translateY( -27.14286rem );
+    margin-bottom: -27.14286rem;
 }
 
 div.others-info.hide {
     transition: all 1.5s ease-in-out;
-    transform: translateY( -380px );
-    margin-bottom: -380px;
+    transform: translateY( -27.14286rem );
+    margin-bottom: -27.14286rem;
 }
 
 div.others-info.show {

@@ -1,7 +1,7 @@
 // Header specific styles
 
 .main-header {
-    padding: 12px 0 8px;
+    padding: .85714rem 0 .57143rem;
     background-color: $cHeaderBackground;
 }
 
@@ -16,7 +16,7 @@
 
 header .home-logo {
     display: inline-block;
-    margin: -1px 15px -1px -2px;
+    margin: -.07143rem 1.07142rem -.07143rem -.14286rem;
     color: $cMainBackground;
     vertical-align: top;
     &:hover {
@@ -26,9 +26,9 @@ header .home-logo {
 
 .main-nav form {
     display: inline-block;
-    width: 200px;
-    height: 30px;
-    margin-right: 8px;
+    width: 14.28571rem;
+    height: 2.14286rem;
+    margin-right: .57143rem;
     font-size: .92857em; // (1/14)*13px
     vertical-align: top;
 }
@@ -36,7 +36,7 @@ header .home-logo {
 .main-nav input {
     width: 100%;
     height: 100%;
-    padding: 0 10px 0 8px;
+    padding: 0 .71429rem 0 .57143rem;
     color: $cMainBackground;
     background-color: $cHeaderSearchBackground;
     border: 0;
@@ -72,7 +72,7 @@ header .home-logo {
 }
 
 .main-nav > ul a {
-    padding: 5px 8px;
+    padding: .35714rem .57143rem;
     font-weight: 600;
 }
 
@@ -94,14 +94,14 @@ header .home-logo {
 
 .main-nav .dropdown {
     float: right;
-    margin: 1px -8px 0 0;
+    margin: .07143rem -.57143rem 0 0;
     color: $cTitleText;
 }
 
 .main-nav .dropdown > a {
-    padding: 4px 8px;
+    padding: .28571rem .57143rem;
     &:after {
-        margin: 1px 0 0 5px;
+        margin: .07143rem 0 0 .35714rem;
         border: 4px solid transparent;
         border-top-color: $cHeaderLink;
     }
@@ -118,8 +118,8 @@ header .home-logo {
         display: inline-block;
         position: absolute;
         right: 0;
-        width: 150px;
-        height: 50px;
+        width: 10.71429rem;
+        height: 3.57143rem;
         content: "";
     }
     &:after {
@@ -128,19 +128,19 @@ header .home-logo {
 }
 
 .main-nav .dropdown-content {
-    width: 178px;
-    margin-top: 38px;
+    width: 12.71429rem;
+    margin-top: 2.71429rem;
 }
 
 .main-nav .dropdown-content li:first-child {
-    padding: 4px 15px;
+    padding: .28571rem 1.07142rem;
     color: $cLaborText;
     &:after {
         display: block;
-        width: 176px;
-        height: 1px;
+        width: 12.57143rem;
+        height: .07143rem;
         content: "";
-        margin: 8px 1px 4px -14px;
+        margin: .57143rem .07143rem .28571rem -1rem;
         background-color: $cHeaderBorder;
     }
 }

@@ -14,14 +14,14 @@
 
 .categories-nav {
     float: right;
-    padding-left: 16px;
+    padding-left: 1.14286rem;
 }
 
 .categories-nav a {
     display: block;
-    width: 70px;
-    margin-bottom: 8px;
-    padding: 8px 16px;
+    width: 5rem;
+    margin-bottom: .57143rem;
+    padding: .57143rem 1.14286rem;
     color: $cLaborText;
     border-radius: 3px;
     text-decoration: none;
@@ -36,13 +36,13 @@
 }
 
 .timeline .dropdown > a {
-    padding: 8px 16px;
+    padding: .57143rem 1.14286rem;
     color: $cLaborText;
     &:after {
-        margin-left: 3px;
+        margin-left: .21429rem;
         border: 4px solid transparent;
         border-top-color: $cLaborText;
-        vertical-align: -2px;
+        vertical-align: -.14286rem;
     }
 }
 
@@ -54,8 +54,8 @@
 }
 
 .timeline .dropdown-content {
-    width: 160px;
-    margin-top: 30px;
+    width: 11.42857rem;
+    margin-top: 2.14286rem;
     font-size: 1rem;
 }
 
@@ -64,13 +64,13 @@ table, tbody, tr, th, td {
 }
 
 .timeline table {
-    margin-top: 20px;
-    margin-right: 134px; // 102 + 16 + 16
+    margin-top: 1.42857rem;
+    margin-right: 9.57143rem; // 102 + 16 + 16
 }
 
 .timeline tbody {
     position: relative;
-    margin-left: 16px;
+    margin-left: 1.14286rem;
     border-left: 3px solid $cTimelineTableBorder;
 }
 
@@ -83,7 +83,7 @@ table, tbody, tr, th, td {
 }
 
 .timeline tr {
-    padding: 24px 0 24px 24px;
+    padding: 1.71429rem 0 1.71429rem 1.71429rem;
     border-top: 1px solid $cTimelineTableBorder;
     border-bottom: 1px solid $cTimelineTableBorder;
 }
@@ -94,9 +94,9 @@ table, tbody, tr, th, td {
 
 .timeline .table-section-header {
     position: absolute;
-    top: -15px;
-    left: -16px;
-    padding: 0 8px 0 0; // 0 are important to overhide the padding of .timeline tr {24px, ...}
+    top: -1.07142rem;
+    left: -1.14286rem;
+    padding: 0 .57143rem 0 0; // 0 are important to overhide the padding of .timeline tr {24px, ...}
     font-size: .85714em;
     font-weight: 600;
     color: $cTitleText;
@@ -120,7 +120,7 @@ table, tbody, tr, th, td {
 }
 
 .timeline th, .timeline p {
-    padding: 4px 0;
+    padding: .28571rem 0;
 }
 
 .timeline table svg {
@@ -129,16 +129,16 @@ table, tbody, tr, th, td {
 
 .table-skill-header .table-row svg {
     float: right;
-    margin: 6px 0 0 16px;
+    margin: .42857rem 0 0 1.14286rem;
 }
 
 .table-skill-header .table-icon-row {
-    width: 29px;
-    height: 29px;
+    width: 2.07143rem;
+    height: 2.07143rem;
     position: absolute;
-    top: -1px;
-    left: -41px;  // 24 padding + 32/2 width span + 2/2 border tbody
-    line-height: 24px;
+    top: -.07143rem;
+    left: -2.92857rem;  // 24 padding + 32/2 width span + 2/2 border tbody
+    line-height: 1.71429rem;
     background-color: $cTimelineTableIconRow;
     border: 2px solid $cMainBackground;
     border-radius: 50%;
@@ -146,23 +146,23 @@ table, tbody, tr, th, td {
 }
 
 .timeline td p {
-    margin-right: 30px;
-    padding-left: 24px;
+    margin-right: 2.14286rem;
+    padding-left: 1.71429rem;
 }
 
 .timeline td p svg {
-    padding-right: 4px;
-    margin-left: -24px;
+    padding-right: .28571rem;
+    margin-left: -1.71429rem;
 }
 
 .timeline .table-description svg {
-    padding-left: 4px;
+    padding-left: .28571rem;
     color: $cTimelineDescriptionIcon;
 }
 
 .timeline .table-location svg {
     color: $cTimelineLocationIcon;
-    vertical-align: -2px;
+    vertical-align: -.14286rem;
 }
 
 .timeline .table-star {
@@ -170,30 +170,30 @@ table, tbody, tr, th, td {
 }
 
 .timeline .table-star svg {
-    padding-left: 2px;
+    padding-left: .14286rem;
     color: $cTimelineStarIcon;
-    vertical-align: -2px;
+    vertical-align: -.14286rem;
 }
 
 // styles induce by .categories-nav.sticky
 .timeline .sticky {
-    margin-top: 10px;
-    margin-left: 86px;
-    top: 62.4px;  // height of .content-nav
+    margin-top: .71429rem;
+    margin-left: 6.14286rem;
+    top: 4.45714rem;  // height of .content-nav
 }
 
 .sticky + .dropdown {
-    margin-right: 118px; // width + margin of sticky el
+    margin-right: 8.42857rem; // width + margin of sticky el
 }
 
 .sticky-bottom-section {
     position: absolute;
-    margin-top: 8px;
-    margin-left: -32px;
+    margin-top: .57143rem;
+    margin-left: -2.28571rem;
 }
 
 // Add some styles to the section when js supported only
 .timeline.tabs-nav-layout-activated {
-    top: 24px;
-    padding-top: 24px;
+    top: 1.71429rem;
+    padding-top: 1.71429rem;
 }

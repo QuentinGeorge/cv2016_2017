@@ -8,7 +8,7 @@
 .main-container {
     width: $mainSize;
     margin: 0 auto;
-    margin-top: 24px;
+    margin-top: 1.71429rem;
     @include clearFix;
 }
 
@@ -23,9 +23,9 @@
 }
 
 .overview article, .followers {
-    margin-bottom: 24px;
+    margin-bottom: 1.71429rem;
 }
 
 .timeline, .projects {
-    margin-bottom: 48px;
+    margin-bottom: 3.42857rem;
 }

@@ -1,7 +1,7 @@
 // Overview specific styles
 
 .overview {
-    margin-top: 24px;
+    margin-top: 1.71429rem;
 }
 
 .pinned-skills {
@@ -13,9 +13,9 @@
 .pinned-skill {
     display: flex;
     flex-direction: column;
-    width: 325px;  // 359px ( from original web site ) - ( 2*16px ) - ( 2*1px )
-    padding: 16px;
-    margin-bottom: 16px;
+    width: 23.21429rem;  // 359px ( from original web site ) - ( 2*16px ) - ( 2*1px )
+    padding: 1.14286rem;
+    margin-bottom: 1.14286rem;
     border: 1px solid $cHeaderSearchBorder;
     border-radius: 3px;
 }
@@ -30,7 +30,7 @@
 
 .pinned-skill p {
     flex: 1 0 auto;
-    margin: 8px 0 16px 0;
+    margin: .57143rem 0 1.14286rem 0;
 }
 
 .pinned-skill li {
@@ -42,16 +42,16 @@
 }
 
 .pinned-skill ol li:not( :last-child ) {
-    margin-right: 16px;
+    margin-right: 1.14286rem;
 }
 
 .pin-decoration:before {
     display: inline-block;
-    width: 12px;
-    height: 12px;
+    width: .85714rem;
+    height: .85714rem;
     position: relative;
-    top: 1px;
-    margin-right: 3px;
+    top: .07143rem;
+    margin-right: .21429rem;
     content: "";
     border-radius: 50%;
 }
@@ -105,5 +105,5 @@
 }
 
 .wp-deco svg {
-    margin-bottom: 1px;
+    margin-bottom: .07143rem;
 }
